@@ -2,8 +2,8 @@
 ## I used [chevron](https://github.com/kholmogorov27/chevron), but any startpage works
 
 * Find your firefox directory. On my system it was /usr/lib/firefox.
-  It should have a folder named defaults
-* Create the file autoconfig.js inside defaults/pref
+  It should have a folder named defaults.
+* Create the file autoconfig.js inside defaults/pref.
   It should contain the following lines:
 
 ```js
