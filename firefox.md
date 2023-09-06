@@ -36,6 +36,6 @@ try {
 } catch(e) { Cu.reportError(e); }
 ```
 ### WARNING: the file mozilla.cfg must start with a single comment line and must be formated UNIX stile, regardless of your os.
-
-You may now find the when firefox opens, the first page will have the cursor focused on the url bar, while all following tabs have it focused on the homepage
+You should now have chevron as your newtab page. If you want to set it as the firstpage that gets opened when firefox loads, you can do that in settings.
+You may now find that when firefox opens, the first page will have the cursor focused on the url bar, while all following tabs have it focused on the homepage.
 * In order to focus the cursor on the first page, I've found a workaround, by setting the PATH TO STARTPAGE to begin with `file://` and in the firefox settings, the homepage path without it.
