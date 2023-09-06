@@ -3,7 +3,7 @@
 * **DE**: gnome
 * **Theme**: 
   * Shell: Catpuccin-Mocha-Lavander-dark
-  * Legacy: (generated with Gradiance) Catppuccin Mocha + RosePine titlebar buttons
+  * Legacy: (generated with Gradience) Catppuccin Mocha + RosePine titlebar buttons
 * **All Extensions**:
   * Alyur's Widgets
   * Blur my Shell
