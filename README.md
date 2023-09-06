@@ -31,6 +31,7 @@
 * **Editor**: nvim (lightly modified nvchad config)
 * **Font**: FiraCode Nerd Font Mono + JetBrains (for italic text)
 * **Discord**: betterdiscord (catppuccin mocha css)
+* **Browser**: Firefox (Catppuccin Lavander theme) + [Chevron](https://github.com/kholmogorov27/chevron) as startpage. Guide for configuration in the repo. ☝️
 * **CATPPUCCIN EVERYTHING!!!**
 ### Photos:
 ![example](example.png)
