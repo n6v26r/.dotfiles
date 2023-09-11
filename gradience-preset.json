@@ -1,0 +1,108 @@
+{
+    "name": "catppuccin",
+    "variables": {
+        "accent_color": "rgb(116, 199, 236)",
+        "accent_bg_color": "rgb(137, 180, 250)",
+        "accent_fg_color": "rgb(17, 17, 27)",
+        "destructive_color": "rgb(238, 153, 160)",
+        "destructive_bg_color": "rgb(237, 135, 150)",
+        "destructive_fg_color": "rgb(17, 17, 27)",
+        "success_color": "rgb(166, 218, 149)",
+        "success_bg_color": "rgb(139, 213, 202)",
+        "success_fg_color": "rgb(17, 17, 27)",
+        "warning_color": "rgb(245, 169, 127)",
+        "warning_bg_color": "rgb(238, 212, 159)",
+        "warning_fg_color": "rgb(17, 17, 27)",
+        "error_color": "rgb(238, 153, 160)",
+        "error_bg_color": "rgb(237, 135, 150)",
+        "error_fg_color": "rgb(17, 17, 27)",
+        "window_bg_color": "rgb(30, 30, 46)",
+        "window_fg_color": "rgb(205, 214, 244)",
+        "view_bg_color": "rgb(24, 24, 37)",
+        "view_fg_color": "rgb(205, 214, 244)",
+        "headerbar_bg_color": "rgb(17, 17, 27)",
+        "headerbar_fg_color": "rgb(205, 214, 244)",
+        "headerbar_border_color": "rgb(49, 50, 68)",
+        "headerbar_backdrop_color": "@window_bg_color",
+        "headerbar_shade_color": "rgba(0, 0, 0, 0.36)",
+        "card_bg_color": "rgb(24, 24, 37)",
+        "card_fg_color": "rgb(205, 214, 244)",
+        "card_shade_color": "rgba(0, 0, 0, 0.36)",
+        "dialog_bg_color": "rgb(24, 24, 37)",
+        "dialog_fg_color": "rgb(205, 214, 244)",
+        "popover_bg_color": "rgb(24, 24, 37)",
+        "popover_fg_color": "rgb(205, 214, 244)",
+        "shade_color": "rgba(0,0,0,0.36)",
+        "scrollbar_outline_color": "rgba(0,0,0,0.5)"
+    },
+    "palette": {
+        "blue_": {
+            "1": "#99c1f1",
+            "2": "#62a0ea",
+            "3": "#3584e4",
+            "4": "#1c71d8",
+            "5": "#1a5fb4"
+        },
+        "green_": {
+            "1": "#8ff0a4",
+            "2": "#57e389",
+            "3": "#33d17a",
+            "4": "#2ec27e",
+            "5": "#26a269"
+        },
+        "yellow_": {
+            "1": "#f9f06b",
+            "2": "#f8e45c",
+            "3": "#f6d32d",
+            "4": "#f5c211",
+            "5": "#e5a50a"
+        },
+        "orange_": {
+            "1": "#ffbe6f",
+            "2": "#ffa348",
+            "3": "#ff7800",
+            "4": "#e66100",
+            "5": "#c64600"
+        },
+        "red_": {
+            "1": "#f66151",
+            "2": "#ed333b",
+            "3": "#e01b24",
+            "4": "#c01c28",
+            "5": "#a51d2d"
+        },
+        "purple_": {
+            "1": "#dc8add",
+            "2": "#c061cb",
+            "3": "#9141ac",
+            "4": "#813d9c",
+            "5": "#613583"
+        },
+        "brown_": {
+            "1": "#cdab8f",
+            "2": "#b5835a",
+            "3": "#986a44",
+            "4": "#865e3c",
+            "5": "#63452c"
+        },
+        "light_": {
+            "1": "#ffffff",
+            "2": "#f6f5f4",
+            "3": "#deddda",
+            "4": "#c0bfbc",
+            "5": "#9a9996"
+        },
+        "dark_": {
+            "1": "#77767b",
+            "2": "#5e5c64",
+            "3": "#3d3846",
+            "4": "#241f31",
+            "5": "#000000"
+        }
+    },
+    "custom_css": {
+        "gtk4": "/* UNITE windowDecorations */\n@import url('/home/razv/.local/share/gnome-shell/extensions/unite@hardpixel.eu/styles/gtk4/buttons-left/both.css');\n/* windowDecorations UNITE */\n\nbutton.titlebutton,\nwindowcontrols > button {\n  color: transparent;\n  min-width: 18px;\n  min-height: 18px;\n}\n\nbutton.titlebutton:backdrop {\n  opacity: 0.5;\n}\n\nwindowcontrols > button {\n  border-radius: 100%;\n  padding: 0;\n  margin: 0 5px;\n}\n\nwindowcontrols > button > image {\n  padding: 0;\n}\n\nbutton.titlebutton.close, button.titlebutton.close:hover:backdrop,\nwindowcontrols > button.close,\nwindowcontrols > button.close:hover:backdrop {\n  background-color: #eb6f92;\n}\n\nbutton.titlebutton.close:hover,\nwindowcontrols > button.close:hover {\n  background-color: shade(#eb6f92,1.3);\n}\n\nbutton.titlebutton.maximize, button.titlebutton.maximize:hover:backdrop,\nwindowcontrols > button.maximize,\nwindowcontrols > button.maximize:hover:backdrop {\n  background-color: #9ccfd8;\n}\n\nbutton.titlebutton.maximize:hover,\nwindowcontrols > button.maximize:hover {\n  background-color: shade(#9ccfd8,1.3);\n}\n\nbutton.titlebutton.minimize, button.titlebutton.minimize:hover:backdrop,\nwindowcontrols > button.minimize,\nwindowcontrols > button.minimize:hover:backdrop {\n  background-color: #f6c177;\n}\n\nbutton.titlebutton.minimize:hover,\nwindowcontrols > button.minimize:hover {\n  background-color: shade(#f6c177,1.3);\n}\n\nbutton.titlebutton.close:backdrop, button.titlebutton.maximize:backdrop, button.titlebutton.minimize:backdrop,\nwindowcontrols > button.close:backdrop,\nwindowcontrols > button.maximize:backdrop,\nwindowcontrols > button.minimize:backdrop {\n  background-color: #6e6a86;\n}\n\nbutton.titlebutton.close:active, button.titlebutton.maximize:active, button.titlebutton.minimize:active,\nwindowcontrols > button.close:active,\nwindowcontrols > button.maximize:active,\nwindowcontrols > button.minimize:active {\n  box-shadow: inset 0 0 0 3px rgba(0, 0, 0, 0.3);\n}\n\nnotebook > header tab:not(:backdrop):checked.reorderable-page,\ntabbar tab:not(:backdrop):checked {\n  background-color: @headerbar_bg_color;\n}\n\n.nautilus-window .sidebar {\n  background-color: @view_bg_color;\n}\n\n.nautilus-window .sidebar:backdrop {\n  background-color: @window_bg_color;\n}\n",
+        "gtk3": "/* UNITE windowDecorations */\n@import url('/home/razv/.local/share/gnome-shell/extensions/unite@hardpixel.eu/styles/gtk4/buttons-left/both.css');\n/* windowDecorations UNITE */\n\nbutton.titlebutton,\nwindowcontrols > button {\n  color: transparent;\n  min-width: 18px;\n  min-height: 18px;\n}\n\nbutton.titlebutton:backdrop {\n  opacity: 0.5;\n}\n\nwindowcontrols > button {\n  border-radius: 100%;\n  padding: 0;\n  margin: 0 5px;\n}\n\nwindowcontrols > button > image {\n  padding: 0;\n}\n\nbutton.titlebutton.close, button.titlebutton.close:hover:backdrop,\nwindowcontrols > button.close,\nwindowcontrols > button.close:hover:backdrop {\n  background-color: #eb6f92;\n}\n\nbutton.titlebutton.close:hover,\nwindowcontrols > button.close:hover {\n  background-color: shade(#eb6f92,1.3);\n}\n\nbutton.titlebutton.maximize, button.titlebutton.maximize:hover:backdrop,\nwindowcontrols > button.maximize,\nwindowcontrols > button.maximize:hover:backdrop {\n  background-color: #9ccfd8;\n}\n\nbutton.titlebutton.maximize:hover,\nwindowcontrols > button.maximize:hover {\n  background-color: shade(#9ccfd8,1.3);\n}\n\nbutton.titlebutton.minimize, button.titlebutton.minimize:hover:backdrop,\nwindowcontrols > button.minimize,\nwindowcontrols > button.minimize:hover:backdrop {\n  background-color: #f6c177;\n}\n\nbutton.titlebutton.minimize:hover,\nwindowcontrols > button.minimize:hover {\n  background-color: shade(#f6c177,1.3);\n}\n\nbutton.titlebutton.close:backdrop, button.titlebutton.maximize:backdrop, button.titlebutton.minimize:backdrop,\nwindowcontrols > button.close:backdrop,\nwindowcontrols > button.maximize:backdrop,\nwindowcontrols > button.minimize:backdrop {\n  background-color: #6e6a86;\n}\n\nbutton.titlebutton.close:active, button.titlebutton.maximize:active, button.titlebutton.minimize:active,\nwindowcontrols > button.close:active,\nwindowcontrols > button.maximize:active,\nwindowcontrols > button.minimize:active {\n  box-shadow: inset 0 0 0 3px rgba(0, 0, 0, 0.3);\n}\n\nnotebook > header tab:not(:backdrop):checked.reorderable-page,\ntabbar tab:not(:backdrop):checked {\n  background-color: @headerbar_bg_color;\n}\n\n.nautilus-window .sidebar {\n  background-color: @view_bg_color;\n}\n\n.nautilus-window .sidebar:backdrop {\n  background-color: @window_bg_color;\n}\n"
+    },
+    "plugins": {}
+}
