@@ -1,0 +1,12 @@
+#!/bin/sh
+# Use this script to open files in an existing nvim instance (made with unity game engine in mind)
+
+server=$(nvr --serverlist || awk 'print $1')
+
+if [ -z $server ]
+then 
+  kitty nvr --remote $1 +$2
+else
+  nvr --servername $server --remote $1 +$2 
+fi
+
