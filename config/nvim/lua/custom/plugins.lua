@@ -4,7 +4,6 @@ local overrides = require("custom.configs.overrides")
 local plugins = {
 
   -- Override plugin definition options
-
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -81,6 +80,15 @@ local plugins = {
     lazy = false;
   },
 
+  {
+    'rmagatti/auto-session',
+    config = function()
+      require("auto-session").setup {
+        log_level = "error",
+      }
+    end,
+    lazy = false;
+  },
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
