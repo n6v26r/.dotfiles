@@ -84,11 +84,19 @@ local plugins = {
     'rmagatti/auto-session',
     config = function()
       require("auto-session").setup {
-        log_level = "error",
+        log_level = vim.log.levels.ERROR,
+        session_lens = {
+          path_display = {'shorten'},
+          buftypes_to_ignore = {},
+          load_on_setup = true,
+          theme_conf = { border = true},
+          previewer = false,
+        },
       }
     end,
     lazy = false;
   },
+
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
