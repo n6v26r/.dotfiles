@@ -2,13 +2,13 @@
 ## Info:
 * **DE**: gnome
 * **Theme**: 
-  * Shell: Catpuccin-Mocha-Lavander-dark
+  * Shell: Catppuccin-Mocha-Lavander-dark
   * Legacy: (generated with Gradience) Catppuccin Mocha + RosePine titlebar buttons
 * **All Extensions**:
   * Alyur's Widgets
   * Blur my Shell
   * Compiz window effect
-  * Dekstop Cube
+  * Dekstop Cube (kinda buggy lately)
   * Just Perfection
   * Logo Menu
   * Pop Shell
