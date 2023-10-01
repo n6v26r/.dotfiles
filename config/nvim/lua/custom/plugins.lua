@@ -56,7 +56,7 @@ local plugins = {
     config = function ()
       require('guess-indent').setup {}
     end,
-    lazy = false,
+    lazy = false
   },
 
   {
@@ -67,7 +67,7 @@ local plugins = {
       "sindrets/diffview.nvim",        -- optional
       "ibhagwan/fzf-lua",              -- optional
     },
-    lazy = false;
+    lazy = false,
     config = true
   },
 
@@ -77,7 +77,7 @@ local plugins = {
       require('orgmode').setup{}
       require("custom.configs.orgmode")
     end,
-    lazy = false;
+    lazy = false
   },
 
   {
@@ -94,7 +94,15 @@ local plugins = {
         },
       }
     end,
-    lazy = false;
+    lazy = false
+  },
+
+  {
+    "karb94/neoscroll.nvim",
+    config = function ()
+      require('neoscroll').setup()
+    end,
+    lazy = false
   },
 
   -- To make a plugin not be loaded
