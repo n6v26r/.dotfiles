@@ -119,6 +119,13 @@ local plugins = {
     lazy = false;
   },
 
+  {'andweeb/presence.nvim',
+    config = function()
+      require('custom.configs.presence')
+    end,
+    lazy = false
+
+  },
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
