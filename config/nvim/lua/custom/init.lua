@@ -21,10 +21,11 @@ bind('v', '<A-j>', ":move '>+1<CR>gv=gv", {silent = true})
 bind('i', '<C-BS>', '<C-W>')
 bind('i', '<A-BS>', '<C-W>')
 
+bind({'n', 'i', 'v'}, "<C-=>", "<cmd>FontIncrease<CR>")
+bind({'n', 'i', 'v'}, "<C-->", "<cmd>FontDecrease<CR>")
+
 vim.o.smartindent = true
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
 vim.o.expandtab = true
 vim.opt.relativenumber = true
-
-vim.opt.guifont = { "FiraCode Nerd Font Mono,JetBrains NFM,Hack Nerd Font Mono", "h14" }

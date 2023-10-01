@@ -105,6 +105,20 @@ local plugins = {
     lazy = false
   },
 
+  {
+    "Sup3Legacy/fontsize.nvim",
+    config = function ()
+      require("fontsize").init({
+        font = "FiraCode Nerd Font Mono,JetBrains NFM,Hack Nerd Font Mono",
+        min = 6,
+        default = 13,
+        max = 22,
+        step = 1,
+      })
+    end,
+    lazy = false;
+  },
+
   -- To make a plugin not be loaded
   -- {
   --   "NvChad/nvim-colorizer.lua",
