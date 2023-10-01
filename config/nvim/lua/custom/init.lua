@@ -10,6 +10,14 @@ local bind = vim.keymap.set
 
 bind({'n', 'i'}, '<A-Down>', '<cmd>move .+1<CR>')
 bind({'n', 'i'}, '<A-Up>', '<cmd>move .-2<CR>')
+bind({'n', 'i'}, '<A-j>', '<cmd>move .+1<CR>')
+bind({'n', 'i'}, '<A-k>', '<cmd>move .-2<CR>')
+
+bind('v', '<A-Up>', ":move -2<CR>gv=gv", {silent = true})
+bind('v', '<A-Down>', ":move '>+1<CR>gv=gv", {silent = true})
+bind('v', '<A-k>', ":move -2<CR>gv=gv", {silent = true})
+bind('v', '<A-j>', ":move '>+1<CR>gv=gv", {silent = true})
+
 bind('i', '<C-BS>', '<C-W>')
 bind('i', '<A-BS>', '<C-W>')
 
