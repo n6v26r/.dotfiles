@@ -1,0 +1,37 @@
+{
+    "editor.fontFamily": "FiraCode Nerd Font Mono",
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "editor.fontLigatures": true,
+    "terminal.integrated.fontFamily": "FiraCode Nerd Font Mono",
+    "editor.cursorBlinking": "smooth",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "C_Cpp.default.compilerPath": "/usr/bin/gcc",
+    "terminal.external.linuxExec": "kitty",
+    "window.menuBarVisibility": "toggle",
+    "omnisharp.useModernNet": false,
+    "omnisharp.enableMsBuildLoadProjectsOnDemand": true,
+    "omnisharp.monoPath": "/usr/bin",
+    "[csharp]": {
+        "editor.maxTokenizationLineLength": 2500
+    },
+    "dotnet.server.useOmnisharp": true,
+    "terminal.integrated.fontWeight": "normal",
+    "dotnet.unitTestDebuggingOptions": {},
+    "open-in-vim.integrated-terminal.pathToShell": "/usr/bin/zsh",
+    "open-in-vim.openMethod": "kitty",
+    "open-in-vim.useNeovim": true,
+    "vim.statusBarColors.easymotioninputmode": "",
+    "nvim-ui.nvimColorCustomizationKeys": [
+        "editorCursor.foreground"
+    ],
+    "editor.lineNumbers": "relative",
+    "editor.minimap.autohide": true,
+    "editor.minimap.renderCharacters": false,
+    "editor.hideCursorInOverviewRuler": true,
+    "editor.overviewRulerBorder": false,
+    "editor.scrollbar.vertical": "hidden",
+    "editor.scrollbar.horizontal": "hidden",
+    "breadcrumbs.enabled": false,
+    "gitlens.statusBar.enabled": false,
+    "gitlens.statusBar.alignment": "left"
+}
