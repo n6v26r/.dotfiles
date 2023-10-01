@@ -26,3 +26,5 @@ vim.o.tabstop = 2
 vim.o.shiftwidth = 2
 vim.o.expandtab = true
 vim.opt.relativenumber = true
+
+vim.opt.guifont = { "FiraCode Nerd Font Mono,JetBrains NFM,Hack Nerd Font Mono", "h14" }
