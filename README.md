@@ -29,7 +29,7 @@
     * X11 Gestures
 * **Terminal**: kitty
 * **Shell**: zsh
-* **Editor**: nvim (lightly modified nvchad config)
+* **Editor**: nvim (config based on [nvchad](https://github.com/NvChad/NvChad) and [vimacs](https://github.com/UTFeight/vimacs))
 * **Font**: FiraCode Nerd Font Mono + JetBrains (for italic text)
 * **Discord**: betterdiscord (catppuccin mocha css)
 * **Browser**: Firefox (Catppuccin Lavander theme) + [Chevron](https://github.com/kholmogorov27/chevron) as startpage. Guide for configuration in the repo. ☝️
