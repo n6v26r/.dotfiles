@@ -8,6 +8,7 @@
   * Alyur's Widgets
   * Blur my Shell
   * Compiz window effect
+  * Compiz magic lamp effect
   * Dekstop Cube (kinda buggy lately)
   * Just Perfection
   * Logo Menu
