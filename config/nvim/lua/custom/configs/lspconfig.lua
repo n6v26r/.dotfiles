@@ -11,12 +11,13 @@ lspconfig.marksman.setup({
 })
 
 lspconfig.omnisharp.setup({
-	cmd = { "omnisharp-mono", "--languageserver", "--hostPID", tostring(pid) },
+	cmd = { "dotnet", "/usr/lib/omnisharp-roslyn/OmniSharp.dll"},
   single_file_support = true,
+  analyze_open_documents_only = true,
 })
 
 -- if you just want default config for the servers then put them in a table
-local servers = { "html", "cssls", "tsserver", "clangd" }
+local servers = { "html", "cssls", "tsserver", "clangd", "csharp_ls" }
 
 capabilities.offsetEncoding = {"utf-16"}
 
