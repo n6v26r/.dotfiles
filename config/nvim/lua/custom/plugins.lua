@@ -187,7 +187,7 @@ local plugins = {
           path_display = {'shorten'},
           buftypes_to_ignore = {},
           load_on_setup = true,
-          theme_conf = { border = true},
+          theme_conf = { border = false },
           previewer = false,
         },
       }
