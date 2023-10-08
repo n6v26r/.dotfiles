@@ -4,12 +4,6 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 local pid = vim.fn.getpid()
 
-lspconfig.marksman.setup({
-  cmd = { "marksman", "server" };
-  filetypes = { "markdown" };
-  single_file_support = true;
-})
-
 -- Faster csharp_ls load time with omnisharp disabled. Enable it, and remove csharp_ls from server list 
 -- if you would like to use omni (which also has singe file support). In my exp, omnisharp is slower.
 -- lspconfig.omnisharp.setup({
@@ -20,7 +14,7 @@ lspconfig.marksman.setup({
 
 -- if you just want default config for the servers then put them in a table
 
-local servers = { "html", "cssls", "tsserver", "clangd", "csharp_ls"}
+local servers = { "html", "cssls", "tsserver", "clangd", "marksman", "csharp_ls"}
 
 capabilities.offsetEncoding = {"utf-16"}
 
