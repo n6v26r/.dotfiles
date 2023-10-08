@@ -63,8 +63,8 @@ M.nvimtree = {
 
 M.ui = {
   statusline = {
-    theme = "minimal",
-    separator_style = "round",
+    theme = "vscode",
+    -- separator_style = "",
   },
 
   tabufline = {
