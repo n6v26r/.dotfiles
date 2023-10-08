@@ -17,11 +17,6 @@ autocmd('VimLeave', {
   command = 'NvimTreeClose',
 })
 
-autocmd('VimEnter', {
-  pattern = "*",
-  command = 'NvimTreeToggle',
-})
-
 local bind = vim.keymap.set
 
 bind({'n', 'i'}, '<A-Down>', '<cmd>move .+1<CR>')
