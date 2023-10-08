@@ -31,9 +31,12 @@ M.ui = {
     buttons = {
       { "  Find File", "Spc f f", "Telescope find_files" },
       { "󰈚  Recent Files", "Spc f o", "Telescope oldfiles" },
+      { "󰁯  Find Session", "Spc f s", "Telescope session-lens"},
       { "󰈭  Find Word", "Spc f w", "Telescope live_grep" },
+      { "  Find Command", "Spc f c", "Telescope builtin" },
       { "  Bookmarks", "Spc m a", "Telescope marks" },
       { "  Themes", "Spc t h", "Telescope themes" },
+      { "  Config", "Spc c f", "next ~/.config/nvim/lua/custom/*.lua" },
       { "  Mappings", "Spc c h", "NvCheatsheet" },
     },
   },

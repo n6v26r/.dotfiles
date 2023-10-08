@@ -183,6 +183,7 @@ local plugins = {
     config = function()
       require("auto-session").setup {
         log_level = vim.log.levels.ERROR,
+        auto_session_suppress_dirs = {"~"},
         session_lens = {
           path_display = {'shorten'},
           buftypes_to_ignore = {},
