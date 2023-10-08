@@ -6,6 +6,22 @@ local autocmd = vim.api.nvim_create_autocmd
    command = "tabdo wincmd =",
  })
 
+-- Disable line numbers when entering term buffer
+autocmd('TermOpen', {
+  command = 'setlocal nonumber norelativenumber',
+})
+
+-- Fix nvim-tree problems with sessions
+autocmd('VimLeave', {
+  pattern = "*",
+  command = 'NvimTreeClose',
+})
+
+autocmd('VimEnter', {
+  pattern = "*",
+  command = 'NvimTreeToggle',
+})
+
 local bind = vim.keymap.set
 
 bind({'n', 'i'}, '<A-Down>', '<cmd>move .+1<CR>')
