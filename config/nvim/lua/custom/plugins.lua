@@ -171,11 +171,51 @@ local plugins = {
 
   { -- orgmode for neovim
     'nvim-orgmode/orgmode',
-    ft = {'org'},
     config = function()
       require("custom.configs.orgmode")
     end,
-    lazy = false
+    ft = {'org'},
+  },
+
+  {
+    "akinsho/org-bullets.nvim",
+    config = function ()
+      require("org-bullets").setup({
+        concealcursor = true,
+      });
+    end,
+    ft = {"org"}
+  },
+
+  {
+    "dhruvasagar/vim-table-mode",
+    ft = {"org", "markdown", "txt"}
+  },
+
+  {
+    "nvim-neorg/neorg",
+    build = ":Neorg sync-parsers",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("neorg").setup {
+        load = {
+          ["core.defaults"] = {}, -- Loads default behaviour
+          ["core.autocommands"] = {},
+          ["core.integrations.treesitter"] = {},
+          ["core.concealer"] = {}, -- Adds pretty icons to your documents
+          ["core.dirman"] = { -- Manages Neorg workspaces
+            config = {
+              workspaces = {
+                notes = "~/notes",
+                default = "~/Documents",
+                algo = "~/stuff/algo"
+              },
+            },
+          },
+        },
+      }
+    end,
+    ft = {"norg"},
   },
 
   { -- auto create sessions
@@ -313,6 +353,15 @@ local plugins = {
         desc = "Toggle blame",
       }
     },
+    lazy = false
+  },
+
+  {
+    'rcarriga/nvim-notify',
+    config = function ()
+      require("notify").setup()
+      vim.notify = require("notify")
+    end,
     lazy = false
   },
 
