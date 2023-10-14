@@ -29,6 +29,8 @@ bind('v', '<A-Down>', ":move '>+1<CR>gv=gv", {silent = true})
 bind('v', '<A-k>', ":move -2<CR>gv=gv", {silent = true})
 bind('v', '<A-j>', ":move '>+1<CR>gv=gv", {silent = true})
 
+bind('v', '<leader>sr', ":SnipRun<CR>")
+
 bind('i', '<C-BS>', '<C-W>')
 bind('i', '<A-BS>', '<C-W>')
 
