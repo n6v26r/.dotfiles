@@ -1,20 +1,50 @@
-# Inserts a blank line between shell prompts
-add_newline = false
+format = """
+$directory\
+$all\
+$fill\
+$cmd_duration\
+$jobs\
+$time\
+$line_break\
+$username\
+$character\
+${custom.sudo}\
+"""
 
-right_format = "$time"
+# Inserts a blank line between shell prompt
+add_newline = false
 command_timeout = 250
 
-# Replace the '❯' symbol in the prompt with '➜'
-[character] # The name of the module we are configuring is 'character'
-success_symbol = '[λ](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
-error_symbol = "[✗](bold red)"
+[directory]
+truncation_length = 3
 
-# Make prompt a single line instead of two lines
+[fill]
+symbol = " "
+
+[cmd_duration]
+min_time = 0
+format = "[$duration]($style) "
+
+[jobs]
+symbol = "✿"
+style = "bold red"
+
+[time]
+disabled = false
+
 [line_break]
 disabled = false
 
+[username]
+format = "[@$user]($style) "
+style_user = "bold blue"
+show_always = true
 
-# Can run root commands?
+[character]
+success_symbol = '[λ](bold green)'
+error_symbol = "[✗](bold red)"
+
+# Can I run root commands?
 [custom.sudo]
 description = "valid sudo timestamp marker"
 command = "echo -n '#'"
@@ -22,6 +52,3 @@ format = "[$symbol$output]($style) "
 style = "bold fg:bright-red"
 when = "sudo -vn &>/dev/null"
 
-
-[time]
-disabled = false
