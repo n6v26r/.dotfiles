@@ -232,6 +232,14 @@ local plugins = {
     ft = {"org", "norg", "markdown", "c", "cpp"}
   },
 
+  {
+    'AckslD/nvim-FeMaco.lua',
+    config = function ()
+      require("femaco").setup()
+    end,
+    ft = {"org", "neorg", "markdown"}
+  },
+
   { -- auto create sessions
     'rmagatti/auto-session',
     config = function()

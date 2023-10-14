@@ -7,6 +7,7 @@ M.general = {
     ['<leader>sd'] = {"<cmd>Autosession delete<CR>", "Session delete"},
     ['<leader>sr'] = {"<cmd>SnipRun<CR>", "Run snippet line"},
     ['<leader>sc'] = {"<cmd>SnipClose<CR>", "Clear snippet output"},
+    ['<leader>se'] = {"<cmd>FeMaco<CR>", "Edit snippet"},
     ['<leader>fc'] = {"<cmd>Telescope builtin<CR>", "Find command"},
     ['<leader>cf'] = {"<cmd>next ~/.config/nvim/lua/custom/*.lua<CR>", "Config"},
   },
