@@ -26,9 +26,10 @@ fi
 # CUSTOM:
 
 export EDITOR=nvim
-setopt +o nomatch # Disable pattern matching. (I can use git now)
+setopt +o nomatch # Disable pattern matching. (I can use gi now)
 
 #Better cat
+export BAT_THEME="Catppuccin-mocha"
 alias cat="bat"
 
 #Aliases
