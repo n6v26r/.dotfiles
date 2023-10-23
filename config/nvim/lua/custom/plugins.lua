@@ -269,7 +269,7 @@ local plugins = {
     "Sup3Legacy/fontsize.nvim",
     config = function ()
       require("fontsize").init({
-        font = "FiraCode Nerd Font,JetBrains NF, Hack Nerd Font",
+        font = "FiraCode Nerd Font,JetBrainsMono NF,Hack Nerd Font",
         min = 6,
         default = 12,
         max = 22,
