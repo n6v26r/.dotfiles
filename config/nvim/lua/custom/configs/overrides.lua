@@ -77,7 +77,9 @@ if cmp_ok then
   M.cmp = {
     mapping = {
       ["<Up>"] = cmp.mapping.select_prev_item(),
+      ["<C-k>"] = cmp.mapping.select_prev_item(),
     	["<Down>"] = cmp.mapping.select_next_item(),
+    	["<C-j>"] = cmp.mapping.select_next_item(),
       ["<Esc>"] = cmp.mapping.close(),
       ["<Tab>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
