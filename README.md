@@ -35,6 +35,6 @@
 * **Browser**: Firefox (Catppuccin Lavander theme) + [Chevron](https://github.com/kholmogorov27/chevron) as startpage. Guide for configuration in the repo. ☝️
 * **CATPPUCCIN EVERYTHING!!!**
 ### Photos:
+![exaple2](example2.png)
 ![example](example.png)
-
 
