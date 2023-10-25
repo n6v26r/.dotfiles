@@ -85,46 +85,6 @@ local plugins = {
     opts = {},
   },
 
-  { -- Integrated Tests -- CONFIG
-    "nvim-neotest/neotest",
-
-    keys = {
-      {
-        "<leader>to",
-        ":Neotest summary<CR>",
-        mode = "n",
-        desc = "Open interactive test session",
-      },
-      {
-        "<leader>te",
-        ":Neotest run<CR>",
-        mode = "n",
-        desc = "Run tests for the session",
-      },
-    },
-
-    dependencies = {
-      -- Required
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      "antoinemadec/FixCursorHold.nvim",
-
-      -- Dev
-      "rouge8/neotest-rust", -- Rust development
-    },
-
-    config = function(_, opts)
-      require("neotest").setup {
-        adapters = {
-          require "neotest-rust",
-          -- require "neotest-vim-test" {
-          --   ignore_file_types = { "python", "vim", "lua" },
-          -- },
-        },
-      }
-    end,
-  },
-
   { -- Minimap
     "gorbit99/codewindow.nvim",
 
@@ -223,8 +183,6 @@ local plugins = {
     branch = "master",
 
     build = "sh install.sh",
-    -- do 'sh install.sh 1' if you want to force compile locally
-    -- (instead of fetching a binary from the github release). Requires Rust >= 1.65
 
     config = function()
       require("sniprun").setup({})
@@ -300,8 +258,6 @@ local plugins = {
 
   {
     "mrjones2014/smart-splits.nvim",
-    -- For Kitty Terminal Emulator
-    -- build = "./kitty/install-kittens.bash",
     keys = {
       {
         "<C-A-Up>",
@@ -384,6 +340,19 @@ local plugins = {
       vim.notify = require("notify")
     end,
     lazy = false
+  },
+
+  {
+    'Exafunction/codeium.vim',
+    config = function ()
+      -- Change '<C-g>' here to any keycode you like.
+      vim.keymap.set('i', '<Tab>', function () return vim.fn['codeium#Accept']() end, { silent = true, expr = true })
+      vim.keymap.set('i', '<S-Tab>', function() return vim.fn['codeium#CycleCompletions'](1) end, { silent = true, expr = true })
+      vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { silent = true, expr = true })
+      vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { silent = true, expr = true })
+      vim.keymap.set('i', '<c-o>', function() return vim.fn['codeium#Complete']() end, { silent = true, expr = true })
+    end,
+    event = 'BufEnter'
   },
 
   { -- discord game recongnition
