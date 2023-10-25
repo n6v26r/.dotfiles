@@ -213,6 +213,7 @@ local plugins = {
         },
       }
     end,
+    lazy = false;
   },
 
   { -- smooth scrolling
