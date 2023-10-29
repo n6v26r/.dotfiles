@@ -12,7 +12,7 @@
   * Dekstop Cube (kinda buggy lately)
   * Just Perfection
   * Logo Menu
-  * Pop Shell
+  * Pop Shell (removed it, as it's EXTREAMELY buggy lately)
   * Space Bar
   * Top Bar Organizer
   * Unite
