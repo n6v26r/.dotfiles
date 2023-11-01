@@ -21,8 +21,8 @@
   * **(Built-In)**:
     * AppIndicator and KStatusNotifierItem Support
     * Gnome 4x UI Imporovements
-    * ~~Launch new instance~~ (jitter in overview)
-    * Native Window Placement
+    * Launch new instance
+    * ~~Native Window Placement~~ (jitter in overview)
     * Pamac Updates Indicator
     * Screenshot Window Sizer
     * User Themes
