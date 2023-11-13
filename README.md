@@ -12,7 +12,7 @@
   * Dekstop Cube (kinda buggy lately)
   * Just Perfection
   * Logo Menu
-  * Pop Shell (removed it, as it's EXTREAMELY buggy lately)
+  * Pop Shell (kinda buggy lately)
   * Space Bar
   * Top Bar Organizer
   * Unite
@@ -22,7 +22,7 @@
     * AppIndicator and KStatusNotifierItem Support
     * Gnome 4x UI Imporovements
     * Launch new instance
-    * Native Window Placement
+    * ~~Native Window Placement~~ (jitter in overview)
     * Pamac Updates Indicator
     * Screenshot Window Sizer
     * User Themes
