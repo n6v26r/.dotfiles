@@ -317,31 +317,6 @@ local plugins = {
     end,
   },
 
-  {
-    "braxtons12/blame_line.nvim",
-    config = function()
- 		  require("blame_line").setup {
- 		    -- whether the blame line should be shown in visual modes
- 			  show_in_visual = false,
-
- 			  -- whether the blame line should be shown in insert mode
- 			  show_in_insert = false,
-
-        delay = 0,
-      }
- 	  end,
-    keys = {
-      {
-        "<leader>tb",
-        function()
-          vim.cmd("silent BlameLineToggle")
-        end,
-        mode = "n",
-        desc = "Toggle blame",
-      }
-    },
-    lazy = false
-  },
 
   { -- discord game recongnition
     'andweeb/presence.nvim',
