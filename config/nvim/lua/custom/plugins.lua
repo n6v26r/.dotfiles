@@ -132,7 +132,16 @@ local plugins = {
   { -- orgmode for neovim
     'nvim-orgmode/orgmode',
     config = function()
-      require("custom.configs.orgmode")
+      require('orgmode').setup_ts_grammar()
+      require('orgmode').setup({
+        org_agenda_files = {'~/Documents/org/*'},
+        mappings = {
+          org = {
+            org_cycle = "<leader>of",
+            org_global_cycle = "<leader>ogf"
+          }
+        }
+      })
     end,
     ft = {'org'},
   },
@@ -332,65 +341,6 @@ local plugins = {
       }
     },
     lazy = false
-  },
-
-  {
-    'rcarriga/nvim-notify',
-    config = function ()
-      require("notify").setup()
-      vim.notify = require("notify")
-    end,
-    lazy = false
-  },
-
-  {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    opts = {
-    -- add any options here
-    },
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
-    },
-    config = function()
-      require("noice").setup({
-        lsp = {
-          override = {
-            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-            ["vim.lsp.util.stylize_markdown"] = true,
-            ["cmp.entry.get_documentation"] = true,
-          },
-          signature = {
-            enabled = false
-          },
-          hover = {
-            enabled = false
-          }
-        },
-        presets = {
-          bottom_search = true, -- use a classic bottom cmdline for search
-          command_palette = true, -- position the cmdline and popupmenu together
-          long_message_to_split = true, -- long messages will be sent to a split
-          inc_rename = false, -- enables an input dialog for inc-rename.nvim
-          lsp_doc_border = false, -- add a border to hover docs and signature help
-        },
-      })
-    end,
-    lazy = false;
-  },
-
-  {
-    'Exafunction/codeium.vim',
-    config = function ()
-      -- Change '<C-g>' here to any keycode you like.
-      vim.keymap.set('i', '<Tab>', function () return vim.fn['codeium#Accept']() end, { silent = true, expr = true })
-      vim.keymap.set('i', '<S-Tab>', function() return vim.fn['codeium#CycleCompletions'](1) end, { silent = true, expr = true })
-      vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { silent = true, expr = true })
-      vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { silent = true, expr = true })
-      vim.keymap.set('i', '<c-o>', function() return vim.fn['codeium#Complete']() end, { silent = true, expr = true })
-    end,
-    event = 'BufEnter'
   },
 
   { -- discord game recongnition
