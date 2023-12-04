@@ -85,35 +85,6 @@ local plugins = {
     opts = {},
   },
 
-  { -- Minimap
-    "gorbit99/codewindow.nvim",
-
-    keys = {
-      {
-        "<leader>mm",
-        "codewindow.toggle_focus()",
-        mode = "n",
-        desc = "Focus Minimap",
-      },
-    },
-
-    config = function(_, opts)
-      local codewindow = require "codewindow"
-      codewindow.setup(opts)
-      codewindow.apply_default_keybinds()
-    end,
-
-    opts = {
-      use_lsp = true,
-      use_treesitter = true,
-      show_cursor = false,
-      use_git = true,
-      width_multiplier = 5,
-      screen_bounds = "lines",
-      window_border = "none",
-    },
-  },
-
   { -- Translate
     "voldikss/vim-translator",
 
