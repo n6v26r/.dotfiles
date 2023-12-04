@@ -6,12 +6,12 @@
   * Legacy: (generated with Gradience) Catppuccin Mocha + RosePine titlebar buttons
 * **All Extensions**:
   * ~~Alyur's Widgets~~ (deprecated in gnome 45, still looking for replacement)
+  * Arc-menu
   * Blur my Shell
   * Compiz window effect
   * Compiz magic lamp effect
   * Dekstop Cube (kinda buggy lately)
   * Just Perfection
-  * Logo Menu
   * Pop Shell
   * ~~Space Bar~~ (new workspace indicator is fine for me)
   * ~~Top Bar Organizer~~ Order Gnome Shell Extensions (organizer broke some stuff for me)
