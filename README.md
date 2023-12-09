@@ -36,5 +36,6 @@
 ### Photos:
 ![exaple](example.png)
 ![example_nvim](example_nvim.png)
+![example_conky](example_conky.png)
 ![example_firefox](example_firefox.png)
 
