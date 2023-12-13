@@ -34,8 +34,8 @@
 * **Browser**: Firefox with [Cascade](https://github.com/andreasgrafen/cascade) (Catppuccin Lavander theme) + [Chevron](https://github.com/kholmogorov27/chevron) as startpage. Guide for configuration and cascade css in the repo. ☝️
 * **CATPPUCCIN EVERYTHING!!!**
 ### Photos:
-![exaple](example.png)
-![example_nvim](example_nvim.png)
-![example_conky](example_conky.png)
-![example_firefox](example_firefox.png)
+![exaple](Screenshots/example.png)
+![example_nvim](Screenshots/example_nvim.png)
+![conky1](Screenshots/conky1.png)
+![example_firefox](Screenshots/example_firefox.png)
 
