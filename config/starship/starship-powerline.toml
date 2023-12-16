@@ -97,12 +97,12 @@ truncation_symbol = "…/"
 
 [git_branch]
 symbol = ""
-style = "bg:green"
-format = '[[ $symbol $branch ](bold fg:text bg:green)]($style)'
+style = "bold bg:green"
+format = '[[ $symbol $branch ](bold fg:sapphire bg:green)]($style)'
 
 [git_status]
-style = "bg:green"
-format = '[[($all_status$ahead_behind )](bold fg:text bg:green)]($style)'
+style = "bold bg:green"
+format = '[[($all_status$ahead_behind )](bold fg:sapphire bg:green)]($style)'
 
 [nodejs]
 symbol = ""
