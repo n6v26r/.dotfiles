@@ -348,7 +348,7 @@ local plugins = {
   { -- discord game recongnition
     'andweeb/presence.nvim',
     config = function()
-      require('custom.configs.presence')
+      require("presence").setup()
     end,
     lazy = false
   },
