@@ -17,6 +17,16 @@ autocmd('VimLeave', {
   command = 'NvimTreeClose',
 })
 
+autocmd( {"VimLeave", "VimSuspend"}, {
+  pattern = "*",
+  command = "set guicursor=a:block-blinkon1"
+})
+
+autocmd( {"VimEnter", "VimResume"}, {
+  pattern = "*",
+  command = "set guicursor=n-c:block-blinkon1,v:block-blinkon0,i-ci-ve:ver25-blinkon1,r-cr:hor20,o:hor50"
+})
+
 local bind = vim.keymap.set
 
 bind({'n', 'i'}, '<A-Down>', '<cmd>move .+1<CR>')
