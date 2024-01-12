@@ -32,6 +32,7 @@ bind('v', '<A-j>', ":move '>+1<CR>gv=gv", {silent = true})
 bind('v', '<leader>sr', ":SnipRun<CR>")
 
 bind('i', '<C-BS>', '<C-W>')
+bind('i', '<C-h>', '<C-W>')
 bind('i', '<A-BS>', '<C-W>')
 
 bind({'n', 'i', 'v'}, "<C-=>", "<cmd>FontIncrease<CR>")
