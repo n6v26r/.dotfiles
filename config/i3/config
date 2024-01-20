@@ -11,8 +11,8 @@
 
 set $mod Mod4
 
-gaps inner 12
-gaps outer 1
+gaps inner 15
+gaps outer 5
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -28,7 +28,7 @@ focus_follows_mouse no
 exec --no-startup-id dex --autostart --environment i3
 
 # load wallpaper
-exec --no-startup-id feh --bg-scale ~/.dotfiles/Wallpapers/catppuccin15.png
+exec --no-startup-id feh --bg-scale ~/.dotfiles/Wallpapers/bg.png
 
 # start compositor
 exec --no-startup-id "picom"
@@ -67,7 +67,7 @@ tiling_drag modifier titlebar
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+t exec i3-sensible-terminal
+bindsym $mod+t exec "i3-sensible-terminal --class kitty_floating"
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -122,6 +122,8 @@ bindsym $mod+e layout toggle split
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
+for_window [class="kitty_floating"] floating enable
+
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
@@ -173,7 +175,7 @@ exec_always --no-startup-id "setxkbmap -layout us,ro -variant ,std"
 exec_always --no-startup-id "setxkbmap -option 'grp:alt_shift_toggle'"
 
 #lock screen
-bindsym $mod+Shift+Escape exec "$HOME/.config/i3/i3lock.sh"
+bindsym $mod+Shift+Escape exec --no-startup-id "$HOME/.config/i3/i3lock.sh"
 
 # notifications
 bindsym $mod+Shift+d exec --no-startup-id "dunstctl history-pop"
@@ -248,19 +250,3 @@ client.background        $base
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-
-
-bar {
-        status_command i3status
-
-        colors {
-                background $base
-                statusline $text
-
-                focused_workspace  $text $lavender
-                active_workspace   $text $overlay0
-                inactive_workspace $text $surface0
-                urgent_workspace   $text $peach
-    }
-
-}
