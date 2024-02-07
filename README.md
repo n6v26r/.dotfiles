@@ -10,6 +10,7 @@
   * <b>Launcher:</b> [Rofi](https://github.com/davatorium/rofi)
   
   ### Photos:
+    ![i3](Screenshots/i3_1.png)
     ![i3](Screenshots/i3.png)
 
   </details>
