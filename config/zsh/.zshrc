@@ -41,3 +41,8 @@ alias la="ls -a"
 
 # fix ctrl backaspace in tmux
 bindkey '^H' backward-kill-word
+
+function pastebin() {
+    local file=${1:-/dev/stdin}
+    curl --data-binary @${file} https://paste.rs
+}
