@@ -37,7 +37,7 @@ exec --no-startup-id "picom"
 exec --no-startup-id "dunst"
 
 # start polybar
-exec --no-startup-id "polybar main"
+exec --no-startup-id "~/.config/polybar/restart.sh"
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
