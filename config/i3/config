@@ -180,7 +180,7 @@ exec_always --no-startup-id "setxkbmap -layout us,ro -variant ,std"
 exec_always --no-startup-id "setxkbmap -option 'grp:alt_shift_toggle'"
 exec --no-startup-id "conky"
 #lock screen
-bindsym $mod+Shift+Escape exec --no-startup-id "$HOME/.config/i3/i3lock.sh"
+bindsym $mod+Escape exec --no-startup-id "$HOME/.config/i3/i3lock.sh"
 
 # notifications
 bindsym $mod+Shift+d exec --no-startup-id "dunstctl history-pop"
@@ -246,7 +246,7 @@ set $mantle    #181825
 set $crust     #11111b
 
 # target                 title     bg    text   indicator  border
-client.focused           $lavender $lavender $base  $surface0  $lavender
+client.focused           $lavender $lavender $base  $lavender $lavender
 client.focused_inactive  $surface1 $base $text  $surface1  $surface1
 client.unfocused         $surface1 $base $text  $surface1  $surface1
 client.urgent            $peach    $base $peach $overlay0  $peach
