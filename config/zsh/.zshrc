@@ -45,4 +45,5 @@ bindkey '^H' backward-kill-word
 function pastebin() {
     local file=${1:-/dev/stdin}
     curl --data-binary @${file} https://paste.rs
+    echo "\n"
 }
