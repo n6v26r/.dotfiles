@@ -49,6 +49,8 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- $HOME/.config/i3/i3lock.s
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
+# start bluetooth tray gui
+exec --no-startup-id blueman-applet
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -127,11 +129,6 @@ bindsym $mod+e layout toggle split
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
-# always floating
-for_window [class="kitty_floating"] floating enable
-for_window [class="Blueman-manager"] floating enable
-for_window [class="Pavucontrol"] floating enable
-
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
@@ -181,11 +178,17 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
 # set change keyboard language with alt-shift (in my case us + ro standard)
 exec_always --no-startup-id "setxkbmap -layout us,ro -variant ,std"
 exec_always --no-startup-id "setxkbmap -option 'grp:alt_shift_toggle'"
+
+# display conky widget
 exec --no-startup-id "conky"
+
+# warn if battery low
+exec --no-startup-id "batstatus"
+
 #lock screen
 bindsym $mod+Escape exec --no-startup-id "$HOME/.config/i3/i3lock.sh"
 
-# notifications
+# notifications daemon
 bindsym $mod+Shift+d exec --no-startup-id "dunstctl history-pop"
 
 # reload the configuration file
@@ -258,3 +261,15 @@ client.background        $base
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
+
+# WINDOW RULES
+
+# Always floating
+for_window [class="kitty_floating"] floating enable
+for_window [class="Blueman-manager"] floating enable
+for_window [class="Pavucontrol"] floating enable
+
+# Borderless
+for_window [class="neovide"] border none
+
+
