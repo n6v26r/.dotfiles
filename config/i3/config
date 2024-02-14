@@ -127,7 +127,10 @@ bindsym $mod+e layout toggle split
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
+# always floating
 for_window [class="kitty_floating"] floating enable
+for_window [class="Blueman-manager"] floating enable
+for_window [class="Pavucontrol"] floating enable
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
