@@ -12,9 +12,8 @@
   ### Photos
     ![i3](Screenshots/i3_base.png)
     ![i3](Screenshots/i3_discord.png)
-    ![i3](Screenshots/catppuccin_conky.png)
-    ![i3](Screenshots/i3.png)
-    ![i3](Screenshots/i3_1.png)
+    ![i3](Screenshots/i3_rofi.png)
+    ![i3](Screenshots/i3_clear.png)
 
   </details>
   <details>
