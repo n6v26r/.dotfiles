@@ -9,9 +9,12 @@
   * <b>Compositor:</b> [Picom](https://github.com/yshui/picom)
   * <b>Launcher:</b> [Rofi](https://github.com/davatorium/rofi)
   
-  ### Photos:
-    ![i3](Screenshots/i3_1.png)
+  ### Photos
+    ![i3](Screenshots/i3_base.png)
+    ![i3](Screenshots/i3_discord.png)
+    ![i3](Screenshots/catppuccin_conky.png)
     ![i3](Screenshots/i3.png)
+    ![i3](Screenshots/i3_1.png)
 
   </details>
   <details>

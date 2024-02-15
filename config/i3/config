@@ -73,8 +73,8 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+t exec "i3-sensible-terminal --class kitty_floating"
+bindsym $mod+Return exec kitty
+bindsym $mod+t exec "kitty --class kitty_floating"
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -183,7 +183,7 @@ exec_always --no-startup-id "setxkbmap -option 'grp:alt_shift_toggle'"
 exec --no-startup-id "conky"
 
 # warn if battery low
-exec --no-startup-id "batstatus"
+exec --no-startup-id "batsignal -b"
 
 #lock screen
 bindsym $mod+Escape exec --no-startup-id "$HOME/.config/i3/i3lock.sh"
