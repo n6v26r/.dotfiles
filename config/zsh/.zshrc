@@ -47,3 +47,6 @@ function pastebin() {
     curl --data-binary @${file} https://paste.rs
     echo "\n"
 }
+
+# use zoxide instead of cd
+eval "$(zoxide init --cmd cd zsh)"
