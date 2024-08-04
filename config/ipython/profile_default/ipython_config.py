@@ -109,6 +109,7 @@ count_fg = lavender
 
 # See:
 # https://github.com/prompt-toolkit/python-prompt-toolkit/blob/master/src/prompt_toolkit/styles/defaults.py # noqa
+c.TerminalInteractiveShell.highlighting_style = "catppuccin-mocha"
 c.TerminalInteractiveShell.highlighting_style_overrides = {
     # Completion
     'completion-menu': f'bg:{pmenu} {white}',
