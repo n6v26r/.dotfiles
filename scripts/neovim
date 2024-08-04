@@ -1,15 +1,12 @@
 #!/bin/sh
-# Use this script to open files in an existing nvim instance (made with unity game engine in mind)
-# You can put your nvim gui client instead of neovide or uncomment the line belowit if you want to use the cli verison
-
 
 server=$(nvr --serverlist || awk 'print $1')
 
 if [ -z $server ]
 then
-  neovide $1 +$2
-  # kitty nvr --remote $1 +$2
+  # neovide $1 +$2
+  nvr -s --remote $1 +$2
 else
-  nvr --servername $server --remote $1 +$2 
+  nvr -s --servername $server --remote $1 +$2 
 fi
 

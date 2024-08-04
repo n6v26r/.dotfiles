@@ -28,7 +28,7 @@ focus_follows_mouse no
 exec --no-startup-id dex --autostart --environment i3
 
 # load wallpaper
-exec --no-startup-id feh --bg-scale ~/.dotfiles/Wallpapers/bg.png
+exec --no-startup-id feh --bg-scale ~/.dotfiles/Wallpapers/catppuccin40.png
 
 # start compositor
 exec --no-startup-id "picom"
@@ -90,6 +90,7 @@ bindsym $mod+Shift+q kill
 # start rofi (a program launcher)
 bindsym $mod+slash exec --no-startup-id "rofi -show drun"
 bindsym $mod+F2 exec --no-startup-id "rofi -show run"
+bindsym $mod+Tab exec --no-startup-id "rofi -show window"
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -144,7 +145,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+d focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -212,10 +213,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -276,6 +277,7 @@ default_border none
 for_window [class="^."] border none 
 
 for_window [class="kitty_floating"] floating enable
+for_window [class="calculator"] floating enable
 for_window [class="Blueman-manager"] floating enable
 for_window [class="Pavucontrol"] floating enable
 

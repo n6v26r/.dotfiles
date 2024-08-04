@@ -40,6 +40,11 @@ bind('v', '<A-k>', ":move -2<CR>gv=gv", {silent = true})
 bind('v', '<A-j>', ":move '>+1<CR>gv=gv", {silent = true})
 
 bind('v', '<leader>sr', ":SnipRun<CR>")
+bind('v', '<leader>sr', ":SnipRun<CR>")
+bind("n", "<space>rs", "<cmd>IronRepl<cr>")
+bind("n", "<space>rr", "<cmd>IronRestart<cr>")
+bind("n", "<space>rF", "<cmd>IronFocus<cr>")
+bind("n", "<space>rh", "<cmd>IronHide<cr>")
 
 bind('i', '<C-BS>', '<C-W>')
 bind('i', '<C-h>', '<C-W>')
