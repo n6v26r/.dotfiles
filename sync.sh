@@ -14,6 +14,24 @@ function configSync() {
     path1="$2"
     path2="$3"
   fi;
+  
+  if [ ! -e $path1/$1 ]; then
+    echo "1"
+    if [ -d $path2/$1 ]; then
+      mkdir -p $path1/$1
+    else 
+      mkdir -p $(dirname $path1/$1) && touch $path1/$1
+    fi;
+  fi;
+ 
+  if [ ! -e $path2/$1 ]; then
+    echo "1"
+    if [ -d $path1/$1 ]; then
+      mkdir -p $path2/$1
+    else 
+      mkdir -p $(dirname $path2/$1) && touch $path2/$1
+    fi;
+  fi;
 
   if [ "$(diff -r $path1/$1 $path2/$1)" ]; then
     diff -ru $path1/$1 $path2/$1
