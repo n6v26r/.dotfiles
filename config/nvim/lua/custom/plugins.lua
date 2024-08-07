@@ -184,7 +184,7 @@ local plugins = {
             python = {
               -- Can be a table or a function that
               -- returns a table (see below)
-              command = { "ipython" },
+              command = { "ipython", "--no-banner", "--no-autoindent" },
             },
           },
           -- How the repl window will be displayed

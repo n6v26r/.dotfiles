@@ -185,8 +185,6 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # set change keyboard language with alt-shift (in my case us + ro standard)
-exec_always --no-startup-id "setxkbmap -layout us,ro -variant ,std"
-exec_always --no-startup-id "setxkbmap -option 'grp:alt_shift_toggle'"
 
 # display conky widget
 exec --no-startup-id "conky"
@@ -277,6 +275,7 @@ default_border none
 for_window [class="^."] border none 
 
 for_window [class="kitty_floating"] floating enable
+for_window [class="matplotlib"] floating enable
 for_window [class="calculator"] floating enable
 for_window [class="Blueman-manager"] floating enable
 for_window [class="Pavucontrol"] floating enable
@@ -284,4 +283,7 @@ for_window [class="Pavucontrol"] floating enable
 # Borderless
 for_window [class="neovide"] border none
 for_window [class="kitty"] border none
-
+ 
+# set change keyboard language with alt-shift (in my case us + ro standard)
+exec_always --no-startup-id "setxkbmap -model pc105 -layout us,ro -variant ,std -option 'grp:alt_shift_toggle'"
+# exec_always --no-startup-id "setxkbmap -option 'grp:alt_shift_toggle'"

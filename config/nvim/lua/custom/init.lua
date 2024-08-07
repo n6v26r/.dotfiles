@@ -53,6 +53,8 @@ bind('i', '<A-BS>', '<C-W>')
 bind({'n', 'i', 'v'}, "<C-=>", "<cmd>FontIncrease<CR>")
 bind({'n', 'i', 'v'}, "<C-->", "<cmd>FontDecrease<CR>")
 
+vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+
 vim.o.smartindent = true
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
