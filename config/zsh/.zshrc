@@ -39,6 +39,7 @@ alias t="tmux"
 alias ll="ls -l"
 alias la="ls -a"
 
+alias sudovim="sudo -E -s nvim"
 # fix ctrl backaspace in tmux
 bindkey '^H' backward-kill-word
 

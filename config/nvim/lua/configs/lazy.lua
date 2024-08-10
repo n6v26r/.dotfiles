@@ -34,7 +34,6 @@ return {
         "zip",
         "zipPlugin",
         "tutor",
-        "rplugin",
         "syntax",
         "synmenu",
         "optwin",

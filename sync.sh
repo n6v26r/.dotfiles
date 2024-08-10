@@ -57,8 +57,7 @@ fi;
 echo ""
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   configSync 'i3'
-  configSync 'after' config/nvim  ~/.config/nvim
-  configSync 'custom' config/nvim/lua ~/.config/nvim/lua
+  configSync 'nvim'
   configSync 'bat'
   configSync 'conky'
   configSync 'dunst'

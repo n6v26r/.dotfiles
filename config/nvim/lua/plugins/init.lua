@@ -1,9 +1,12 @@
-local overrides = require("custom.configs.overrides")
+local overrides = require("configs.overrides")
 
----@type NvPluginSpec[]
-local plugins = {
+return {
+  {
+    "stevearc/conform.nvim",
+    -- event = 'BufWritePre', -- uncomment for format on save
+    opts = require "configs.conform",
+  },
 
-  -- Override plugin definition options
   {
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -11,13 +14,13 @@ local plugins = {
       {
         "jose-elias-alvarez/null-ls.nvim",
         config = function()
-          require "custom.configs.null-ls"
+          require "configs.null-ls"
         end,
       },
     },
     config = function()
-      require "plugins.configs.lspconfig"
-      require "custom.configs.lspconfig"
+      require "nvchad.configs.lspconfig"
+      require "configs.lspconfig"
     end, -- Override to setup mason-lspconfig
   },
 
@@ -169,7 +172,31 @@ local plugins = {
     end,
     ft = {"org", "norg", "markdown", "c", "cpp", "python"}
   },
-
+    {
+        "benlubas/molten-nvim",
+        version = "^1.0.0", -- use version <2.0.0 to avoid breaking changes
+        dependencies = { "3rd/image.nvim" },
+        build = ":UpdateRemotePlugins",
+        init = function()
+            -- these are examples, not defaults. Please see the readme
+            vim.g.molten_image_provider = "image.nvim"
+            vim.g.molten_output_win_max_height = 20
+        end,
+      ft = {"python"}
+    },
+  {
+      -- see the image.nvim readme for more information about configuring this plugin
+      "3rd/image.nvim",
+      opts = {
+          backend = "kitty", -- whatever backend you would like to use
+          max_width = 100,
+          max_height = 12,
+          max_height_window_percentage = math.huge,
+          max_width_window_percentage = math.huge,
+          window_overlap_clear_enabled = true, -- toggles images when windows are overlapped
+          window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
+      },
+  },
   {
     "hkupty/iron.nvim",
     config = function(plugins, opts)
@@ -216,6 +243,25 @@ local plugins = {
       })
     end,
     ft = {"python"}
+  },
+
+  {
+    'jmbuhr/otter.nvim',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+    },
+    opts = {},
+    config = function()
+      local otter = require("otter")
+      otter.setup{
+        lsp = {
+          diagnostic_update_events = {"InsertLeave"}
+        },
+        buffers = {
+          set_filetype = true
+        }
+      }
+    end,
   },
 
   {
@@ -395,11 +441,7 @@ local plugins = {
 
   { -- discord game recongnition
     'andweeb/presence.nvim',
-    config = function()
-      require("presence").setup()
-    end,
     lazy = false
   },
-}
 
-return plugins
+}
