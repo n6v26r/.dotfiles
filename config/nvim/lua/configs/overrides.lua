@@ -14,6 +14,7 @@ M.treesitter = {
     "c_sharp",
     "markdown",
     "markdown_inline",
+    "comment"
   },
   indent = {
     enable = true,
@@ -42,6 +43,11 @@ M.mason = {
 
     --csharp stuff
     "csharp-language-server",
+
+    --markdown-stuff
+    "marksman",
+    --python
+    "pyright",
   },
 }
 

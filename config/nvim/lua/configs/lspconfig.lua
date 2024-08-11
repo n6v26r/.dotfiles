@@ -1,5 +1,4 @@
-local on_attach = require("nvchad.configs.lspconfig").on_attach
-local capabilities = require("nvchad.configs.lspconfig").capabilities
+require("nvchad.configs.lspconfig").defaults()
 
 local lspconfig = require "lspconfig"
 -- local pid = vim.fn.getpid()
@@ -16,12 +15,15 @@ local lspconfig = require "lspconfig"
 
 local servers = { "html", "cssls", "tsserver", "clangd", "marksman", "csharp_ls", "volar", "pyright"}
 
-capabilities.offsetEncoding = {"utf-16"}
+local nvlsp = require "nvchad.configs.lspconfig"
+
+nvlsp.capabilities.offsetEncoding = {"utf-16"}
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
+    on_attach = nvlsp.on_attach,
+    on_init = nvlsp.on_init,
+    capabilities = nvlsp.capabilities,
   }
 end
 

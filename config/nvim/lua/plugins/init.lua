@@ -2,6 +2,23 @@ local overrides = require("configs.overrides")
 
 return {
   {
+    'smoka7/hop.nvim',
+    version = "*",
+    opts = {
+        keys = 'etovxqpdygfblzhckisuran'
+    },
+    init = function ()
+      local set = vim.api.nvim_set_hl
+      set(0, 'HopCursor', { link = 'Cursor', default = true })
+      set(0, 'HopPreview', { link = 'DiagnosticWarn', default = true })
+      set(0, 'HopUnmatched', { link = 'Comment', default = true })
+      set(0, 'HopNextKey2', { link = "DiagnosticHint", default = true })
+      set(0, 'HopNextKey1', { link = "DiagnosticError", default = true })
+      set(0, 'HopNextKey', { link = "DiagnosticError", default = true })
+    end,
+    lazy = false
+  },
+  {
     "stevearc/conform.nvim",
     -- event = 'BufWritePre', -- uncomment for format on save
     opts = require "configs.conform",
@@ -164,13 +181,15 @@ return {
   {
     "michaelb/sniprun",
     branch = "master",
-
     build = "sh install.sh",
-
-    config = function()
-      require("sniprun").setup({})
+    init = function ()
+      local set = vim.api.nvim_set_hl
+      set(0, 'SniprunVirtualTextOk', { default = true, link = "DiagnosticHint"})
+      set(0, 'SniprunFloatingWinOk', { default = true, link = "DiagnosticHint"})
+      set(0, 'SniprunVirtualTextErr', { default = true, link = "DiagnosticError"})
+      set(0, 'SniprunFloatingWinErr', { default = true, link = "DiagnosticError"})
     end,
-    ft = {"org", "norg", "markdown", "c", "cpp", "python"}
+    ft = {"org", "norg", "markdown", "c", "cpp", "python", "sh"}
   },
     {
         "benlubas/molten-nvim",
@@ -181,6 +200,9 @@ return {
             -- these are examples, not defaults. Please see the readme
             vim.g.molten_image_provider = "image.nvim"
             vim.g.molten_output_win_max_height = 20
+            -- vim.g.molten_virt_text_output = true
+            vim.g.molten_auto_open_output = true 
+            vim.g.molten_cover_empty_lines = true
         end,
       ft = {"python"}
     },
@@ -213,6 +235,12 @@ return {
               -- returns a table (see below)
               command = { "ipython", "--no-banner", "--no-autoindent" },
             },
+            cpp = {
+              command = { "cling" }
+            },
+            c = {
+              command = { "cling", "-x", "c"}
+            }
           },
           -- How the repl window will be displayed
           -- See below for more information
@@ -261,6 +289,12 @@ return {
           set_filetype = true
         }
       }
+    end,
+    init = function()
+      vim.api.nvim_create_autocmd("BufWritePost", {
+        pattern = {"*.md", "*.mdx", "*.org", "*.norg", "*.ipynb"},
+        callback = function() require('otter').activate() end,
+      })
     end,
   },
 
@@ -420,23 +454,6 @@ return {
         desc = "Next trouble/quickfix item",
       },
     },
-  },
-
-  {
-    "folke/todo-comments.nvim",
-    event = "BufRead",
-    config = function()
-      -- Need to get correct highlights and i couldn't think of anything better
-      vim.defer_fn(function()
-        require('todo-comments').setup()
-      end, 200)
-    end,
-    keys = {
-      { "<leader>tt", "<cmd>TodoTrouble<cr>", desc = "Todo (Trouble)" },
-      { "<leader>tT", "<cmd>TodoTrouble keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme (Trouble)" },
-      { "<leader>st", "<cmd>TodoTelescope<cr>", desc = "Todo" },
-      { "<leader>sT", "<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>", desc = "Todo/Fix/Fixme" },
-    }
   },
 
   { -- discord game recongnition

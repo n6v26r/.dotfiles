@@ -9,3 +9,4 @@ vim.o.expandtab = true
 vim.opt.relativenumber = true
 
 vim.o.showcmd = false
+

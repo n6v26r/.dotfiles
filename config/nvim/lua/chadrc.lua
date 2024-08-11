@@ -5,7 +5,7 @@ local M = {}
 local highlights = require "highlights"
 
 M.base46 = {
-    theme = "catppuccin", 
+    theme = "catppuccin",
     theme_toggle = { "catppuccin", "github_light" },
     hl_override = highlights.override,
     hl_add = highlights.add,
@@ -17,7 +17,7 @@ M.base46 = {
 M.ui = {
   nvdash = {
     load_on_startup = true,
-    
+
     header = {
       "⠀⠀⠀⠀⣀⣀⣤⣤⣶⣶⣶⣶⣿⣿⣿⣿⣿⣿⣿⣷⣶⣶⡄⠀⠀⠀⠀⠀⠀⠀",
       "⠀⠀⠀⠀⣿⣿⣿⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠛⠛⢿⣿⡇⠀⠀⠀⠀⠀⠀⠀",
@@ -45,6 +45,7 @@ M.ui = {
       { "  Mappings", "Spc c h", "NvCheatsheet" },
     },
   },
+
   statusline = {
     theme = "default",
   },
