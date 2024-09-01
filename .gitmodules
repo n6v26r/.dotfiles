@@ -1,0 +1,6 @@
+[submodule "Wallpapers/orxngc-walls-catppuccin-mocha"]
+	path = Wallpapers/orxngc-walls-catppuccin-mocha
+	url = https://github.com/orxngc/walls-catppuccin-mocha
+[submodule "Wallpapers/orxngc-walls"]
+	path = Wallpapers/orxngc-walls
+	url = https://github.com/orxngc/walls
