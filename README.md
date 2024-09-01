@@ -61,7 +61,8 @@
     ![conky1](Screenshots/conky1.png)
     ![example_firefox](Screenshots/example_firefox.png)
 </details>
- 
+
+  * A ton of wallpapers ~~stolen~~ from all over the internet. 
   * **Terminal**: [kitty](https://github.com/kovidgoyal/kitty)
   * **Shell**: zsh
   * **Editor**: nvim with [neovide](https://github.com/neovide/neovide) for gui (config based on [Nvchad](https://github.com/NvChad/NvChad) and [Vimacs](https://github.com/UTFeight/vimacs))
