@@ -6,7 +6,7 @@ local highlights = require "highlights"
 
 M.base46 = {
     theme = "catppuccin",
-    theme_toggle = { "catppuccin", "github_light" },
+    theme_toggle = { "doomchad", "catppuccin" },
     hl_override = highlights.override,
     hl_add = highlights.add,
     integrations = {},
@@ -47,7 +47,7 @@ M.ui = {
   },
 
   statusline = {
-    theme = "default",
+    theme = "minimal",
   },
   tabufline = {
     lazyload = true,

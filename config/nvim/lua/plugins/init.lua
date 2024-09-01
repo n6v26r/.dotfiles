@@ -276,6 +276,7 @@ return {
   {
     'jmbuhr/otter.nvim',
     dependencies = {
+      'hrsh7th/nvim-cmp',
       'nvim-treesitter/nvim-treesitter',
     },
     opts = {},
@@ -296,6 +297,45 @@ return {
         callback = function() require('otter').activate() end,
       })
     end,
+    ft = {'markdown', 'org', 'norg'}
+  },
+
+  {
+    {
+      "quarto-dev/quarto-nvim",
+      dependencies = {
+        "jmbuhr/otter.nvim",
+        "nvim-treesitter/nvim-treesitter",
+      },
+      config = function()
+        require("quarto").setup{
+          codeRunner ={
+            enabled = true,
+            default_method = 'molten',
+          }
+        }
+      end,
+    },
+  },
+
+  { -- directly open ipynb files as quarto docuements
+    -- and convert back behind the scenes
+    'GCBallesteros/jupytext.nvim',
+    opts = {
+      custom_language_formatting = {
+        python = {
+          extension = 'qmd',
+          style = 'quarto',
+          force_ft = 'quarto',
+        },
+        r = {
+          extension = 'qmd',
+          style = 'quarto',
+          force_ft = 'quarto',
+        },
+      },
+    },
+    ft = {"json"}
   },
 
   {
