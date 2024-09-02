@@ -67,6 +67,7 @@
   * **Shell**: zsh
   * **Editor**: nvim with [neovide](https://github.com/neovide/neovide) for gui (config based on [Nvchad](https://github.com/NvChad/NvChad) and [Vimacs](https://github.com/UTFeight/vimacs))
   * **Font**: FiraCode Nerd Font Mono + JetBrains (for italic text)
+  * **Music app:** Youtube Music [yt-ch](https://github.com/th-ch/youtube-music)
   * **Discord**: [betterdiscord](https://betterdiscord.app/) (catppuccin mocha css)
   * **Browser**: Firefox with [Cascade](https://github.com/andreasgrafen/cascade) (Catppuccin Lavander theme) + [Chevron](https://github.com/kholmogorov27/chevron) as startpage. Guide for configuration and cascade css in the repo. ☝️
   * **Visualizer:** [Cava](https://github.com/karlstav/cava)
