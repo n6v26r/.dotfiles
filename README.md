@@ -70,4 +70,5 @@
   * **Discord**: [betterdiscord](https://betterdiscord.app/) (catppuccin mocha css)
   * **Browser**: Firefox with [Cascade](https://github.com/andreasgrafen/cascade) (Catppuccin Lavander theme) + [Chevron](https://github.com/kholmogorov27/chevron) as startpage. Guide for configuration and cascade css in the repo. ☝️
   * **Visualizer:** [Cava](https://github.com/karlstav/cava)
+  * **PDF Viewer:** [Zathura](https://github.com/pwmt/zathura)
   * **CATPPUCCIN EVERYTHING!!!**
