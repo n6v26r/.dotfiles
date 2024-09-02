@@ -292,7 +292,7 @@ return {
       }
     end,
     init = function()
-      vim.api.nvim_create_autocmd("BufWritePost", {
+      vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
         pattern = {"*.md", "*.mdx", "*.org", "*.norg", "*.ipynb"},
         callback = function() require('otter').activate() end,
       })
@@ -301,21 +301,20 @@ return {
   },
 
   {
-    {
-      "quarto-dev/quarto-nvim",
-      dependencies = {
-        "jmbuhr/otter.nvim",
-        "nvim-treesitter/nvim-treesitter",
-      },
-      config = function()
-        require("quarto").setup{
-          codeRunner ={
-            enabled = true,
-            default_method = 'molten',
-          }
-        }
-      end,
+    "quarto-dev/quarto-nvim",
+    dependencies = {
+      "jmbuhr/otter.nvim",
+      "nvim-treesitter/nvim-treesitter",
     },
+    config = function()
+      require("quarto").setup{
+        codeRunner ={
+          enabled = true,
+          default_method = 'molten',
+        }
+      }
+    end,
+    ft = {'quarto'}
   },
 
   { -- directly open ipynb files as quarto docuements

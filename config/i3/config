@@ -11,7 +11,7 @@
 
 set $mod Mod4
 
-gaps inner 15
+gaps inner 20
 gaps outer 5
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -28,7 +28,7 @@ focus_follows_mouse no
 exec --no-startup-id dex --autostart --environment i3
 
 # load wallpaper
-exec --no-startup-id feh --bg-scale ~/.dotfiles/Wallpapers/catppuccin40.png
+exec_always --no-startup-id feh --bg-scale ~/.dotfiles/Wallpapers/orxngc-walls-catppuccin-mocha/sushi.jpg
 
 # start compositor
 exec --no-startup-id "picom"
@@ -173,16 +173,16 @@ bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10
+bindsym $mod+Shift+1 move container to workspace number $ws1; workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2; workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3; workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4; workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5; workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6; workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7; workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8; workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9; workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10; workspace number $ws10
 
 # set change keyboard language with alt-shift (in my case us + ro standard)
 
@@ -198,7 +198,7 @@ bindsym $mod+Escape exec --no-startup-id "$HOME/.config/i3/i3lock.sh"
 # notifications daemon
 bindsym $mod+Shift+d exec --no-startup-id "dunstctl history-pop"
 
-# reload the configuration file
+# reload the configuration fi7e
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
@@ -272,7 +272,7 @@ client.background        $base
 default_border none
 # Always floating
 
-for_window [class="^."] border none 
+for_window [class="^."] border pixel 5
 
 for_window [class="kitty_floating"] floating enable
 for_window [class="matplotlib"] floating enable
@@ -281,8 +281,8 @@ for_window [class="Blueman-manager"] floating enable
 for_window [class="Pavucontrol"] floating enable
 
 # Borderless
-for_window [class="neovide"] border none
-for_window [class="kitty"] border none
+# for_window [class="neovide"] border none
+# for_window [class="kitty"] border none
  
 # set change keyboard language with alt-shift (in my case us + ro standard)
 exec_always --no-startup-id "setxkbmap -model pc105 -layout us,ro -variant ,std -option 'grp:alt_shift_toggle'"
