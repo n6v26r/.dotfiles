@@ -187,7 +187,7 @@ bindsym $mod+Shift+0 move container to workspace number $ws10; workspace number 
 # set change keyboard language with alt-shift (in my case us + ro standard)
 
 # display conky widget
-exec --no-startup-id "conky"
+# exec --no-startup-id "conky"
 
 # warn if battery low
 exec --no-startup-id "batsignal -b"

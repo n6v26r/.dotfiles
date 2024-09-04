@@ -63,7 +63,6 @@ return {
 
   {"williamboman/mason-lspconfig.nvim",},
 
-  -- Install a plugin
   {
     "max397574/better-escape.nvim",
     event = "InsertEnter",
@@ -72,7 +71,7 @@ return {
     end,
   },
 
-  { -- guess file indetation
+  {
     "nmac427/guess-indent.nvim",
     config = function ()
       require('guess-indent').setup {}
@@ -123,9 +122,9 @@ return {
   { -- orgmode for neovim
     'nvim-orgmode/orgmode',
     config = function()
-      require('orgmode').setup_ts_grammar()
       require('orgmode').setup({
         org_agenda_files = {'~/Documents/org/*'},
+        org_default_notes_file = '~/Documents/org/notes.org',
         mappings = {
           org = {
             org_cycle = "<leader>of",
@@ -134,7 +133,8 @@ return {
         }
       })
     end,
-    ft = {'org'},
+    ft = {'org', 'norg'}
+    -- lazy = false
   },
 
   {
@@ -144,7 +144,7 @@ return {
         concealcursor = true,
       });
     end,
-    ft = {"org"}
+    ft = {"org", "norg"}
   },
 
   {
@@ -152,46 +152,21 @@ return {
     ft = {"org", "markdown", "txt"}
   },
 
-  {
-    "nvim-neorg/neorg",
-    build = ":Neorg sync-parsers",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require("neorg").setup {
-        load = {
-          ["core.defaults"] = {}, -- Loads default behaviour
-          ["core.autocommands"] = {},
-          ["core.integrations.treesitter"] = {},
-          ["core.concealer"] = {}, -- Adds pretty icons to your documents
-          ["core.dirman"] = { -- Manages Neorg workspaces
-            config = {
-              workspaces = {
-                notes = "~/notes",
-                default = "~/Documents",
-                algo = "~/stuff/algo"
-              },
-            },
-          },
-        },
-      }
-    end,
-    ft = {"norg"},
-  },
+  -- {
+  --   "michaelb/sniprun",
+  --   branch = "master",
+  --   build = "sh install.sh",
+  --   init = function ()
+  --     local set = vim.api.nvim_set_hl
+  --     set(0, 'SniprunVirtualTextOk', { default = true, link = "DiagnosticHint"})
+  --     set(0, 'SniprunFloatingWinOk', { default = true, link = "DiagnosticHint"})
+  --     set(0, 'SniprunVirtualTextErr', { default = true, link = "DiagnosticError"})
+  --     set(0, 'SniprunFloatingWinErr', { default = true, link = "DiagnosticError"})
+  --   end,
+  --   ft = {"org", "norg", "markdown", "c", "cpp", "python", "sh"}
+  -- },
 
   {
-    "michaelb/sniprun",
-    branch = "master",
-    build = "sh install.sh",
-    init = function ()
-      local set = vim.api.nvim_set_hl
-      set(0, 'SniprunVirtualTextOk', { default = true, link = "DiagnosticHint"})
-      set(0, 'SniprunFloatingWinOk', { default = true, link = "DiagnosticHint"})
-      set(0, 'SniprunVirtualTextErr', { default = true, link = "DiagnosticError"})
-      set(0, 'SniprunFloatingWinErr', { default = true, link = "DiagnosticError"})
-    end,
-    ft = {"org", "norg", "markdown", "c", "cpp", "python", "sh"}
-  },
-    {
         "benlubas/molten-nvim",
         version = "^1.0.0", -- use version <2.0.0 to avoid breaking changes
         dependencies = { "3rd/image.nvim" },
@@ -201,7 +176,7 @@ return {
             vim.g.molten_image_provider = "image.nvim"
             vim.g.molten_output_win_max_height = 20
             -- vim.g.molten_virt_text_output = true
-            vim.g.molten_auto_open_output = true 
+            vim.g.molten_auto_open_output = true
             vim.g.molten_cover_empty_lines = true
         end,
       ft = {"python"}
@@ -240,6 +215,9 @@ return {
             },
             c = {
               command = { "cling", "-x", "c"}
+            },
+            bash = {
+              command = { "bash" }
             }
           },
           -- How the repl window will be displayed
@@ -337,14 +315,6 @@ return {
     ft = {"json"}
   },
 
-  {
-    'AckslD/nvim-FeMaco.lua',
-    config = function ()
-      require("femaco").setup()
-    end,
-    ft = {"org", "neorg", "markdown"}
-  },
-
   { -- auto create sessions
     'rmagatti/auto-session',
     config = function()
@@ -377,31 +347,12 @@ return {
       require("fontsize").init({
         font = "FiraCode Nerd Font,JetBrainsMono NF,Hack Nerd Font",
         min = 6,
-        default = 12,
+        default = 14,
         max = 22,
         step = 1,
       })
     end,
     lazy = false;
-  },
-
-  { -- Glyph Picker
-    "2kabhishek/nerdy.nvim",
-
-    keys = {
-      {
-        "<leader>fe",
-        "<cmd>Nerdy<CR>",
-        mode = "n",
-        desc = "Glyph Picker",
-      }, -- Gigantic Search Base
-    },
-
-    dependencies = {
-      "stevearc/dressing.nvim",
-      "nvim-telescope/telescope.nvim",
-    },
-    cmd = "Nerdy",
   },
 
   {
@@ -453,46 +404,6 @@ return {
     config = function(_, opts)
       require("smart-splits").setup()
     end,
-  },
-
-  {
-    "folke/trouble.nvim",
-    cmd = { "TroubleToggle", "Trouble" },
-    opts = {  use_diagnostic_signs = true, height = 6, },
-    keys = {
-      { "<leader>tx", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
-      { "<leader>tX", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
-      { "<leader>tL", "<cmd>TroubleToggle loclist<cr>", desc = "Location List (Trouble)" },
-      { "<leader>tQ", "<cmd>TroubleToggle quickfix<cr>", desc = "Quickfix List (Trouble)" },
-      {
-        "[q",
-        function()
-          if require("trouble").is_open() then
-            require("trouble").previous({ skip_groups = true, jump = true })
-          else
-            local ok, err = pcall(vim.cmd.cprev)
-            if not ok then
-              vim.notify(err, vim.log.levels.ERROR)
-            end
-          end
-        end,
-        desc = "Previous trouble/quickfix item",
-      },
-      {
-        "]q",
-        function()
-          if require("trouble").is_open() then
-            require("trouble").next({ skip_groups = true, jump = true })
-          else
-            local ok, err = pcall(vim.cmd.cnext)
-            if not ok then
-              vim.notify(err, vim.log.levels.ERROR)
-            end
-          end
-        end,
-        desc = "Next trouble/quickfix item",
-      },
-    },
   },
 
   { -- discord game recongnition

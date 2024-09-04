@@ -123,6 +123,7 @@ c.TerminalInteractiveShell.highlighting_style_overrides = {
 # Run this code upon starting the shell
 c.InteractiveShellApp.exec_lines = """
 import numpy as np
+import math
 
 def load_extension_silently(extension):
     from IPython import get_ipython

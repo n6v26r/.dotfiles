@@ -47,6 +47,7 @@ M.mason = {
 
     --markdown-stuff
     "marksman",
+    "textlsp",
     --python
   },
 }

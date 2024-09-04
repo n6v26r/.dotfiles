@@ -40,13 +40,14 @@ alias ll="ls -l"
 alias la="ls -a"
 
 alias sudovim="sudo -E -s nvim"
+alias wallpicker="ranger --choosefile=>(xargs feh --bg-scale)"
 # fix ctrl backaspace in tmux
 bindkey '^H' backward-kill-word
 
 function pastebin() {
     local file=${1:-/dev/stdin}
     curl --data-binary @${file} https://paste.rs
-    echo "\n"
+    echo ""
 }
 
 # use zoxide instead of cd
