@@ -125,6 +125,10 @@ return {
       require('orgmode').setup({
         org_agenda_files = {'~/Documents/org/*'},
         org_default_notes_file = '~/Documents/org/notes.org',
+        -- org_startup_indented = false,
+        org_adapt_indentation = false,
+        -- org_indent_mode_turns_off_adapt_indentation = false,
+        -- org_indent_mode_turns_on_hiding_start = false,
         mappings = {
           org = {
             org_cycle = "<leader>of",
@@ -135,6 +139,12 @@ return {
     end,
     ft = {'org', 'norg'}
     -- lazy = false
+  },
+
+  {
+    "lukas-reineke/headlines.nvim",
+    opts = {},
+    ft = {"markdown", "org", "norg"}
   },
 
   {
@@ -152,19 +162,19 @@ return {
     ft = {"org", "markdown", "txt"}
   },
 
-  -- {
-  --   "michaelb/sniprun",
-  --   branch = "master",
-  --   build = "sh install.sh",
-  --   init = function ()
-  --     local set = vim.api.nvim_set_hl
-  --     set(0, 'SniprunVirtualTextOk', { default = true, link = "DiagnosticHint"})
-  --     set(0, 'SniprunFloatingWinOk', { default = true, link = "DiagnosticHint"})
-  --     set(0, 'SniprunVirtualTextErr', { default = true, link = "DiagnosticError"})
-  --     set(0, 'SniprunFloatingWinErr', { default = true, link = "DiagnosticError"})
-  --   end,
-  --   ft = {"org", "norg", "markdown", "c", "cpp", "python", "sh"}
-  -- },
+  {
+    "michaelb/sniprun",
+    branch = "master",
+    build = "sh install.sh",
+    init = function ()
+      local set = vim.api.nvim_set_hl
+      set(0, 'SniprunVirtualTextOk', { default = true, link = "DiagnosticHint"})
+      set(0, 'SniprunFloatingWinOk', { default = true, link = "DiagnosticHint"})
+      set(0, 'SniprunVirtualTextErr', { default = true, link = "DiagnosticError"})
+      set(0, 'SniprunFloatingWinErr', { default = true, link = "DiagnosticError"})
+    end,
+    ft = {"org", "norg", "markdown", "c", "cpp", "python", "sh"}
+  },
 
   {
         "benlubas/molten-nvim",
