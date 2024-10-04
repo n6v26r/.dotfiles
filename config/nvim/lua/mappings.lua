@@ -23,11 +23,21 @@ bind("n", "<leader>moh", "<cmd>MoltenHideOutput<CR>", { desc = "Molten hide outp
 bind("n", "<leader>meo", ":MoltenEvaluateOperator<CR>", { desc = "Molten eval operator", silent = true })
 bind("n", "<leader>mcd", ":MoltenDelete<CR>", { desc = "Molten cell delete", silent = true })
 
+bind("n", "<leader>jw", function()
+  require'hop'.hint_lines()
+end, {desc = "Jump to word"})
 
-bind("n", "<leader>jw", "<cmd>HopWord<CR>", {desc = "Jump to word"})
-bind("n", "<leader>jl", "<cmd>HopLine<CR>", {desc = "Jump to line"})
-bind("n", "<leader>ja", "<cmd>HopAnywhere<CR>", {desc = "Jump anywhere"})
-bind("n", "<leader>jcC", "<cmd>HopCamelCase<CR>", {desc = "Jump camel case"})
+bind("n", "<leader>jl", function()
+  require'hop'.hint_words()
+end, {desc = "Jump to line"})
+
+bind("n", "<leader>ja", function()
+  require'hop'.hint_anywhere()
+end, {desc = "Jump anywhere"})
+
+bind("n", "<leader>jcC", function()
+    require'hop'.hint_camel_case()
+end, {desc = "Jump camel case"})
 
 bind({'n', 'i'}, '<A-Down>', '<cmd>move .+1<CR>')
 bind({'n', 'i'}, '<A-Up>', '<cmd>move .-2<CR>')
@@ -49,4 +59,17 @@ bind('i', '<A-BS>', '<C-W>')
 
 bind({'n', 'i', 'v'}, "<C-=>", "<cmd>FontIncrease<CR>")
 bind({'n', 'i', 'v'}, "<C-->", "<cmd>FontDecrease<CR>")
+
+-- Keyboard users
+bind("n", "<C-t>", function()
+  require("menu").open("default")
+end, {})
+
+-- mouse users + nvimtree users!
+bind({"n", "i"}, "<RightMouse>", function()
+  vim.cmd.exec '"normal! \\<RightMouse>"'
+
+  local options = vim.bo.ft == "NvimTree" and "nvimtree" or "default"
+  require("menu").open(options, { mouse = true })
+end, {})
 

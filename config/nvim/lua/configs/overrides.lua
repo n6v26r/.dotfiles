@@ -47,7 +47,6 @@ M.mason = {
 
     --markdown-stuff
     "marksman",
-    "textlsp",
     --python
   },
 }
@@ -116,7 +115,6 @@ if cmp_ok then
     sources = {
       { name = "nvim_lsp", keyword_length = 3 },
       { name = "otter", keyword_length = 3 },
-      { name = "orgmode", keyword_length = 3 },
       { name = "luasnip", keyword_length = 3 },
       { name = "buffer", keyword_length = 3  },
       { name = "nvim_lua", keyword_length = 3  },

@@ -2,6 +2,16 @@ local overrides = require("configs.overrides")
 
 return {
   {
+    "mistricky/codesnap.nvim",
+    build = "make",
+    opts = {
+      save_path = "~/Pictures",
+      has_breadcrumbs = true,
+      bg_theme = "bamboo",
+    },
+  },
+
+  {
     'smoka7/hop.nvim',
     version = "*",
     opts = {
@@ -16,7 +26,7 @@ return {
       set(0, 'HopNextKey1', { link = "DiagnosticError", default = true })
       set(0, 'HopNextKey', { link = "DiagnosticError", default = true })
     end,
-    lazy = false
+    lazy = true
   },
   {
     "stevearc/conform.nvim",
@@ -63,6 +73,7 @@ return {
 
   {"williamboman/mason-lspconfig.nvim",},
 
+  -- Install a plugin
   {
     "max397574/better-escape.nvim",
     event = "InsertEnter",
@@ -71,7 +82,7 @@ return {
     end,
   },
 
-  {
+  { -- guess file indetation
     "nmac427/guess-indent.nvim",
     config = function ()
       require('guess-indent').setup {}
@@ -122,13 +133,9 @@ return {
   { -- orgmode for neovim
     'nvim-orgmode/orgmode',
     config = function()
+      require('orgmode').setup_ts_grammar()
       require('orgmode').setup({
         org_agenda_files = {'~/Documents/org/*'},
-        org_default_notes_file = '~/Documents/org/notes.org',
-        -- org_startup_indented = false,
-        org_adapt_indentation = false,
-        -- org_indent_mode_turns_off_adapt_indentation = false,
-        -- org_indent_mode_turns_on_hiding_start = false,
         mappings = {
           org = {
             org_cycle = "<leader>of",
@@ -137,14 +144,7 @@ return {
         }
       })
     end,
-    ft = {'org', 'norg'}
-    -- lazy = false
-  },
-
-  {
-    "lukas-reineke/headlines.nvim",
-    opts = {},
-    ft = {"markdown", "org", "norg"}
+    ft = {'org'},
   },
 
   {
@@ -154,7 +154,7 @@ return {
         concealcursor = true,
       });
     end,
-    ft = {"org", "norg"}
+    ft = {"org", "markdown", "txt"}
   },
 
   {
@@ -163,47 +163,73 @@ return {
   },
 
   {
+    "nvim-neorg/neorg",
+    build = ":Neorg sync-parsers",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("neorg").setup {
+        load = {
+          ["core.defaults"] = {}, -- Loads default behaviour
+          ["core.autocommands"] = {},
+          ["core.integrations.treesitter"] = {},
+          ["core.concealer"] = {}, -- Adds pretty icons to your documents
+          ["core.dirman"] = { -- Manages Neorg workspaces
+            config = {
+              workspaces = {
+                notes = "~/notes",
+                default = "~/Documents",
+                algo = "~/stuff/algo"
+              },
+            },
+          },
+        },
+      }
+    end,
+    ft = {"norg"},
+  },
+
+  {
     "michaelb/sniprun",
     branch = "master",
     build = "sh install.sh",
     init = function ()
       local set = vim.api.nvim_set_hl
-      set(0, 'SniprunVirtualTextOk', { default = true, link = "DiagnosticHint"})
-      set(0, 'SniprunFloatingWinOk', { default = true, link = "DiagnosticHint"})
-      set(0, 'SniprunVirtualTextErr', { default = true, link = "DiagnosticError"})
-      set(0, 'SniprunFloatingWinErr', { default = true, link = "DiagnosticError"})
+      set(0, 'SniprunVirtualTextOk', { default = true, link = "Comment"})
+      set(0, 'SniprunFloatingWinOk', { default = true, link = "Comment"})
+      set(0, 'SniprunVirtualTextErr', { default = true, link = "cCommentError"})
+      set(0, 'SniprunFloatingWinErr', { default = true, link = "cCommentError"})
     end,
     ft = {"org", "norg", "markdown", "c", "cpp", "python", "sh"}
   },
-
-  {
-        "benlubas/molten-nvim",
-        version = "^1.0.0", -- use version <2.0.0 to avoid breaking changes
-        dependencies = { "3rd/image.nvim" },
-        build = ":UpdateRemotePlugins",
-        init = function()
-            -- these are examples, not defaults. Please see the readme
-            vim.g.molten_image_provider = "image.nvim"
-            vim.g.molten_output_win_max_height = 20
-            -- vim.g.molten_virt_text_output = true
-            vim.g.molten_auto_open_output = true
-            vim.g.molten_cover_empty_lines = true
-        end,
-      ft = {"python"}
-    },
-  {
-      -- see the image.nvim readme for more information about configuring this plugin
-      "3rd/image.nvim",
-      opts = {
-          backend = "kitty", -- whatever backend you would like to use
-          max_width = 100,
-          max_height = 12,
-          max_height_window_percentage = math.huge,
-          max_width_window_percentage = math.huge,
-          window_overlap_clear_enabled = true, -- toggles images when windows are overlapped
-          window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
-      },
-  },
+  --   {
+  --       "benlubas/molten-nvim",
+  --       version = "^1.0.0", -- use version <2.0.0 to avoid breaking changes
+  --       dependencies = { "3rd/image.nvim" },
+  --       build = ":UpdateRemotePlugins",
+  --       init = function()
+  --           -- these are examples, not defaults. Please see the readme
+  --           vim.g.molten_image_provider = "image.nvim"
+  --           vim.g.molten_output_win_max_height = 20
+  --           -- vim.g.molten_virt_text_output = true
+  --           vim.g.molten_auto_open_output = true
+  --           vim.g.molten_cover_empty_lines = true
+  --       end,
+  --     ft = {"python", "markdown", "quarto"}
+  --   },
+  -- {
+  --     -- see the image.nvim readme for more information about configuring this plugin
+  --     "3rd/image.nvim",
+  --     opts = {
+  --         backend = "kitty", -- whatever backend you would like to use
+  --         max_width = 100,
+  --         max_height = 12,
+  --         max_height_window_percentage = math.huge,
+  --         max_width_window_percentage = math.huge,
+  --         window_overlap_clear_enabled = true, -- toggles images when windows are overlapped
+  --         window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
+  --     },
+  --   ft = {"python", "markdown", "qurto", "norg", "org"}
+  -- },
   {
     "hkupty/iron.nvim",
     config = function(plugins, opts)
@@ -225,9 +251,6 @@ return {
             },
             c = {
               command = { "cling", "-x", "c"}
-            },
-            bash = {
-              command = { "bash" }
             }
           },
           -- How the repl window will be displayed
@@ -280,7 +303,7 @@ return {
       }
     end,
     init = function()
-      vim.api.nvim_create_autocmd({"BufNewFile", "BufRead"}, {
+      vim.api.nvim_create_autocmd("BufWritePost", {
         pattern = {"*.md", "*.mdx", "*.org", "*.norg", "*.ipynb"},
         callback = function() require('otter').activate() end,
       })
@@ -288,41 +311,50 @@ return {
     ft = {'markdown', 'org', 'norg'}
   },
 
-  {
-    "quarto-dev/quarto-nvim",
-    dependencies = {
-      "jmbuhr/otter.nvim",
-      "nvim-treesitter/nvim-treesitter",
-    },
-    config = function()
-      require("quarto").setup{
-        codeRunner ={
-          enabled = true,
-          default_method = 'molten',
-        }
-      }
-    end,
-    ft = {'quarto'}
-  },
+  -- {
+  --   {
+  --     "quarto-dev/quarto-nvim",
+  --     dependencies = {
+  --       "jmbuhr/otter.nvim",
+  --       "nvim-treesitter/nvim-treesitter",
+  --     },
+  --     config = function()
+  --       require("quarto").setup{
+  --         codeRunner ={
+  --           enabled = true,
+  --           default_method = 'molten',
+  --         }
+  --       }
+  --     end,
+  --   },
+  -- },
+  --
+  -- { -- directly open ipynb files as quarto docuements
+  --   -- and convert back behind the scenes
+  --   'GCBallesteros/jupytext.nvim',
+  --   opts = {
+  --     custom_language_formatting = {
+  --       python = {
+  --         extension = 'qmd',
+  --         style = 'quarto',
+  --         force_ft = 'quarto',
+  --       },
+  --       r = {
+  --         extension = 'qmd',
+  --         style = 'quarto',
+  --         force_ft = 'quarto',
+  --       },
+  --     },
+  --   },
+  --   ft = {"json"}
+  -- },
 
-  { -- directly open ipynb files as quarto docuements
-    -- and convert back behind the scenes
-    'GCBallesteros/jupytext.nvim',
-    opts = {
-      custom_language_formatting = {
-        python = {
-          extension = 'qmd',
-          style = 'quarto',
-          force_ft = 'quarto',
-        },
-        r = {
-          extension = 'qmd',
-          style = 'quarto',
-          force_ft = 'quarto',
-        },
-      },
-    },
-    ft = {"json"}
+  {
+    'AckslD/nvim-FeMaco.lua',
+    config = function ()
+      require("femaco").setup()
+    end,
+    ft = {"org", "neorg", "markdown"}
   },
 
   { -- auto create sessions
@@ -358,11 +390,30 @@ return {
         font = "FiraCode Nerd Font,JetBrainsMono NF,Hack Nerd Font",
         min = 6,
         default = 14,
-        max = 22,
+        max = 40,
         step = 1,
       })
     end,
     lazy = false;
+  },
+
+  { -- Glyph Picker
+    "2kabhishek/nerdy.nvim",
+
+    keys = {
+      {
+        "<leader>fe",
+        "<cmd>Nerdy<CR>",
+        mode = "n",
+        desc = "Glyph Picker",
+      }, -- Gigantic Search Base
+    },
+
+    dependencies = {
+      "stevearc/dressing.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+    cmd = "Nerdy",
   },
 
   {
@@ -415,10 +466,4 @@ return {
       require("smart-splits").setup()
     end,
   },
-
-  { -- discord game recongnition
-    'andweeb/presence.nvim',
-    lazy = false
-  },
-
 }
