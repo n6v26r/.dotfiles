@@ -67,19 +67,26 @@ M.nvimtree = {
   },
 }
 
-M.ui = {
-  statusline = {
-    theme = "vscode",
-    -- separator_style = "",
-  },
-
-  tabufline = {
-    lazyload = false;
-  },
-}
-
 local cmp_ok, cmp = pcall(require, "cmp")
 if cmp_ok then
+  cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' },
+    }, {
+      { name = 'zsh' }
+    }
+    ),
+    matching = { disallow_symbol_nonprefix_matching = false }
+  })
+  cmp.setup.cmdline({ '/', '?' }, {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+      { name = 'buffer' },
+    }
+  })
   M.cmp = {
     mapping = {
       ["<Up>"] = cmp.mapping.select_prev_item(),
@@ -116,10 +123,10 @@ if cmp_ok then
       { name = "nvim_lsp", keyword_length = 3 },
       { name = "otter", keyword_length = 3 },
       { name = "luasnip", keyword_length = 3 },
-      { name = "buffer", keyword_length = 3  },
       { name = "nvim_lua", keyword_length = 3  },
       { name = "path", keyword_length = 3  },
-  },
+    },
+      -- { name = "buffer", keyword_length = 3},
   }
 end
 

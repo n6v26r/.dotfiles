@@ -12,6 +12,18 @@ M.base46 = {
     transparency = false,
 }
 
+M.ui = {
+  statusline = {
+    theme = "minimal",
+  },
+  tabufline = {
+    lazyload = true,
+  },
+  cmp = {
+    style = "atom"
+  },
+}
+
 M.nvdash = {
   load_on_startup = true,
 
@@ -59,12 +71,6 @@ M.nvdash = {
     { txt = "─", hl = "NvDashLazy", no_gap = true, rep = true },
   },
 
-  statusline = {
-    theme = "minimal",
-  },
-  tabufline = {
-    lazyload = true,
-  },
 }
 
 return M
