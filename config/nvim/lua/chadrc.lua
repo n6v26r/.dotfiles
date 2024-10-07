@@ -42,10 +42,10 @@ M.nvdash = {
     "                              ",
     "  There is no place like ~/   ",
     "                              ",
+    "                              ",
   },
 
   buttons = {
-    { txt = "", no_gap = true},
     { txt = "  Find File", keys = "Spc f f", cmd = "Telescope find_files" },
     { txt = "󰈚  Recent Files", keys = "Spc f o", cmd = "Telescope oldfiles" },
     { txt = "󰁯  Find Session", keys = "Spc f s", cmd = "SessionSearch"},

@@ -170,31 +170,31 @@ return {
     ft = {"org", "markdown", "txt"}
   },
 
-  {
-    "nvim-neorg/neorg",
-    build = ":Neorg sync-parsers",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function()
-      require("neorg").setup {
-        load = {
-          ["core.defaults"] = {}, -- Loads default behaviour
-          ["core.autocommands"] = {},
-          ["core.integrations.treesitter"] = {},
-          ["core.concealer"] = {}, -- Adds pretty icons to your documents
-          ["core.dirman"] = { -- Manages Neorg workspaces
-            config = {
-              workspaces = {
-                notes = "~/notes",
-                default = "~/Documents",
-                algo = "~/stuff/algo"
-              },
-            },
-          },
-        },
-      }
-    end,
-    ft = {"norg"},
-  },
+  -- {
+  --   "nvim-neorg/neorg",
+  --   build = ":Neorg sync-parsers",
+  --   dependencies = { "nvim-lua/plenary.nvim" },
+  --   config = function()
+  --     require("neorg").setup {
+  --       load = {
+  --         ["core.defaults"] = {}, -- Loads default behaviour
+  --         ["core.autocommands"] = {},
+  --         ["core.integrations.treesitter"] = {},
+  --         ["core.concealer"] = {}, -- Adds pretty icons to your documents
+  --         ["core.dirman"] = { -- Manages Neorg workspaces
+  --           config = {
+  --             workspaces = {
+  --               notes = "~/notes",
+  --               default = "~/Documents",
+  --               algo = "~/stuff/algo"
+  --             },
+  --           },
+  --         },
+  --       },
+  --     }
+  --   end,
+  --   ft = {"norg"},
+  -- },
 
   {
     "michaelb/sniprun",
@@ -397,7 +397,7 @@ return {
       require("fontsize").init({
         font = "FiraCode Nerd Font,JetBrainsMono NF,Hack Nerd Font",
         min = 6,
-        default = 14,
+        default = 12,
         max = 40,
         step = 1,
       })
