@@ -70,6 +70,8 @@ elif [ $save == 0 ]; then
   read -p "This will update your local configuration files. Proceed? (y/n) ";
 else 
   echo "Sync dots. Commands: save | load [dir] [dir on disk]"
+  echo "Example: ./sync.sh load nvim # will load nvim config"
+  echo "         ./sync.sh save      # will save all configs"
 fi;
 echo ""
 if [[ $REPLY =~ ^[Yy]$ ]]; then

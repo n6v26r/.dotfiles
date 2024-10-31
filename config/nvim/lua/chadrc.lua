@@ -6,7 +6,7 @@ local highlights = require "highlights"
 
 M.base46 = {
     theme = "catppuccin",
-    theme_toggle = { "catppuccin", "doomchad" },
+    theme_toggle = { "catppuccin", "catppuccin" },
     hl_override = highlights.override,
     hl_add = highlights.add,
     transparency = false,
@@ -52,7 +52,7 @@ M.nvdash = {
     { txt = "󰈭  Find Word", keys = "Spc f w", cmd = "Telescope live_grep" },
     { txt = "  Find Command", keys = "Spc f c", cmd = "Telescope builtin" },
     { txt = "  Bookmarks", keys = "Spc m a", cmd = "Telescope marks" },
-    { txt = "  Themes", keys = "Spc t h", cmd = "Telescope themes" },
+    { txt = "  Themes", keys = "Spc t h", cmd = "lua require('nvchad.themes').open()" },
     { txt = "  Config", keys = "Spc c f", cmd = "next ~/.config/nvim/lua/*.lua" },
     { txt = "  Mappings", keys = "Spc c h", cmd = "NvCheatsheet" },
 
