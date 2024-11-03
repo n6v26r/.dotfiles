@@ -14,6 +14,7 @@ M.override = {
 
 ---@type HLTable
 M.add = {
+  NvDashLazy = { fg = "red", bg = "" },
   NvimTreeOpenedFolderName = { fg = "green", bold = true },
 }
 

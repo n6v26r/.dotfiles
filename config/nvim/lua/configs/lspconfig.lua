@@ -13,7 +13,7 @@ local lspconfig = require "lspconfig"
 
 -- if you just want default config for the servers then put them in a table
 
-local servers = { "html", "cssls", "ts_ls", "clangd", "marksman", "csharp_ls", "volar", "pyright", "gopls"}
+local servers = { "html", "cssls", "ts_ls", "clangd", "marksman", "csharp_ls", "volar", "pyright", "gopls", "textlsp"}
 
 local nvlsp = require "nvchad.configs.lspconfig"
 
@@ -27,4 +27,7 @@ for _, lsp in ipairs(servers) do
   }
 end
 
-lspconfig.pyright.setup {}
+-- lspconfig.pyright.setup {}
+
+lspconfig.texlab.setup{}
+

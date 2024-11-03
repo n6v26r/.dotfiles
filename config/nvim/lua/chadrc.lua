@@ -6,7 +6,7 @@ local highlights = require "highlights"
 
 M.base46 = {
     theme = "catppuccin",
-    theme_toggle = { "catppuccin", "catppuccin" },
+    theme_toggle = { "chadracula-evondev", "catppuccin" },
     hl_override = highlights.override,
     hl_add = highlights.add,
     transparency = false,
@@ -72,5 +72,7 @@ M.nvdash = {
   },
 
 }
+
+M.mason = require("configs.overrides").mason
 
 return M
