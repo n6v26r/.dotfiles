@@ -425,7 +425,10 @@ return {
 			},
 			{
 				"<leader>sd",
-				"<cmd>Autosession delete<CR>",
+				function ()
+					require("telescope")
+					vim.cmd("Autosession delete")
+				end,
 				mode = "n",
 				desc = "Delete session",
 			},
