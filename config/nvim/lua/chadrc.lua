@@ -22,6 +22,7 @@ M.ui = {
   cmp = {
     style = "atom"
   },
+  telescope = { style = "borderless" }
 }
 
 M.nvdash = {

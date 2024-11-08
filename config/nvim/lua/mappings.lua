@@ -6,13 +6,11 @@ bind({'n'}, '<leader>lf', function ()
 end, {desc = "Floating diagnostic"})
 
 bind({'n'}, ';', ':', { desc = "CMD enter command mode" })
-bind({'n'}, '<leader>sd', "<cmd>Autosession delete<CR>", { desc = "Delete saved session" })
 bind({'n', 'v'}, '<leader>sr', "<cmd>SnipRun<CR>", {desc = "Run snippet line"})
 bind({'n'}, '<leader>sc', "<cmd>SnipClose<CR>", {desc = "Clear snippet output"})
 bind({'n'}, '<leader>se', '<cmd>FeMaco<CR>', {desc = "Edit snippet" })
 bind({'n'}, '<leader>fc', '<cmd>Telescope builtin<CR>', {desc = "Find command" })
 bind({'n'}, '<leader>cf', '<cmd>next ~/.config/nvim/lua/*.lua<CR>', {desc = "Edit Config" })
-bind({'n'}, '<leader>fs', "<cmd>SessionSearch<CR>", {desc = "Find session"})
 
 bind('n', '<leader>mi', '<cmd>MoltenInit<CR>', {desc = "Init Molten"})
 bind("n", "<leader>mec", ":MoltenReevaluateCell<CR>", { desc = "Molten re-eval cell", silent = true })

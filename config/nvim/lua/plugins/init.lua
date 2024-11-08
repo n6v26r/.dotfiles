@@ -18,9 +18,11 @@ return {
 			}
 			return conf
 		end,
-		init = function ()
+		config = function(_, opts)
+			require("telescope").setup( opts )
 			require("telescope").load_extension("ui-select")
-		end
+		end,
+
 	},
 
 	{
@@ -406,15 +408,29 @@ return {
 				log_level = vim.log.levels.ERROR,
 				auto_session_suppress_dirs = { "~" },
 				session_lens = {
+					load_on_setup = false,
 					path_display = { "shorten" },
 					buftypes_to_ignore = {},
-					load_on_setup = true,
 					theme_conf = { border = false },
 					previewer = false,
 				},
 			})
 		end,
-		lazy = false,
+		keys = {
+			{
+				"<leader>fs",
+				"<cmd>SessionSearch<CR>",
+				mode = "n",
+				desc = "Find session",
+			},
+			{
+				"<leader>sd",
+				"<cmd>Autosession delete<CR>",
+				mode = "n",
+				desc = "Delete session",
+			},
+		},
+		lazy = false
 	},
 
 	{ -- smooth scrolling
