@@ -22,7 +22,7 @@ return {
 			require("telescope").setup( opts )
 			require("telescope").load_extension("ui-select")
 		end,
-
+		lazy = false
 	},
 
 	{
@@ -425,10 +425,7 @@ return {
 			},
 			{
 				"<leader>sd",
-				function ()
-					require("telescope")
-					vim.cmd("Autosession delete")
-				end,
+				"Autosession delete",
 				mode = "n",
 				desc = "Delete session",
 			},
