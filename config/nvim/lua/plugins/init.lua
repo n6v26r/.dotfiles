@@ -2,6 +2,20 @@ local overrides = require("configs.overrides")
 
 return {
 	{
+		"folke/todo-comments.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		opts = {
+			highlight = {
+				after = ""
+			}
+		},
+		config = function (_, opts)
+			dofile(vim.g.base46_cache..'todo')
+			require("todo-comments").setup(opts)
+		end
+	},
+
+	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
 			"nvim-telescope/telescope-ui-select.nvim",
@@ -152,6 +166,8 @@ return {
 		},
 
 		config = function(_, opts)
+			dofile(vim.g.base46_cache..'git')
+			dofile(vim.g.base46_cache .. "neogit")
 			require("neogit").setup(opts)
 		end,
 		opts = {},

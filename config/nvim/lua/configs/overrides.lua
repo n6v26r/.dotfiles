@@ -14,7 +14,6 @@ M.treesitter = {
     "c_sharp",
     "markdown",
     "markdown_inline",
-    "comment",
     "json",
   },
   indent = {
