@@ -2,17 +2,26 @@ local overrides = require("configs.overrides")
 
 return {
 	{
+		"HiPhish/rainbow-delimiters.nvim",
+		config = function()
+			dofile(vim.g.base46_cache .. "rainbowdelimiters")
+		end,
+		event = "User FilePost",
+	},
+
+	{
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = {
 			highlight = {
-				after = ""
-			}
+				after = "",
+			},
 		},
-		config = function (_, opts)
-			dofile(vim.g.base46_cache..'todo')
+		config = function(_, opts)
+			dofile(vim.g.base46_cache .. "todo")
 			require("todo-comments").setup(opts)
-		end
+		end,
+		event = "User FilePost",
 	},
 
 	{
@@ -25,18 +34,18 @@ return {
 				["ui-select"] = {
 					require("telescope.themes").get_ivy({
 						layout_config = {
-							height = 0.3
-						}
+							height = 0.3,
+						},
 					}),
 				},
 			}
 			return conf
 		end,
 		config = function(_, opts)
-			require("telescope").setup( opts )
+			require("telescope").setup(opts)
 			require("telescope").load_extension("ui-select")
 		end,
-		lazy = false
+		lazy = false,
 	},
 
 	{
@@ -166,7 +175,7 @@ return {
 		},
 
 		config = function(_, opts)
-			dofile(vim.g.base46_cache..'git')
+			dofile(vim.g.base46_cache .. "git")
 			dofile(vim.g.base46_cache .. "neogit")
 			require("neogit").setup(opts)
 		end,
@@ -446,7 +455,7 @@ return {
 				desc = "Delete session",
 			},
 		},
-		lazy = false
+		lazy = false,
 	},
 
 	{ -- smooth scrolling

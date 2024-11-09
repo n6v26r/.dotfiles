@@ -13,6 +13,7 @@ M.base46 = {
     integrations = {
       'neogit',
       'todo',
+      'rainbowdelimiters'
   }
 }
 
