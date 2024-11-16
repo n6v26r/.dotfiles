@@ -22,11 +22,11 @@ bind("n", "<leader>meo", ":MoltenEvaluateOperator<CR>", { desc = "Molten eval op
 bind("n", "<leader>mcd", ":MoltenDelete<CR>", { desc = "Molten cell delete", silent = true })
 
 bind("n", "<leader>jw", function()
-  require'hop'.hint_lines()
+  require'hop'.hint_words()
 end, {desc = "Jump to word"})
 
 bind("n", "<leader>jl", function()
-  require'hop'.hint_words()
+  require'hop'.hint_lines()
 end, {desc = "Jump to line"})
 
 bind("n", "<leader>ja", function()

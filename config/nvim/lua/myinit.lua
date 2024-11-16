@@ -1,10 +1,10 @@
 local autocmd = vim.api.nvim_create_autocmd
 
 -- Auto resize panes when resizing nvim window
- autocmd("VimResized", {
-   pattern = "*",
-   command = "tabdo wincmd =",
- })
+autocmd("VimResized", {
+  pattern = "*",
+  command = "tabdo wincmd =",
+})
 
 -- Disable line numbers when entering term buffer
 autocmd('TermOpen', {
@@ -28,9 +28,9 @@ autocmd( {"VimEnter", "VimResume"}, {
 })
 
 local plugins = {
-      "python3_provider",
-      "plugin/rplugin.vim"
-    }
+  "python3_provider",
+  "plugin/rplugin.vim"
+}
 
 for _, plugin in pairs(plugins) do
   vim.g["loaded_" .. plugin] = nil

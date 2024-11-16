@@ -2,14 +2,6 @@ local overrides = require("configs.overrides")
 
 return {
 	{
-		"HiPhish/rainbow-delimiters.nvim",
-		config = function()
-			dofile(vim.g.base46_cache .. "rainbowdelimiters")
-		end,
-		event = "User FilePost",
-	},
-
-	{
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = {
@@ -75,14 +67,9 @@ return {
 		opts = {
 			keys = "etovxqpdygfblzhckisuran",
 		},
-		init = function()
-			local set = vim.api.nvim_set_hl
-			set(0, "HopCursor", { link = "Cursor", default = true })
-			set(0, "HopPreview", { link = "DiagnosticWarn", default = true })
-			set(0, "HopUnmatched", { link = "Comment", default = true })
-			set(0, "HopNextKey2", { link = "DiagnosticHint", default = true })
-			set(0, "HopNextKey1", { link = "DiagnosticError", default = true })
-			set(0, "HopNextKey", { link = "DiagnosticError", default = true })
+		config = function (_, opts)
+			dofile(vim.g.base46_cache .. "hop")
+			require("hop").setup( opts )
 		end,
 		lazy = true,
 	},
@@ -173,7 +160,6 @@ return {
 			"sindrets/diffview.nvim", -- optional
 			"ibhagwan/fzf-lua", -- optional
 		},
-
 		config = function(_, opts)
 			dofile(vim.g.base46_cache .. "git")
 			dofile(vim.g.base46_cache .. "neogit")
