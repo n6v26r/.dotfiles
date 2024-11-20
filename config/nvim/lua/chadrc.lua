@@ -14,7 +14,9 @@ M.base46 = {
       'git',
       'neogit',
       'todo',
-      'hop'
+      'hop',
+      'orgmode',
+      'markview'
   }
 }
 

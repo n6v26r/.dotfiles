@@ -67,9 +67,9 @@ return {
 		opts = {
 			keys = "etovxqpdygfblzhckisuran",
 		},
-		config = function (_, opts)
+		config = function(_, opts)
 			dofile(vim.g.base46_cache .. "hop")
-			require("hop").setup( opts )
+			require("hop").setup(opts)
 		end,
 		lazy = true,
 	},
@@ -188,6 +188,7 @@ return {
 		config = function()
 			require("orgmode").setup_ts_grammar()
 			require("orgmode").setup({
+				dofile(vim.g.base46_cache .. "orgmode"),
 				org_agenda_files = { "~/Documents/org/*" },
 				mappings = {
 					org = {
@@ -198,6 +199,26 @@ return {
 			})
 		end,
 		ft = { "org" },
+	},
+
+	{
+		"OXY2DEV/markview.nvim",
+		-- lazy = false, -- Recommended
+		ft = "markdown", -- If you decide to lazy-load anyway
+
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons",
+		},
+		opts = {
+			latex = {
+				enable = true,
+			}
+		},
+		config = function (_, opts)
+			dofile(vim.g.base46_cache .. "markview")
+			require("markview").setup( opts )
+		end
 	},
 
 	{
