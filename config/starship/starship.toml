@@ -12,6 +12,7 @@ $git_branch\
 $git_status\
 [](fg:pink bg:blue)\
 $c\
+${custom.cpp}\
 $rust\
 $golang\
 $nodejs\
@@ -110,6 +111,12 @@ format = '[[ $symbol](bold fg:text bg:blue)]($style)'
 
 [c]
 symbol = " "
+style = "bg:blue"
+format = '[[ $symbol](bold fg:text bg:blue)]($style)'
+
+[custom.cpp]
+detect_extensions = ['cpp', 'hpp']
+symbol = " "
 style = "bg:blue"
 format = '[[ $symbol](bold fg:text bg:blue)]($style)'
 

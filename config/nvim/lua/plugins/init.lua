@@ -126,13 +126,13 @@ return {
 	{ "williamboman/mason-lspconfig.nvim" },
 
 	-- Install a plugin
-	{
-		"max397574/better-escape.nvim",
-		event = "InsertEnter",
-		config = function()
-			require("better_escape").setup()
-		end,
-	},
+	-- {
+	-- 	"max397574/better-escape.nvim",
+	-- 	event = "InsertEnter",
+	-- 	config = function()
+	-- 		require("better_escape").setup()
+	-- 	end,
+	-- },
 
 	{ -- guess file indetation
 		"nmac427/guess-indent.nvim",
@@ -275,21 +275,35 @@ return {
 		end,
 		ft = { "org", "norg", "markdown", "c", "cpp", "python", "sh" },
 	},
-	--   {
-	--       "benlubas/molten-nvim",
-	--       version = "^1.0.0", -- use version <2.0.0 to avoid breaking changes
-	--       dependencies = { "3rd/image.nvim" },
-	--       build = ":UpdateRemotePlugins",
-	--       init = function()
-	--           -- these are examples, not defaults. Please see the readme
-	--           vim.g.molten_image_provider = "image.nvim"
-	--           vim.g.molten_output_win_max_height = 20
-	--           -- vim.g.molten_virt_text_output = true
-	--           vim.g.molten_auto_open_output = true
-	--           vim.g.molten_cover_empty_lines = true
-	--       end,
-	--     ft = {"python", "markdown", "quarto"}
-	--   },
+
+	-- {
+	-- 	"benlubas/molten-nvim",
+	-- 	version = "^1.0.0", -- use version <2.0.0 to avoid breaking changes
+	-- 	dependencies = { "3rd/image.nvim" },
+	-- 	build = ":UpdateRemotePlugins",
+	-- 	init = function()
+	-- 		-- these are examples, not defaults. Please see the readme
+	-- 		vim.g.molten_image_provider = "image.nvim"
+	-- 		vim.g.molten_output_win_max_height = 20
+	-- 		-- vim.g.molten_virt_text_output = true
+	-- 		vim.g.molten_auto_open_output = true
+	-- 		vim.g.molten_cover_empty_lines = true
+	-- 	end,
+	-- 	config = function(_, opts)
+	--
+	-- 		local bind = vim.keymap.set
+	-- 		bind('n', '<leader>mi', '<cmd>MoltenInit<CR>', {desc = "Init Molten"})
+	-- 		bind("n", "<leader>mec", ":MoltenReevaluateCell<CR>", { desc = "Molten re-eval cell", silent = true })
+	-- 		bind('n', '<leader>mel', '<cmd>MoltenEvaluateLine<CR>', {desc = "Molten eval line"})
+	-- 		bind("v", "<leader>mev", ":<C-u>MoltenEvaluateVisual<CR>gv", { desc = "Molten eval visual", silent = true })
+	-- 		bind("n", "<leader>moe", ":noautocmd MoltenEnterOutput<CR>", { desc = "Molten enter output", silent = true })
+	-- 		bind("n", "<leader>moh", "<cmd>MoltenHideOutput<CR>", { desc = "Molten hide output", silent = true })
+	-- 		bind("n", "<leader>meo", ":MoltenEvaluateOperator<CR>", { desc = "Molten eval operator", silent = true })
+	-- 		bind("n", "<leader>mcd", ":MoltenDelete<CR>", { desc = "Molten cell delete", silent = true })
+	-- 		require("molten").setup( opts )
+	-- 	end,
+	-- 	ft = {"python", "markdown", "quarto"}
+	-- },
 	-- {
 	--     -- see the image.nvim readme for more information about configuring this plugin
 	--     "3rd/image.nvim",

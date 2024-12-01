@@ -1,4 +1,5 @@
 # Dotfiles
+![banner](Screenshots/banner.png)
 ## Info:
 * **OS:** Manjaro Linux
 * **DE/WM:**
@@ -11,9 +12,12 @@
   
   ### Photos
     ![i3](Screenshots/i3-pipes.png)
-    ![i3](Screenshots/i3-first.png)
-    ![i3](Screenshots/i3-new.png)
     ![i3](Screenshots/i3-color.png)
+    ![i3](Screenshots/i3_clear.png)
+    ![i3](Screenshots/i3-new.png)
+    ![i3](Screenshots/photo.png)
+    ![i3](Screenshots/i3_cozy.png)
+    ![i3](Screenshots/i3-first.png)
 
   </details>
   <details>

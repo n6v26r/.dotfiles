@@ -2,7 +2,7 @@
 
 bar="▁▂▃▄▅▆▇█"
 dict="s/;//g;"
-secinactive=0 # Number of seconds with no sound before the module hides
+secinactive=1 # Number of seconds with no sound before the module hides
 
 # creating "dictionary" to replace char with bar
 i=0
