@@ -28,7 +28,8 @@ focus_follows_mouse no
 exec --no-startup-id dex --autostart --environment i3
 
 # load wallpaper
-exec_always --no-startup-id feh --bg-scale ~/.dotfiles/Wallpapers/orxngc-walls-catppuccin-mocha/sushi.jpg
+# exec_always --no-startup-id feh --bg-scale ~/Downloads/pictures/1360877_catppuccin-mocha.jpeg
+exec_always --no-startup-id $HOME/.fehbg
 
 # start compositor
 exec --no-startup-id "picom"
@@ -68,10 +69,10 @@ bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
 # Media player controls
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioPause exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioPause exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -276,9 +277,9 @@ for_window [class="^."] border pixel 5
 
 for_window [class="kitty_floating"] floating enable
 for_window [class="matplotlib"] floating enable
-for_window [class="calculator"] floating enable
+for_window [class="Galculator"] floating enable
 for_window [class="Blueman-manager"] floating enable
-for_window [class="Pavucontrol"] floating enable
+for_window [class="pavucontrol"] floating enable
 
 # Borderless
 # for_window [class="neovide"] border none
