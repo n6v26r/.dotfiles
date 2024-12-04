@@ -1,5 +1,4 @@
 # Dotfiles
-![banner](Screenshots/banner.png)
 ## Info:
 * **OS:** Manjaro Linux
 * **DE/WM:**
