@@ -1,4 +1,5 @@
 
+
 # Use powerline
 # USE_POWERLINE="true"
 # Source manjaro-zsh-configuration
@@ -11,6 +12,16 @@
 # if [[ -e /usr/share/zsh/manjaro-zsh-prompt ]]; then
 #   source /usr/share/zsh/manjaro-zsh-prompt
 # fi
+
+# Theaming
+export LS_COLORS="$(vivid generate catppuccin-mocha)"
+export FZF_DEFAULT_OPTS=" \
+  --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+  --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+  --color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+  --color=selected-bg:#45475a \
+  --multi"
+export BAT_THEME="Catppuccin-mocha"
 
 # Load prompt
 eval "$(starship init zsh)"
@@ -110,7 +121,6 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
-
 WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain characters part of the word
 
 zstyle ':completion:*' rehash true
@@ -125,6 +135,7 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
 # CUSTOM:
 export EDITOR=nvim
@@ -135,7 +146,6 @@ setopt extendedglob
 setopt nobeep
 
 #Better cat
-export BAT_THEME="Catppuccin-mocha"
 alias cat="bat"
 
 # Better ls
@@ -166,10 +176,3 @@ function pastebin() {
 
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
-
-export FZF_DEFAULT_OPTS=" \
-    --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
-    --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
-    --color=marker:#b4befe,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
-    --color=selected-bg:#45475a \
-    --multi"

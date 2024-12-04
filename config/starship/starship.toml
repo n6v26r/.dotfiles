@@ -40,9 +40,10 @@ palette = 'catppuccin_mocha'
 add_newline = false
 
 [cmd_duration]
+show_milliseconds = true
 disabled = false
 min_time = 0
-min_time_to_notify = 2_000
+min_time_to_notify = 1_000
 style = "bold bg:maroon fg:text"
 format = "[  $duration ]($style)"
 
