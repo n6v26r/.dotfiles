@@ -1,7 +1,7 @@
 # Dotfiles
 ## Info:
 * **OS:** Manjaro Linux
-* **DE/WM:**
+* **DE/WM:**  (click to expand)
   <details>
   <summary><b>I3</b></summary>
   
@@ -12,11 +12,12 @@
   ### Photos
     ![i3](Screenshots/i3-pipes.png)
     ![i3](Screenshots/i3-color.png)
+    ![i3](Screenshots/yetanotheri3screenshot.jpeg)
+    ![i3](Screenshots/photo.png)
     ![i3](Screenshots/i3_clear.png)
     ![i3](Screenshots/i3-new.png)
-    ![i3](Screenshots/photo.png)
-    ![i3](Screenshots/i3_cozy.png)
     ![i3](Screenshots/i3-first.png)
+    ![i3](Screenshots/i3_cozy.png)
 
   </details>
   <details>
