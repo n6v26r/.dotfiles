@@ -94,6 +94,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     configSync 'zathura'
     configSync 'fastfetch'
     configSync 'cava'
+    configSync 'ranger'
     # configSync 'neofetch'
     configSync 'rofi'
     configSync 'tmux/tmux.conf'
