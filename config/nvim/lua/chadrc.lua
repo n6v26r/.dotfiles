@@ -16,13 +16,14 @@ M.base46 = {
       'todo',
       'hop',
       'orgmode',
-      'markview'
-  }
+      'markview',
+ }
 }
 
 M.ui = {
   statusline = {
-    theme = "minimal",
+    theme = "default",
+    separator_style = "block"
   },
   tabufline = {
     lazyload = true,
