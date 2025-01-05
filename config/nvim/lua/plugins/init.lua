@@ -121,14 +121,6 @@ return {
   {
     "nvim-tree/nvim-tree.lua",
     opts = overrides.nvimtree,
-    config = function(_, opts)
-      require("nvim-tree.api").events.subscribe("TreeOpen", function()
-        if vim.o.laststatus ~= 3 then
-          vim.wo.statusline = " "
-        end
-      end)
-      require("nvim-tree").setup(opts)
-    end,
   },
 
   { "williamboman/mason-lspconfig.nvim" },
@@ -147,7 +139,7 @@ return {
     config = function()
       require("guess-indent").setup {}
     end,
-    lazy = false,
+    event = "User FilePost"
   },
 
   {
@@ -479,7 +471,7 @@ return {
       },
       {
         "<leader>sd",
-        "Autosession delete",
+        "<cmd>Autosession delete<CR>",
         mode = "n",
         desc = "Delete session",
       },

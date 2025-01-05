@@ -27,6 +27,14 @@ autocmd( {"VimEnter", "VimResume"}, {
   command = "set guicursor=n-c:block-blinkon1,v:block-blinkon0,i-ci-ve:ver25-blinkon1,r-cr:hor20,o:hor50"
 })
 
+-- Reload ibl on theme change
+autocmd("User", {
+  pattern = "NvThemeReload",
+  callback = function ()
+    dofile(vim.g.base46_cache .. "blankline")
+  end
+})
+
 local plugins = {
   "python3_provider",
   "plugin/rplugin.vim"

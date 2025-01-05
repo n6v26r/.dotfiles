@@ -5,33 +5,33 @@ local M = {}
 local highlights = require "highlights"
 
 M.base46 = {
-    theme = "catppuccin",
-    theme_toggle = { "nano-light", "catppuccin" },
-    hl_override = highlights.override,
-    hl_add = highlights.add,
-    transparency = false,
-    integrations = {
-      'git',
-      'neogit',
-      'todo',
-      'hop',
-      'orgmode',
-      'markview',
- }
+  theme = "catppuccin",
+  theme_toggle = { "nano-light", "catppuccin" },
+  hl_override = highlights.override,
+  hl_add = highlights.add,
+  transparency = false,
+  integrations = {
+    "git",
+    "neogit",
+    "todo",
+    "hop",
+    "orgmode",
+    "markview",
+  },
 }
 
 M.ui = {
   statusline = {
     theme = "default",
-    separator_style = "block"
+    separator_style = "block",
   },
   tabufline = {
     lazyload = true,
   },
   cmp = {
-    style = "atom"
+    style = "atom",
   },
-  telescope = { style = "borderless" }
+  telescope = { style = "borderless" },
 }
 
 M.nvdash = {
@@ -58,7 +58,7 @@ M.nvdash = {
   buttons = {
     { txt = "  Find File", keys = "Spc f f", cmd = "Telescope find_files" },
     { txt = "󰈚  Recent Files", keys = "Spc f o", cmd = "Telescope oldfiles" },
-    { txt = "󰁯  Find Session", keys = "Spc f s", cmd = "SessionSearch"},
+    { txt = "󰁯  Find Session", keys = "Spc f s", cmd = "SessionSearch" },
     { txt = "󰈭  Find Word", keys = "Spc f w", cmd = "Telescope live_grep" },
     { txt = "  Find Command", keys = "Spc f c", cmd = "Telescope builtin" },
     { txt = "  Bookmarks", keys = "Spc m a", cmd = "Telescope marks" },
@@ -80,7 +80,6 @@ M.nvdash = {
 
     { txt = "─", hl = "NvDashLazy", no_gap = true, rep = true },
   },
-
 }
 
 M.mason = require("configs.overrides").mason
