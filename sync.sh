@@ -2,8 +2,6 @@
 
 save=-1
 folder=''
-folderpath=''
-foldertopath=''
 
 if [ "$1" == "save" ]; then
   save=1
@@ -13,16 +11,36 @@ fi;
 
 if [ ! "$2" == "" ]; then
   folder=$2
-  if [ ! "$3" == "" ]; then
-    folderpath=$3
-    foldertopath=$4
-  fi;
 fi;
 
-if [ "$foldertopath" == '' ] && [ ! "$folderpath" == '' ]; then
-  echo "Must provide system directory path"
-  exit;
-fi;
+declare -A sync
+sync["i3"]="configSync i3"
+sync["nvim"]="configSync nvim"
+sync["bat"]="configSync bat"
+sync["conky"]="configSync conky"
+sync["dunst"]="configSync dunst"
+sync["ipython_config"]="configSync ipython_config.py config/ipython/profile_default ~/.config/ipython/profile_default"
+sync["kitty"]="configSync kitty"
+sync["picom"]="configSync picom"
+sync["polybar"]="configSync polybar"
+sync["zathura"]="configSync zathura"
+sync["fastfetch"]="configSync fastfetch"
+sync["cava"]="configSync cava"
+sync["ranger"]="configSync ranger"
+sync["neofetch"]="# configSync neofetch"
+sync["rofi"]="configSync rofi"
+sync["tmux"]="configSync tmux/tmux.conf"
+sync["starship.toml"]="configSync starship.toml config/starship ~/.config"
+sync[".zshrc"]="configSync .zshrc config/zsh ~"
+sync[".zsh"]="configSync .zsh config/zsh ~"
+sync[".gitconfig"]="configSync .gitconfig config ~"
+sync["dbxfs"]="configSync dbxfs"
+sync["nchat"]="
+  configSync app.conf config/nchat ~/.config/nchat ; 
+  configSync color.conf config/nchat ~/.config/nchat ;
+  configSync key.conf config/nchat ~/.config/nchat ;
+  configSync ui.conf config/nchat ~/.config/nchat ;
+  configSync usercolor.conf config/nchat ~/.config/nchat"
 
 function configSync() {
   path1=config
@@ -33,7 +51,6 @@ function configSync() {
   fi;
   
   if [ ! -e $path1/$1 ]; then
-    echo "1"
     if [ -d $path2/$1 ]; then
       mkdir -p $path1/$1
     else 
@@ -42,7 +59,6 @@ function configSync() {
   fi;
 
   if [ ! -e $path2/$1 ]; then
-    echo "1"
     if [ -d $path1/$1 ]; then
       mkdir -p $path2/$1
     else 
@@ -76,31 +92,11 @@ fi;
 echo ""
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   if [ ! $folder == '' ]; then
-    if [ ! $folderpath == '' ]; then
-      configSync $folder $folderpath $foldertopath
-    else
-      configSync $folder
-    fi;
+    eval ${sync[$folder]}
   else
-    configSync 'i3'
-    configSync 'nvim'
-    configSync 'bat'
-    configSync 'conky'
-    configSync 'dunst'
-    configSync 'ipython_config.py' config/ipython/profile_default ~/.config/ipython/profile_default
-    configSync 'kitty'
-    configSync 'picom'
-    configSync 'polybar'
-    configSync 'zathura'
-    configSync 'fastfetch'
-    configSync 'cava'
-    configSync 'ranger'
-    # configSync 'neofetch'
-    configSync 'rofi'
-    configSync 'tmux/tmux.conf'
-    configSync 'starship.toml' config/starship ~/.config
-    configSync '.zshrc' config/zsh ~
-    configSync '.zsh' config/zsh ~
-    configSync '.gitconfig' config ~
+    for i in "${!sync[@]}"
+    do
+      eval ${sync[$i]}
+    done
   fi;
 fi;
