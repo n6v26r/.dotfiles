@@ -2,6 +2,13 @@ local overrides = require "configs.overrides"
 
 return {
   {
+    "RaafatTurki/hex.nvim",
+    config = function(_, opts)
+      require("hex").setup()
+    end,
+    cmd = "HexDump",
+  },
+  {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
@@ -48,6 +55,13 @@ return {
       -- VimTeX configuration goes here, e.g.
       vim.g.vimtex_view_method = "zathura"
       vim.g.vimtex_syntax_enabled = 1
+      vim.g.vimtex_compiler_latexmk = {
+        options = {
+          "-file-line-error",
+          "-synctex=1",
+          "-shell-escape",
+        },
+      }
     end,
   },
 
@@ -139,7 +153,7 @@ return {
     config = function()
       require("guess-indent").setup {}
     end,
-    event = "User FilePost"
+    event = "User FilePost",
   },
 
   {
@@ -390,15 +404,17 @@ return {
         },
       }
     end,
-    init = function()
-      vim.api.nvim_create_autocmd("BufWritePost", {
-        pattern = { "*.md", "*.mdx", "*.org", "*.norg", "*.ipynb" },
-        callback = function()
+    keys = {
+      {
+        "<leader>lsp",
+        function()
           require("otter").activate()
         end,
-      })
-    end,
-    ft = { "markdown", "org", "norg" },
+        mode = "n",
+        desc = "Otter reload",
+      },
+      ft = { "markdown", "org", "norg" },
+    },
   },
 
   -- {

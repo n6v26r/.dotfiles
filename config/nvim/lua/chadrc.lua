@@ -6,7 +6,7 @@ local highlights = require "highlights"
 
 M.base46 = {
   theme = "catppuccin",
-  theme_toggle = { "nano-light", "catppuccin" },
+  theme_toggle = { "rosepine-dawn", "catppuccin" },
   hl_override = highlights.override,
   hl_add = highlights.add,
   transparency = false,
