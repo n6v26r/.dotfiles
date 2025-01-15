@@ -1,0 +1,1 @@
+{"refresh_token_command": ["gpg", "--decrypt", "/home/razv/dbxfs-auth/token.gpg"], "mount_point": "/home/razv/dropbox", "asked_send_error_reports": true}

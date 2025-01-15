@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=dbxfs
+Comment=Connect to dropbox
+Exec=/usr/bin/dbxfs
