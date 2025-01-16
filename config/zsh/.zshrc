@@ -46,6 +46,8 @@ colors
 zinit light Aloxaf/fzf-tab
 zinit light zsh-users/zsh-autosuggestions
 zinit light zdharma-continuum/fast-syntax-highlighting
+
+zinit ice wait'0e' lucid atclone="mkdir ~/.config/fsh;cp ./themes/*.ini ~/.config/fsh/.;fast-theme XDG:catppuccin-mocha"
 zinit light catppuccin/zsh-fsh
 
 zinit snippet OMZ::plugins/git/git.plugin.zsh
