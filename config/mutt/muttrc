@@ -1,41 +1,126 @@
 # vim: filetype=neomuttrc
-source /usr/local/share/mutt-wizard/mutt-wizard.muttrc
-set mailcap_path = ~/.config/mutt/mailcap
+#### Style
+source ~/.config/mutt/styles.muttrc
 
-macro index,pager <C-up> \CK\CO
-macro index,pager <C-down> \CJ\CO
+set mailcap_path = $HOME/.config/mutt/mailcap
+set rfc2047_parameters = yes
+set check_mbox_size = yes
 
-color normal		  default default         # Text is "Text"
-color index		    color2 default ~N       # New Messages are Green
-color index		    color1 default ~F       # Flagged messages are Red
-color index		    color13 default ~T      # Tagged Messages are Red
-color index		    color1 default ~D       # Messages to delete are Red
-color attachment	color5 default          # Attachments are Pink
-color signature	  color8 default          # Signatures are Surface 2
-color search		  color4 default          # Highlighted results are Blue
+#### General Key Bindings
+source $HOME/.config/mutt/keys/unbinds.muttrc 
+source $HOME/.config/mutt/keys/binds.muttrc 
 
-color indicator		default color8          # currently highlighted message Surface 2=Background Text=Foreground
-color error		    color1 default          # error messages are Red
-color status		  color15 default         # status line "Subtext 0"
-color tree        color15 default         # thread tree arrows Subtext 0
-color tilde       color15 default         # blank line padding Subtext 0
+#### Accounts
+# CHANGE THESE TO MATCH YOUR ACCOUNT CONFIG
+source ~/.config/mutt/accounts/example@example.com.muttrc  #default account
+macro index,pager i1 '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/example@example.com.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to example@example.com"
+macro index,pager i2 '<sync-mailbox><enter-command>source ~/.config/mutt/accounts/second@example.com.muttrc<enter><change-folder>!<enter>;<check-stats>' "switch to second@example.com"
 
-color hdrdefault  color13 default         # default headers Pink
-color header		  color13 default "^From:"
-color header	 	  color13 default "^Subject:"
+#### General Settings
+set send_charset="us-ascii:utf-8"
+set mime_type_query_command = "file --mime-type -b %s"
+set query_command = "abook --mutt-query '%s'"
 
-color quoted		  color15 default         # Subtext 0
-color quoted1		  color7 default          # Subtext 1
-color quoted2		  color8 default          # Surface 2
-color quoted3		  color0 default          # Surface 1
-color quoted4		  color0 default
-color quoted5		  color0 default
+set smtp_authenticators = 'gssapi:login'
+unset help
+set sleep_time = 0		        # Pause 0 seconds for informational messages
+set pager_read_delay = 3      # View a message for 3 seconds to mark as read
+set mark_old = no		          # Unread mail stay unread until read
+set mime_forward = no	  	    # mail body is forwarded with mail
+set forward_attachments = yes	# attachments are forwarded with mail
+set wait_key = no		          # mutt won't ask "press key to continue"
+set fast_reply			          # skip to compose when replying
+set fcc_attach			          # save attachments with the body
+set forward_format = "FW: %s" # format of subject when forwarding
+set forward_quote		          # quote forwarded message
+set reverse_name	            # reply as whomever it was to
+set reverse_realname=yes      # use any real name provided when replying
+set auto_tag                  # automatically apply commands to all tagged messages (if some messages are tagged)
+set include			              # include message in replies
+set mail_check=5              # to avoid lags using IMAP with some email providers (yahoo for example)
+set timeout=5                 # how long to wait after user input until unblocking background stuff like mail syncing
+set count_alternatives=yes    # recurse into text/multipart when looking for attachement types
+set thorough_search=no        # don't process mail (via mailcap etc) before parsing with queries like ~B 
+set flag_safe                 # flagged messages can't be deleted
+set delete = ask-no
 
-color body		color2 default		[\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+               # email addresses Green
-color body	  color2 default		(https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+        # URLs Green
-color body		color4 default		(^|[[:space:]])\\*[^[:space:]]+\\*([[:space:]]|$) # *bold* text Blue
-color body		color4 default		(^|[[:space:]])_[^[:space:]]+_([[:space:]]|$)     # _underlined_ text Blue
-color body		color4 default		(^|[[:space:]])/[^[:space:]]+/([[:space:]]|$)     # /italic/ text Blue
+#set crypt_auto_sign = yes
+#set crypt_opportunistic_encrypt = yes
+#set pgp_self_encrypt = yes
+#set pgp_default_key  = 'your@gpgemailaddre.ss'
 
-color sidebar_flagged   color1 default    # Mailboxes with flagged mails are Red
-color sidebar_new       color10 default   # Mailboxes with new mail are Green
+#### Header Options
+hdr_order from: to: cc: date: subject:  # header item ordering
+
+#### View Settings
+set allow_ansi             # allow ansi escape codes (e.g. colors)
+set pager_index_lines = 10 # number of index lines to show
+set pager_context = 3      # number of context lines to show
+set pager_stop             # don't go to next message automatically
+set menu_scroll            # scroll in menus
+set smart_wrap             # wrap lines at word boundaries rather than splitting up words
+# set wrap=90                # email view width
+set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+
+# Tidy up emails significantly
+# set display_filter="perl -0777pe 's/___{10,}[^_]*microsoft teams meeting.*to join the meeting<([^>]*).*(___{10,})/\\n────────────────────────────────────────────────────────────────────────\\n\\nTeams Meeting ~~\\n\\nMeeting URL:\\n$1\\n\\n────────────────────────────────────────────────────────────────────────/is'| sed 's/^\\(To\\|CC\\): \\([^<]*[^>]\\)$/\\1\:<\\2>/g' | perl -0777pe 's/(((?!.*CC:)To:|CC:).+?(?=>\\n)>)/$1!REMOVE_ME!\\n!END!/gs' | sed '/^To:/{;:l N;/!END!/b; s/\\(\\n\\|  *\\|\\t\\t*\\)/ /g; bl}' | sed '/^To:/,/>$/ s/\\([^>]*>,\\?\\)/\\1\\n/g' | sed -e 's/^ \\(CC:\\)\\(.*$\\)/\\1\\n\\2/' -e 's/^\\(To:\\)\\(.*$\\)/\\1 --------------------------------------------------------------------\\n\\2/' -e 's/^!END!$/------------------------------------------------------------------------/' -e '/!REMOVE_ME!/d' -e '/\\[-- Type: text.* --\\]/d' -e '/\\[-- Autoview.* --\\]/d' -e '/\\[-- Type.* --\\]/d' -e '/\\[-- .*unsupported.* --\\]/d' -e '/\\[-- Attachment #[0-9] --\\]/d' -e 's/Attachment #[0-9]: //g' -e '/./,/^$/!d' -e 's/\\([A-Z]*\\), *\\([A-Za-z]*\\)\\(\"\\)\\?/\\2 \\L\\u\\1\\E\\3/g'"
+
+### Notmuch Config
+set nm_query_type=threads                                   # bring in the whole thread instead of just the matched message, really useful
+set nm_default_url = "notmuch:///$HOME/.local/share/mail"   # default notmuch URL
+set nm_record_tags = "sent"                                 # default 'sent' tag
+set virtual_spoolfile=no                                   # allow using virtual mailboxes as spoolfile 
+macro index \Cg "<enter-command>unset wait_key<enter><shell-escape>read -p 'Enter a search: ' x; echo \$x >~/.cache/mutt_terms<enter><change-folder>All Accounts<enter><limit>~i \"\`notmuch --config ~/.config/notmuch/notmuchrc search --output=messages \$(/bin/cat ~/.cache/mutt_terms) | head -n 1000 | perl -le '@a=<>;chomp@a;s/\^id:// for@a;$,=\"|\";print@a' | sed 's/id://g' \`\"<enter>" "Search all mailboxes in all accounts (Global search)"
+
+#### Content/Autoview
+auto_view application/ics
+auto_view text/calendar
+auto_view text/plain
+auto_view text/html
+auto_view text/markdown
+auto_view application/pgp-encrypted
+alternative_order text/calendar application/ics text/plain text/enriched text/html
+
+#### Sidebar Config
+set sidebar_format = '%D%?Z? [%Z]?%* %?S?%S?'
+set sidebar_divider_char = '░'
+set sidebar_folder_indent = yes
+set sidebar_indent_string = ' - '
+set sidebar_non_empty_mailbox_only = yes
+set sidebar_visible = no
+set sidebar_width   = 40
+set sidebar_next_new_wrap = yes
+set sidebar_short_path = yes
+set sidebar_component_depth = 0
+set mail_check_stats
+
+#### Thread ordering
+set use_threads=reverse
+set sort='last-date'
+set collapse_all = yes
+set uncollapse_new = no
+set thread_received = yes
+set narrow_tree=no
+
+#### Lists
+set auto_subscribe
+
+### Sounds
+set beep=no  # don't beep for errors
+set beep_new=no # beep for new messages
+
+#### Text editor
+set editor="$HOME/.config/mutt/bin/mutt-trim %s; nvim +':set textwidth=72' +':set wrapmargin=0' +':set wrap' +':set spell' %s"
+
+#### Markdown to html email conversion
+macro compose M "F pandoc -s -f markdown -t html \ny^T^Utext/html; charset=UTF-8\n" "Convert from MD to HTML"
+
+#### Show patch files (requires git-split-diffs)
+macro attach P "|git diff --color | less -RF<enter>" "View a patch file as a diff"
+
+macro attach G "|html2text|glow && read<enter>" "View html file in glow"
+set wait_key=no
+
+# this is a bit of a hack which you may not want/need
+# timeout-hook 'exec sync-mailbox' # sync mailbox whenever idle

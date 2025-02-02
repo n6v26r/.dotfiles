@@ -1,0 +1,22 @@
+# vim: filetype=neomuttrc
+# muttrc file for account example@example.com
+source ~/.config/mutt/switch.muttrc 
+set realname = "REALNAME"
+set from = "example@example.com"
+set sendmail = "msmtp -a example@example.com"
+alias me REALNAME <example@example.com>
+set folder = "/home/razv/.local/share/mail/example@example.com"
+set header_cache = "/home/razv/.cache/mutt-wizard/example_example.com/headers"
+set message_cachedir = "/home/razv/.cache/mutt-wizard/example_example.com/bodies"
+set mbox_type = Maildir
+set hostname = "example.com"
+set spoolfile = "+INBOX"
+set postponed = "+Drafts"
+set trash = "+Trash"
+set record = "+Sent"
+
+macro index o "<shell-escape>mailsync example@example.com<enter>" "sync example@examplegmail.com"
+
+mailboxes "=Conversation History" "=Drafts" "=INBOX" "=Sent" "=Trash"
+virtual-mailboxes "Starred" "notmuch://?query=tag:flagged AND NOT tag:deleted
+mailboxes "=[Gmail]/All Mail" "=[Gmail]/Drafts" "=[Gmail]/Important" "=[Gmail]/Sent Mail" "=[Gmail]/Spam" "=[Gmail]/Starred" "=[Gmail]/Trash"

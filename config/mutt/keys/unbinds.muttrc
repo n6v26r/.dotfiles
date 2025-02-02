@@ -1,0 +1,17 @@
+# vim: filetype=neomuttrc
+unbind \CK
+unbind \CJ
+
+bind index,pager i noop
+bind index,pager g noop
+bind index \Cf noop
+bind index,pager M noop
+bind index,pager C noop
+
+bind index,pager \Co noop
+bind index,pager \Cl noop
+bind index,pager \Ch noop
+
+bind index,pager \Cn noop
+bind index,pager n noop
+bind index,pager B noop

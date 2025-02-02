@@ -1,6 +1,13 @@
 local overrides = require "configs.overrides"
 
+-- TODO: organize this mess!
 return {
+  {
+      "nvzone/typr",
+      dependencies = "nvzone/volt",
+      opts = {},
+      cmd = { "Typr", "TyprStats" },
+  },
   {
     "RaafatTurki/hex.nvim",
     config = function(_, opts)
@@ -540,7 +547,7 @@ return {
     "mrjones2014/smart-splits.nvim",
     keys = {
       {
-        "<C-A-Up>",
+        "<C-A-k>",
         function()
           require("smart-splits").resize_up(5)
         end,
@@ -548,7 +555,7 @@ return {
         desc = "Resize Up",
       },
       {
-        "<C-A-Down>",
+        "<C-A-j>",
         function()
           require("smart-splits").resize_down(5)
         end,
@@ -556,7 +563,7 @@ return {
         desc = "Resize Down",
       },
       {
-        "<C-A-Left>",
+        "<C-A-h>",
         function()
           require("smart-splits").resize_left(5)
         end,
@@ -564,7 +571,7 @@ return {
         desc = "Resize Left",
       },
       {
-        "<C-A-Right>",
+        "<C-A-l>",
         function()
           require("smart-splits").resize_right(5)
         end,

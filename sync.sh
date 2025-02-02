@@ -34,7 +34,10 @@ sync["starship.toml"]="configSync starship.toml config/starship ~/.config"
 sync[".zshrc"]="configSync .zshrc config/zsh ~"
 sync[".zsh"]="configSync .zsh config/zsh ~"
 sync[".gitconfig"]="configSync .gitconfig config ~"
+sync["glow"]="configSync glow"
 sync["dbxfs"]="configSync dbxfs"
+sync["sc-im"]="configSync sc-im"
+sync["imv"]="configSync imv"
 sync["nchat"]="
   configSync app.conf config/nchat ~/.config/nchat ; 
   configSync color.conf config/nchat ~/.config/nchat ;

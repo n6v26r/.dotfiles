@@ -72,7 +72,19 @@
   * **Editor**: nvim with [neovide](https://github.com/neovide/neovide) for gui (config based on [Nvchad](https://github.com/NvChad/NvChad) and [Vimacs](https://github.com/UTFeight/vimacs))
   * **Font**: FiraCode Nerd Font Mono + JetBrains (for italic text)
   * **Music app:** Youtube Music [yt-ch](https://github.com/th-ch/youtube-music)
-  * **Discord**: [betterdiscord](https://betterdiscord.app/) (catppuccin mocha css)
+  * Social:
+    * **Discord**: [betterdiscord](https://betterdiscord.app/) (catppuccin mocha css)
+    * **WhatsApp**: [nchat - tui client](https://github.com/d99kris/nchat)
+    * **Mastodon**: [toot](https://github.com/ihabunek/toot)
+    * **Mail**: [neomutt](https://github.com/neomutt/neomutt)
+      (Config inspired from: [mutt_dotfiles](https://github.com/ceuk/mutt_dotfiles) and 
+      [neomutt-powerline-fonts](https://github.com/sheoak/neomutt-powerline-nerdfonts))
+        * <details><summary>Screenshot</summary>
+          
+          <img src="Screenshots/neomutt.png" width="400">
+
+        </details>
+
   * **Browser**: Firefox with [Cascade](https://github.com/andreasgrafen/cascade) (Catppuccin Lavander theme) + [Chevron](https://github.com/kholmogorov27/chevron) as startpage. Guide for configuration and cascade css in the repo. ☝️
   * **Visualizer:** [Cava](https://github.com/karlstav/cava)
   * **PDF Viewer:** [Zathura](https://github.com/pwmt/zathura)

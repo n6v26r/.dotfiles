@@ -1,5 +1,3 @@
-
-
 # Use powerline
 # USE_POWERLINE="true"
 # Source manjaro-zsh-configuration
@@ -146,6 +144,7 @@ setopt GLOB_DOTS
 setopt correct
 setopt extendedglob
 setopt nobeep
+stty -ixon
 
 #Better cat
 alias cat="bat"
@@ -174,6 +173,23 @@ function pastebin() {
     local file=${1:-/dev/stdin}
     curl --data-binary @${file} https://paste.rs
     echo ""
+}
+
+# Fix some rendering issues with tui apps
+function neomutt(){
+  term=$TERM
+  TERM=xterm-256color
+  setterm -linewrap off
+  /usr/bin/neomutt "$@"
+  setterm -linewrap on
+  TERM=$term
+}
+
+function nchat(){
+  term=$TERM
+  TERM=xterm-256color
+  /usr/bin/nchat "$@"
+  TERM=$term
 }
 
 eval "$(fzf --zsh)"

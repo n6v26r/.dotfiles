@@ -1,1 +1,23 @@
-application/*; /usr/bin/xdg-open %s
+# open html emails in browser (or whatever GUI program is used to render HTML)
+# text/html; xdg-open %s ; nametemplate=%s.html
+# render html emails inline using magic (uncomment the line below to use lynx instead)
+text/html; lynx -assume_charset=%{charset} -display_charset=utf-8 -collapse_br_tags -dump %s; nametemplate=%s.html; copiousoutput
+# text/html; ~/.config/mutt/bin/beautiful_html_render %s; nametemplate=%s.html; copiousoutput;
+text/markdown; ~/.config/mutt/bin/markdown_render; nametemplate=%s.md; copiousoutput;
+
+# show calendar invites
+text/calendar; ~/.config/mutt/bin/render-calendar-attachment.py %s; copiousoutput;
+application/ics; ~/.config/mutt/bin/mutt-viewical; copiousoutput;
+
+# open images externally
+image/*; xdg-open %s;
+
+# open videos in mpv
+video/*; mpv --autofit-larger=90\%x90\% %s; needsterminal;
+video/*; setsid mpv --quiet %s &; copiousoutput
+
+# open spreadsheets in sc-im
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; sc-im %s; needsterminal
+
+# open anything else externally
+application/*; xdg-open %s;

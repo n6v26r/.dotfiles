@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+glow -w 0 -s ~/.config/glow/email.json $1
