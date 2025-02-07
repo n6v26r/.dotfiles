@@ -158,7 +158,8 @@ alias df='df -h'                                                # Human-readable
 alias free='free -m'                                            # Show sizes in MB
 alias gitu='git add . && git commit && git push'
 
-alias r="ranger"
+# alias r="ranger"
+alias yz="yazi"
 alias n="nvim"
 alias nv="neovim"
 alias t="tmux"

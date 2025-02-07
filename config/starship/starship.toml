@@ -31,9 +31,7 @@ $line_break
 """
 right_format = """
 $jobs\
-[](fg:maroon bg:base)\
 $cmd_duration\
-[](fg:maroon bg:base)\
 """
 
 palette = 'catppuccin_mocha'
@@ -44,8 +42,8 @@ show_milliseconds = true
 disabled = false
 min_time = 0
 min_time_to_notify = 1_000
-style = "bold bg:maroon fg:text"
-format = "[  $duration ]($style)"
+style = "bold bg:lavender fg:crust"
+format = "[](fg:lavender bg:base)[  $duration ]($style)[](fg:lavender bg:base)"
 
 [jobs]
 symbol = "✿"
@@ -79,14 +77,15 @@ FreeBSD = ""
 
 [username]
 show_always = true
-style_user = "bold bg:red fg:text"
-style_root = "bold bg:red fg:text"
+style_user = "bold bg:red fg:crust"
+style_root = "bold bg:red fg:crust"
 format = '[ $user ]($style)'
 
 [directory]
-style = "bold fg:text bg:peach"
+style = "bold fg:crust bg:peach"
 format = "[ $path ]($style)"
 truncation_length = 2
+truncate_to_repo = false
 truncation_symbol = "…/"
 
 [directory.substitutions]
@@ -98,68 +97,68 @@ truncation_symbol = "…/"
 
 [git_branch]
 symbol = ""
-style = "bold bg:crust"
-format = '[[](fg:pink bg:crust)[ $symbol $branch ](bold fg:text bg:crust)]($style)'
+style = "bold bg:pink"
+format = '[[ $symbol $branch ](bold fg:crust bg:pink)]($style)'
 
 [git_status]
-style = "bold bg:crust"
-format = '[[($all_status$ahead_behind )](bold fg:text bg:crust)]($style)[](fg:crust bg:pink)'
+style = "bold bg:pink"
+format = '[[($all_status$ahead_behind )](bold fg:crust bg:pink)]($style)'
 
 [nodejs]
 symbol = ""
 style = "bg:blue"
-format = '[[ $symbol](bold fg:text bg:blue)]($style)'
+format = '[[ $symbol](bold fg:crust bg:blue)]($style)'
 
 [c]
 symbol = " "
 style = "bg:blue"
-format = '[[ $symbol](bold fg:text bg:blue)]($style)'
+format = '[[ $symbol](bold fg:crust bg:blue)]($style)'
 
 [custom.cpp]
 detect_extensions = ['cpp', 'hpp']
 symbol = " "
 style = "bg:blue"
-format = '[[ $symbol](bold fg:text bg:blue)]($style)'
+format = '[[ $symbol](bold fg:crust bg:blue)]($style)'
 
 [rust]
 symbol = ""
 style = "bg:blue"
-format = '[[ $symbol](bold fg:text bg:blue)]($style)'
+format = '[[ $symbol](bold fg:crust bg:blue)]($style)'
 
 [golang]
 symbol = ""
 style = "bg:blue"
-format = '[[ $symbol](bold fg:text bg:blue)]($style)'
+format = '[[ $symbol](bold fg:crust bg:blue)]($style)'
 
 [php]
 symbol = ""
 style = "bg:blue"
-format = '[[ $symbol](bold fg:text bg:blue)]($style)'
+format = '[[ $symbol](bold fg:crust bg:blue)]($style)'
 
 [java]
 symbol = " "
 style = "bg:blue"
-format = '[[ $symbol](bold fg:text bg:blue)]($style)'
+format = '[[ $symbol](bold fg:crust bg:blue)]($style)'
 
 [kotlin]
 symbol = ""
 style = "bg:blue"
-format = '[[ $symbol](bold fg:text bg:blue)]($style)'
+format = '[[ $symbol](bold fg:crust bg:blue)]($style)'
 
 [haskell]
 symbol = ""
 style = "bg:blue"
-format = '[[ $symbol](bold fg:text bg:blue)]($style)'
+format = '[[ $symbol](bold fg:crust bg:blue)]($style)'
 
 [python]
 symbol = ""
 style = "bg:blue"
-format = '[[ $symbol](bold fg:text bg:blue)]($style)'
+format = '[[ $symbol](bold fg:crust bg:blue)]($style)'
 
 [docker_context]
 symbol = ""
 style = "bg:blue"
-format = '[[ $symbol( $context) ](bold fg:text bg:blue)]($style)'
+format = '[[ $symbol( $concrust) ](bold fg:crust bg:blue)]($style)'
 
 [time]
 disabled = false

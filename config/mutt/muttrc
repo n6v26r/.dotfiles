@@ -112,7 +112,7 @@ set beep=no  # don't beep for errors
 set beep_new=no # beep for new messages
 
 #### Text editor
-set editor="$HOME/.config/mutt/bin/mutt-trim %s; nvim +':set textwidth=72' +':set wrapmargin=0' +':set wrap' +':set spell' %s"
+set editor="$HOME/.config/mutt/bin/mutt-trim %s; nvim +':set spell' %s"
 
 #### Markdown to html email conversion
 macro compose M "F pandoc -s -f markdown -t html \ny^T^Utext/html; charset=UTF-8\n" "Convert from MD to HTML"

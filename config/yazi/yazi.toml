@@ -1,0 +1,18 @@
+# A TOML linter such as https://taplo.tamasfe.dev/ can use this schema to validate your config.
+# If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
+"$schema" = "https://yazi-rs.github.io/schemas/yazi.json"
+
+[manager]
+ratio          = [ 2, 3, 3 ]
+linemode			 = "none"
+mouse_events   = [ "click", "scroll", "touch", "move", "drag"]
+
+[preview]
+image_quality  = 90
+image_filter    = "lanczos3"
+
+[plugin]
+prepend_previewers = [
+  { name = "*.md", run = "glow" },
+]
+
