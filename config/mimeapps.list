@@ -10,8 +10,9 @@ application/x-extension-shtml=firefox.desktop
 application/xhtml+xml=firefox.desktop
 application/x-extension-xhtml=firefox.desktop
 application/x-extension-xht=firefox.desktop
-image/jpeg=viewnior.desktop;gpicview.desktop;
-image/png=viewnior.desktop;gpicview.desktop;
+image/jpeg=imv-dir.desktop
+image/png=imv-dir.desktop
+image/jpg=imv-dir.desktop
 text/plain=neovide.desktop
 x-scheme-handler/mailto=userapp-Thunderbird.desktop
 message/rfc822=userapp-Thunderbird.desktop
@@ -22,6 +23,7 @@ text/markdown=firefox.desktop
 application/zip=xarchiver.desktop
 text/x-c++src=neovide.desktop
 text/x-csrc=neovide.desktop
+x-scheme-handler/betterdiscord=discord.desktop
 
 [Added Associations]
 x-scheme-handler/http=userapp-Pale Moon.desktop;firefox.desktop;
@@ -35,8 +37,9 @@ application/x-extension-shtml=userapp-Pale Moon.desktop;firefox.desktop;
 application/xhtml+xml=userapp-Pale Moon.desktop;firefox.desktop;
 application/x-extension-xhtml=userapp-Pale Moon.desktop;firefox.desktop;
 application/x-extension-xht=userapp-Pale Moon.desktop;firefox.desktop;
-image/jpeg=viewnior.desktop;gpicview.desktop;
-image/png=viewnior.desktop;gpicview.desktop;
+image/png=imv-dir.desktop
+image/jpg=imv-dir.desktop
+image/jpeg=imv-dir.desktop
 text/plain=neovide.desktop;mousepad.desktop;
 x-scheme-handler/mailto=userapp-Thunderbird.desktop;
 message/rfc822=userapp-Thunderbird.desktop;
@@ -45,3 +48,5 @@ application/x-bittorrent=deluge.desktop;
 application/zip=xarchiver.desktop;
 text/x-c++src=neovide.desktop;
 text/x-csrc=neovide.desktop;
+
+[Removed Associations]

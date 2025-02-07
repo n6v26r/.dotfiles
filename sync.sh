@@ -14,6 +14,7 @@ if [ ! "$2" == "" ]; then
 fi;
 
 declare -A sync
+sync["mpv"]="configSync mpv"
 sync["i3"]="configSync i3"
 sync["nvim"]="configSync nvim"
 sync["bat"]="configSync bat"
