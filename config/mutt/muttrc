@@ -43,6 +43,7 @@ set count_alternatives=yes    # recurse into text/multipart when looking for att
 set thorough_search=no        # don't process mail (via mailcap etc) before parsing with queries like ~B 
 set flag_safe                 # flagged messages can't be deleted
 set delete = ask-no
+set copy = no
 
 #set crypt_auto_sign = yes
 #set crypt_opportunistic_encrypt = yes
