@@ -1,0 +1,96 @@
+#!/usr/bin/env bash
+# Author: gh0stzk
+# Revision Date: 09.02.2025 10:00:58
+# Repository: https://github.com/gh0stzk/dotfiles
+# ----------------------------------------------------------------------------
+# Simple CLI for shell-color-scripts
+#
+# This is my modified version of the shell-color-scripts from
+# https://github.com/charitarthchugh/shell-color-scripts
+#
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# Licensed under GPL-3.0 license
+# ----------------------------------------------------------------------------
+
+DIR_COLORSCRIPTS="$HOME/.local/share/asciiart"
+shopt -s nullglob
+
+# Load scripts into an array
+color_scripts=("$DIR_COLORSCRIPTS"/*)
+color_scripts=("${color_scripts[@]##*/}")  # Eliminar rutas, conservar nombres
+length_colorscripts=${#color_scripts[@]}
+
+function _help() {
+    echo "Description: A collection of terminal color scripts."
+    echo
+    echo "Usage: colorscript [OPTION] [SCRIPT NAME/INDEX]"
+    echo
+    printf "  %-3s\t%s\n" \
+        "-h" "Print this help." \
+        "-l" "List all installed color scripts." \
+        "-r" "Run a random color script." \
+        "-e" "Run a specified color script by NAME or INDEX."
+}
+
+function _list() {
+    echo "There are $length_colorscripts installed color scripts:"
+    for i in "${!color_scripts[@]}"; do
+        printf "%d\t%s\n" "$((i+1))" "${color_scripts[i]}"
+    done
+}
+
+function _random() {
+    local random_index=$(( RANDOM % length_colorscripts ))
+    exec "${DIR_COLORSCRIPTS}/${color_scripts[random_index]}"
+}
+
+function _run_colorscript() {
+    local script_name
+    if [[ $1 =~ ^[0-9]+$ ]]; then  # If it is numerical
+        if (( $1 < 1 || $1 > length_colorscripts )); then
+            echo "Error: Invalid index '$1'. Use 1-$length_colorscripts." >&2
+            exit 1
+        fi
+        script_name="${color_scripts[$1-1]}"
+    else  # If it is name
+        if [[ ! -f "${DIR_COLORSCRIPTS}/$1" ]]; then
+            echo "Error: The '$1' script does not exist." >&2
+            exit 1
+        fi
+        script_name="$1"
+    fi
+    exec "${DIR_COLORSCRIPTS}/${script_name}"
+}
+
+# Process arguments
+case "$#" in
+    0)
+        _help
+        ;;
+    1)
+        case "$1" in
+            -h) _help ;;
+            -l) _list ;;
+            -r) _random ;;
+            *)
+                echo "Error: Invalid option '$1'." >&2
+                exit 1
+                ;;
+        esac
+        ;;
+    2)
+        case "$1" in
+            -e)
+                _run_colorscript "$2"
+                ;;
+            *)
+                echo "Error: Invalid option '$1'." >&2
+                exit 1
+                ;;
+        esac
+        ;;
+    *)
+        echo "Input error, too many arguments." >&2
+        exit 1
+        ;;
+esac

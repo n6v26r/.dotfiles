@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+#  ███████╗███████╗████████╗ ██████╗██╗  ██╗
+#  ██╔════╝██╔════╝╚══██╔══╝██╔════╝██║  ██║
+#  █████╗  █████╗     ██║   ██║     ███████║
+#  ██╔══╝  ██╔══╝     ██║   ██║     ██╔══██║
+#  ██║     ███████╗   ██║   ╚██████╗██║  ██║
+#  ╚═╝     ╚══════╝   ╚═╝    ╚═════╝╚═╝  ╚═╝
+#	Little fetch made to work with my eww widget
+# 	gh0stzk | https://github.com/gh0stzk/dotfiles
+#	11.07.2024 10:20:07
+ 
+os() {
+  awk -F '"' '/PRETTY_NAME/ {print $2}' /etc/os-release | awk '{print $1}'
+}
+
+wm() {
+  wm=$XDG_CURRENT_DESKTOP
+  [ "$wm" ] || wm=$DESKTOP_SESSION
+
+  ## WM/DE
+  [ ! "$wm" ] &&
+    # loop over all processes and check the binary name
+    for i in /proc/*/comm; do
+      read -r c <"$i"
+      case $c in
+      *bar*) ;;
+      awesome | xmonad* | qtile | sway | i3 | [bfo]*box | *wm*)
+        wm=${c%%-*}
+        break
+        ;;
+      esac
+    done
+
+  echo $wm
+}
+
+shell() {
+  basename $SHELL
+}
+
+"$@"

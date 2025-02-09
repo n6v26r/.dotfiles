@@ -25,7 +25,8 @@ focus_follows_mouse no
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
-exec --no-startup-id dex --autostart --environment i3
+exec --no-startup-id dbxfs
+# exec --no-startup-id dex --autostart --environment i3
 
 # load wallpaper
 # exec_always --no-startup-id feh --bg-scale ~/Downloads/pictures/1360877_catppuccin-mocha.jpeg
@@ -39,6 +40,7 @@ exec --no-startup-id "dunst"
 
 # start polybar
 exec --no-startup-id "~/.config/polybar/restart.sh"
+exec --no-startup-id "eww daemon"
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -204,7 +206,7 @@ bindsym $mod+Shift+0 move container to workspace number $ws10; workspace number 
 exec --no-startup-id "batsignal -b"
 
 #lock screen
-bindsym $mod+Escape exec --no-startup-id "$HOME/.config/i3/i3lock.sh"
+bindsym $mod+Escape exec --no-startup-id "$HOME/.config/i3/i3lock.sh -r"
 
 # notifications daemon
 bindsym $mod+Shift+d exec --no-startup-id "dunstctl history-pop"
@@ -290,10 +292,11 @@ for_window [class="matplotlib"] floating enable
 for_window [class="Galculator"] floating enable
 for_window [class="Blueman-manager"] floating enable
 for_window [class="pavucontrol"] floating enable
+for_window [class="imv"] floating enable
+for_window [class="feh"] floating enable
+# for_window [class="eww"] floating enable
 
-# Borderless
-# for_window [class="neovide"] border none
-# for_window [class="kitty"] border none
+for_window [class="Eww"] border none
  
 # set change keyboard language with alt-shift (in my case us + ro standard)
 exec_always --no-startup-id "setxkbmap -model pc105 -layout us,ro -variant ,std -option 'grp:alt_shift_toggle'"
