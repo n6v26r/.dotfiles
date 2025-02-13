@@ -36,7 +36,7 @@ get_state() {
 icon() {
     case "$(get_state)" in
         "On")  echo "⠀󰀝⠀" ;;
-        *)     echo "⠀󰀞 ⠀" ;;
+        *)     echo "⠀󰀞⠀" ;;
     esac
 }
 

@@ -178,7 +178,6 @@
     :y "-7%"
     :anchor "bottom center"
   )
-	:wm-ignore false
-  :windowtype "normal"
+	:wm-ignore true
   (player)
 )

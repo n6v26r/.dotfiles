@@ -266,7 +266,7 @@
     (box  :orientation "h" :space-evenly "true" :spacing 1
       (box  :class "tools-main" :orientation "v" :space-evenly "false" :spacing 2
         (eventbox :class "tools-box" :width 43 :height 43 :halign "center" :cursor "pointer" :tooltip "Night Light"
-          (button :class {redshift_status == "on" ? "redshift-btn" : "redshift-no-btn"} :onclick "../eww/profilecard/scripts/Redshift toggle &" {redshift_status == "on" ? "⠀󰹐 ⠀" : "󱠃"}))
+          (button :class {redshift_status == "on" ? "redshift-btn" : "redshift-no-btn"} :onclick "../eww/profilecard/scripts/Redshift toggle &" {redshift_status == "on" ? "⠀󰹐⠀" : "󱠃"}))
         (label :class "info-btn" :limit-width 12 :xalign 0.5 :text "Night Light"))
 
       (box  :class "tools-main" :orientation "v" :space-evenly "false" :spacing 2

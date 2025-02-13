@@ -48,12 +48,12 @@ get_network_info() {
                 ;;
             *)
                 STATUS="Disconectted"
-                ICON="⠀󰖪 ⠀"
+                ICON="⠀󰖪⠀"
                 ;;
         esac
     else
         STATUS="Offline"
-        ICON="⠀󰖪 ⠀"
+        ICON="⠀󰖪⠀"
     fi
 }
 
