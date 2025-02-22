@@ -6,4 +6,4 @@ artist=$(MediaControl --artist)
 notitle="Play Something"
 noartist="No Artist"
 
-[ "$title" != "$notitle" ] && [ "$title" != "$notitle" ] && echo $title
+[ "$title" != "$notitle" ] && [ "$title" != "$notitle" ] && echo $title | sed 's/\(.\{25\}\).*/\1.../'

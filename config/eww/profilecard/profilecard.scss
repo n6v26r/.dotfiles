@@ -104,6 +104,7 @@
   .arch-icon {
     font-family: Material Design Icons Desktop;
     font-size: 3rem;
+    border-right: 1em;
     color: $archicon;
   }
 }
@@ -176,7 +177,7 @@
 
 .tools-box {
   font-family: "Material Design Icons Desktop";
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   border-radius: 100%;
   background-color: $bg-alt;
 }

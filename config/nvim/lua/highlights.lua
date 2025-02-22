@@ -16,6 +16,12 @@ M.override = {
 M.add = {
   NvDashLazy = { fg = "red", bg = "" },
   NvimTreeOpenedFolderName = { fg = "green", bold = true },
+
+  CompetiTestRunning = { bold = true },
+  CompetiTestDone = { fg = "", bg = "" },
+  CompetiTestCorrect = { fg = "green", bg = "" },
+  CompetiTestWarning = { fg = "yellow", bg = "" },
+  CompetiTestWrong = { fg = "red", bg = "" },
 }
 
 return M

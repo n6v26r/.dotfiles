@@ -5,13 +5,13 @@
 (defpoll wm :interval "24h" "../eww/profilecard/scripts/fetch wm")
 
 ;; Profile
-(defvar IMAGEP "../src/assets/profile.png")
+(defvar IMAGEP "../../profile.png")
 (defpoll username :interval "24h" "whoami")
 (defpoll hostname :interval "24h" "cat /etc/hostname")
 (defpoll uptime :interval "30s" "uptime -p | sed -E -e 's/hour(s)?/hrs/g' -e 's/minute(s)?/min/g'")
 
 ;; Pacman
-(defpoll updates :interval "5m" "Updates --get-updates")
+(defpoll updates :interval "20m" "Updates --get-updates")
 (defpoll packages :interval "1h" "pacman -Q | wc -l")
 
 ;; Weather
@@ -26,7 +26,7 @@
 (defpoll net_icon :interval "3s" "../eww/profilecard/scripts/Network --icon")
 
 ;; Temp
-(defpoll temp :interval "5s" "../src/temp.sh")
+(defpoll temp :interval "5s" "temp.sh")
 
 ;; Battery
 ;;(defpoll battery :interval "3s" "../eww/profilecard/scripts/Battery get_battery")
@@ -128,23 +128,23 @@
 						 (button :class "pacman-updates"
 								 :halign "start"
 								 :tooltip "Click to update"
-								 :onclick "OpenApps --update &" "${updates} Updates"))))
+								 :onclick "kitty --class 'kitty_floating' --hold -e Updates --update-system &" "${updates} Updates"))))
 			   (box :orientation "h"
 					:space-evenly "false"
 					:class "fetch"
 					:spacing 8
 					(label :class "arch-icon"
 						   :halign "start"
-						   :text "󰣇")
+						   :text "")
 					(box
 						 :space-evenly "false"
 						 (box :orientation "v"
 							  :spacing 3
 							  :halign "end"
-							  :style "margin-left: 10px;"
+							  :style "margin-left: 20px;"
 							  (label :class "os-icon"
 									 :halign "start"
-									 :text "󰣇")
+									 :text "")
 							  (label :class "pkgs-icon"
 									 :halign "start"
 									 :text "󰮯")
@@ -245,8 +245,8 @@
 
       (box  :class "tools-main" :orientation "v" :space-evenly "false" :spacing 2
         (eventbox :class "tools-box" :width 43 :height 43 :halign "center" :cursor "pointer" :tooltip "Wired/WiFi network connection"
-          (button :class {net_status != "Offline" ? "wifi-btn" : "wifi-no-btn"}
-                  :onclick "NetManager &" net_icon))
+          (button :class {net_status != "Offline" ? net_status != "Disabled" ? "wifi-btn" : "wifi-no-btn" : "wifi-no-btn"}
+                  :onclick "../eww/profilecard/scripts/Network --switch" net_icon))
         (label :class "info-btn" :limit-width 12 :xalign 0.5 :text net_status))
 
       (box  :class "tools-main" :orientation "v" :space-evenly "false" :spacing 2
@@ -266,12 +266,12 @@
     (box  :orientation "h" :space-evenly "true" :spacing 1
       (box  :class "tools-main" :orientation "v" :space-evenly "false" :spacing 2
         (eventbox :class "tools-box" :width 43 :height 43 :halign "center" :cursor "pointer" :tooltip "Night Light"
-          (button :class {redshift_status == "on" ? "redshift-btn" : "redshift-no-btn"} :onclick "../eww/profilecard/scripts/Redshift toggle &" {redshift_status == "on" ? "⠀󰹐⠀" : "󱠃"}))
+          (button :class {redshift_status == "on" ? "redshift-btn" : "redshift-no-btn"} :onclick "../eww/profilecard/scripts/Redshift toggle &" {redshift_status == "on" ? "󰹐" : "󱠃"}))
         (label :class "info-btn" :limit-width 12 :xalign 0.5 :text "Night Light"))
 
       (box  :class "tools-main" :orientation "v" :space-evenly "false" :spacing 2
         (eventbox :class "tools-box" :width 43 :height 43 :halign "center" :cursor "pointer"
-          (button :class {game_state == "Off" ? "game-no-btn" : "game-btn"} :onclick "../eww/profilecard/scripts/GameMode --toggle &" " "))
+          (button :class {game_state == "Off" ? "game-no-btn" : "game-btn"} :onclick "../eww/profilecard/scripts/GameMode --toggle &" "󰺵"))
         (label :class "info-btn" :limit-width 12 :xalign 0.5 :text "Game Mode")))
   )
 )

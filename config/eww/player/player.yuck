@@ -55,7 +55,7 @@
 						:spacing 10
 						(shuffle
 							:action {music-player == "MPD" ? "mpc random" : "playerctl -p ${music-player} shuffle toggle"}
-							:color {shuffle == "On" ? "#81ae5f" : "#b8bfe5"}
+							:color {shuffle == "On" ? "#a6e3a1" : "#cdd6f4"}
 							:status shuffle
 						)
 						(loop
@@ -65,7 +65,7 @@
 							loop == "Playlist" ? "playerctl -p ${music-player} loop track" : "playerctl -p ${music-player} loop none"}
 							:icon  {loop == "Track" ? "󰑘" :
 							loop == "Playlist" || loop == "On" ? "󰑖" : "󰑗"}
-							:color {loop == "Playlist" || loop == "Track" || loop == "On" ? "#81ae5f" : "#b8bfe5"}
+							:color {loop == "Playlist" || loop == "Track" || loop == "On" ? "#a6e3a1" : "#cdd6f4"}
 							:status loop
 						)
 					)

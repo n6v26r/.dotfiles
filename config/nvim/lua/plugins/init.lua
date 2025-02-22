@@ -3,11 +3,20 @@ local overrides = require "configs.overrides"
 -- TODO: organize this mess!
 return {
   {
-      "nvzone/typr",
-      dependencies = "nvzone/volt",
-      opts = {},
-      cmd = { "Typr", "TyprStats" },
+    "xeluxee/competitest.nvim",
+    dependencies = "MunifTanjim/nui.nvim",
+    config = function()
+      require("competitest").setup()
+    end,
   },
+
+  {
+    "nvzone/typr",
+    dependencies = "nvzone/volt",
+    opts = {},
+    cmd = { "Typr", "TyprStats" },
+  },
+
   {
     "RaafatTurki/hex.nvim",
     config = function(_, opts)
@@ -15,6 +24,7 @@ return {
     end,
     cmd = "HexDump",
   },
+
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },

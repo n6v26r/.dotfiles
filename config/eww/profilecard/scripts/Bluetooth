@@ -28,7 +28,7 @@ has_bluetooth() {
 get_icon() {
     if has_bluetooth; then
         if bluetoothctl show | grep -q "Powered: yes"; then
-            echo "󰂯"
+            echo ""
         else
             echo "󰂲"
         fi
