@@ -1,6 +1,7 @@
 local overrides = require "configs.overrides"
 
 -- TODO: organize this mess!
+
 return {
   {
     "xeluxee/competitest.nvim",
@@ -16,6 +17,8 @@ return {
     opts = {},
     cmd = { "Typr", "TyprStats" },
   },
+
+  { "nvzone/timerly", cmd = "TimerlyToggle" },
 
   {
     "RaafatTurki/hex.nvim",
@@ -87,7 +90,7 @@ return {
     build = "make",
     opts = {
       save_path = "~/Pictures",
-      has_breadcrumbs = true,
+      has_breadcrumbs = false,
       bg_theme = "bamboo",
     },
   },
@@ -156,15 +159,6 @@ return {
 
   { "williamboman/mason-lspconfig.nvim" },
 
-  -- Install a plugin
-  -- {
-  -- 	"max397574/better-escape.nvim",
-  -- 	event = "InsertEnter",
-  -- 	config = function()
-  -- 		require("better_escape").setup()
-  -- 	end,
-  -- },
-
   { -- guess file indetation
     "nmac427/guess-indent.nvim",
     config = function()
@@ -214,24 +208,6 @@ return {
     end,
   },
 
-  { -- orgmode for neovim
-    "nvim-orgmode/orgmode",
-    config = function()
-      require("orgmode").setup_ts_grammar()
-      require("orgmode").setup {
-        dofile(vim.g.base46_cache .. "orgmode"),
-        org_agenda_files = { "~/Documents/org/*" },
-        mappings = {
-          org = {
-            org_cycle = "<leader>of",
-            org_global_cycle = "<leader>ogf",
-          },
-        },
-      }
-    end,
-    ft = { "org" },
-  },
-
   {
     "OXY2DEV/markview.nvim",
     -- lazy = false, -- Recommended
@@ -253,45 +229,9 @@ return {
   },
 
   {
-    "akinsho/org-bullets.nvim",
-    config = function()
-      require("org-bullets").setup {
-        concealcursor = true,
-      }
-    end,
-    ft = { "org", "markdown", "txt" },
-  },
-
-  {
     "dhruvasagar/vim-table-mode",
     ft = { "org", "markdown", "txt" },
   },
-
-  -- {
-  --   "nvim-neorg/neorg",
-  --   build = ":Neorg sync-parsers",
-  --   dependencies = { "nvim-lua/plenary.nvim" },
-  --   config = function()
-  --     require("neorg").setup {
-  --       load = {
-  --         ["core.defaults"] = {}, -- Loads default behaviour
-  --         ["core.autocommands"] = {},
-  --         ["core.integrations.treesitter"] = {},
-  --         ["core.concealer"] = {}, -- Adds pretty icons to your documents
-  --         ["core.dirman"] = { -- Manages Neorg workspaces
-  --           config = {
-  --             workspaces = {
-  --               notes = "~/notes",
-  --               default = "~/Documents",
-  --               algo = "~/stuff/algo"
-  --             },
-  --           },
-  --         },
-  --       },
-  --     }
-  --   end,
-  --   ft = {"norg"},
-  -- },
 
   {
     "michaelb/sniprun",
@@ -307,48 +247,6 @@ return {
     ft = { "org", "norg", "markdown", "c", "cpp", "python", "sh" },
   },
 
-  -- {
-  -- 	"benlubas/molten-nvim",
-  -- 	version = "^1.0.0", -- use version <2.0.0 to avoid breaking changes
-  -- 	dependencies = { "3rd/image.nvim" },
-  -- 	build = ":UpdateRemotePlugins",
-  -- 	init = function()
-  -- 		-- these are examples, not defaults. Please see the readme
-  -- 		vim.g.molten_image_provider = "image.nvim"
-  -- 		vim.g.molten_output_win_max_height = 20
-  -- 		-- vim.g.molten_virt_text_output = true
-  -- 		vim.g.molten_auto_open_output = true
-  -- 		vim.g.molten_cover_empty_lines = true
-  -- 	end,
-  -- 	config = function(_, opts)
-  --
-  -- 		local bind = vim.keymap.set
-  -- 		bind('n', '<leader>mi', '<cmd>MoltenInit<CR>', {desc = "Init Molten"})
-  -- 		bind("n", "<leader>mec", ":MoltenReevaluateCell<CR>", { desc = "Molten re-eval cell", silent = true })
-  -- 		bind('n', '<leader>mel', '<cmd>MoltenEvaluateLine<CR>', {desc = "Molten eval line"})
-  -- 		bind("v", "<leader>mev", ":<C-u>MoltenEvaluateVisual<CR>gv", { desc = "Molten eval visual", silent = true })
-  -- 		bind("n", "<leader>moe", ":noautocmd MoltenEnterOutput<CR>", { desc = "Molten enter output", silent = true })
-  -- 		bind("n", "<leader>moh", "<cmd>MoltenHideOutput<CR>", { desc = "Molten hide output", silent = true })
-  -- 		bind("n", "<leader>meo", ":MoltenEvaluateOperator<CR>", { desc = "Molten eval operator", silent = true })
-  -- 		bind("n", "<leader>mcd", ":MoltenDelete<CR>", { desc = "Molten cell delete", silent = true })
-  -- 		require("molten").setup( opts )
-  -- 	end,
-  -- 	ft = {"python", "markdown", "quarto"}
-  -- },
-  -- {
-  --     -- see the image.nvim readme for more information about configuring this plugin
-  --     "3rd/image.nvim",
-  --     opts = {
-  --         backend = "kitty", -- whatever backend you would like to use
-  --         max_width = 100,
-  --         max_height = 12,
-  --         max_height_window_percentage = math.huge,
-  --         max_width_window_percentage = math.huge,
-  --         window_overlap_clear_enabled = true, -- toggles images when windows are overlapped
-  --         window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
-  --     },
-  --   ft = {"python", "markdown", "qurto", "norg", "org"}
-  -- },
   {
     "hkupty/iron.nvim",
     config = function(plugins, opts)
@@ -364,12 +262,6 @@ return {
               -- Can be a table or a function that
               -- returns a table (see below)
               command = { "ipython", "--no-banner", "--no-autoindent" },
-            },
-            cpp = {
-              command = { "cling" },
-            },
-            c = {
-              command = { "cling", "-x", "c" },
             },
           },
           -- How the repl window will be displayed
@@ -433,44 +325,6 @@ return {
       ft = { "markdown", "org", "norg" },
     },
   },
-
-  -- {
-  --   {
-  --     "quarto-dev/quarto-nvim",
-  --     dependencies = {
-  --       "jmbuhr/otter.nvim",
-  --       "nvim-treesitter/nvim-treesitter",
-  --     },
-  --     config = function()
-  --       require("quarto").setup{
-  --         codeRunner ={
-  --           enabled = true,
-  --           default_method = 'molten',
-  --         }
-  --       }
-  --     end,
-  --   },
-  -- },
-  --
-  -- { -- directly open ipynb files as quarto docuements
-  --   -- and convert back behind the scenes
-  --   'GCBallesteros/jupytext.nvim',
-  --   opts = {
-  --     custom_language_formatting = {
-  --       python = {
-  --         extension = 'qmd',
-  --         style = 'quarto',
-  --         force_ft = 'quarto',
-  --       },
-  --       r = {
-  --         extension = 'qmd',
-  --         style = 'quarto',
-  --         force_ft = 'quarto',
-  --       },
-  --     },
-  --   },
-  --   ft = {"json"}
-  -- },
 
   {
     "AckslD/nvim-FeMaco.lua",
