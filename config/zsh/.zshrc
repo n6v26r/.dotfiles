@@ -11,6 +11,8 @@
 #   source /usr/share/zsh/manjaro-zsh-prompt
 # fi
 
+. ~/.profile
+
 # Theaming
 export LS_COLORS="$(vivid generate catppuccin-mocha)"
 export FZF_DEFAULT_OPTS=" \
@@ -168,7 +170,7 @@ alias ll="ls -l"
 alias la="ls -a"
 
 alias sudovim="sudo -E -s nvim"
-alias wallpicker="ranger --choosefile=>(xargs feh --bg-scale)"
+alias wallpicker="yazi --chooser-file=>(xargs feh --bg-scale)"
 
 function pastebin() {
     local file=${1:-/dev/stdin}
@@ -195,3 +197,7 @@ function nchat(){
 
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
+
+###########
+
+~/.local/share/asciiart/blocks1
