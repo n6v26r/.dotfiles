@@ -23,19 +23,25 @@ $haskell\
 $python\
 [](fg:blue bg:base)\
 $docker_context\
+[ ](fg:text)\
 $time\
+[ ](fg:text)\
 $os\
 [ ](fg:text)\
-$character\
-$line_break
-"""
-right_format = """
+$fill\
 $jobs\
 $cmd_duration\
+$line_break
+$character\
 """
+
+continuation_prompt = '[❯ ](fg:overlay0)'
 
 palette = 'catppuccin_mocha'
 add_newline = false
+
+[fill]
+symbol = ' '
 
 [cmd_duration]
 show_milliseconds = true
@@ -83,10 +89,12 @@ format = '[ $user ]($style)'
 
 [directory]
 style = "bold fg:crust bg:peach"
-format = "[ $path ]($style)"
+format = "[ $path ]($style)[$read_only]($read_only_style)"
 truncation_length = 2
-truncate_to_repo = false
+truncate_to_repo = true
 truncation_symbol = "…/"
+read_only = ' '
+read_only_style = 'bold fg:crust bg:peach'
 
 [directory.substitutions]
 "Documents" = "󰈙 "
@@ -164,7 +172,7 @@ format = '[[ $symbol( $concrust) ](bold fg:crust bg:blue)]($style)'
 disabled = false
 time_format = "%R"
 style = "bg:base"
-format = '[[  $time ](fg:text bg:base)]($style)'
+format = '[[ $time](fg:text bg:base)]($style)'
 
 [line_break]
 disabled = true
@@ -202,7 +210,7 @@ overlay1 = "#7f849c"
 overlay0 = "#6c7086"
 surface2 = "#585b70"
 surface1 = "#45475a"
-surface0 = "#31244"
+surface0 = "#313244"
 base = "#1e1e2e"
 mantle = "#181825"
 crust = "#11111b"

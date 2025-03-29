@@ -26,6 +26,38 @@ export BAT_THEME="Catppuccin-mocha"
 # Load prompt
 eval "$(starship init zsh)"
 
+# Transient prompt
+
+zle-line-init() {
+  emulate -L zsh
+
+  [[ $CONTEXT == start ]] || return 0
+
+  while true; do
+    zle .recursive-edit
+    local -i ret=$?
+    [[ $ret == 0 && $KEYS == $'\4' ]] || break
+    [[ -o ignore_eof ]] || exit 0
+  done
+
+  local saved_prompt=$PROMPT
+  local saved_rprompt=$RPROMPT
+  PROMPT='$(starship module time) $(starship module character)'
+  RPROMPT=''
+  zle .reset-prompt
+  PROMPT=$saved_prompt
+  RPROMPT=$saved_rprompt
+
+  if (( ret )); then
+    zle .send-break
+  else
+    zle .accept-line
+  fi
+  return ret
+}
+
+zle -N zle-line-init
+
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
 # # Download Zinit, if it's not there yet
@@ -162,6 +194,7 @@ alias gitu='git add . && git commit && git push'
 
 # alias r="ranger"
 alias yz="yazi"
+alias d="kitten diff"
 alias n="nvim"
 alias nv="neovim"
 alias t="tmux"
