@@ -9,6 +9,7 @@ return {
     config = function()
       require("competitest").setup()
     end,
+    ft = {"c", "cpp"}
   },
 
   {

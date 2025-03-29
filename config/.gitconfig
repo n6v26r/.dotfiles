@@ -6,8 +6,20 @@
 	helper = !/usr/bin/gh auth git-credential
 [user]
 	email = dedu.razvan.matei@gmail.com
-	name = razv
+	name = n6v26r
 [alias]
 	adog = log --all --decorate --oneline --graph
 [pull]
 	rebase = false
+[init]
+  defaultBranch = main
+[diff]
+    tool = kitty
+    guitool = kitty.gui
+[difftool]
+    prompt = false
+    trustExitCode = true
+[difftool "kitty"]
+    cmd = kitten diff $LOCAL $REMOTE
+[difftool "kitty.gui"]
+    cmd = kitten diff $LOCAL $REMOTE
