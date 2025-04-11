@@ -1,0 +1,45 @@
+theme = "catppuccin_mocha"
+
+[editor]
+# idle-timeout = 0
+end-of-line-diagnostics = "hint"
+completion-timeout = 5
+completion-trigger-len = 3
+line-number = "relative"
+cursorline = true
+color-modes = true
+bufferline = "multiple"
+
+[editor.inline-diagnostics]
+cursor-line = "warning"
+
+[editor.soft-wrap]
+enable = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.indent-guides]
+render = true
+
+[editor.statusline]
+center = ["diagnostics"]
+left = ["mode", "spinner", "file-name", "read-only-indicator", "file-modification-indicator"]
+right = ["version-control", "spacer", "selections", "register", "position", "file-encoding"]
+
+[keys.insert]
+"C-backspace" = "delete_word_backward"
+"C-h" = "move_char_left"
+"C-l" = "move_char_right"
+"C-j" = "move_visual_line_down"
+"C-k" = "move_visual_line_up"
+
+[keys.normal]
+"tab" = "goto_next_buffer"
+"S-tab" = "goto_previous_buffer"
+"esc" = ["collapse_selection", "keep_primary_selection"]
+
+[keys.normal.space]
+"x" = ":buffer-close"
