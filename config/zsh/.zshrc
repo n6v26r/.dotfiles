@@ -172,7 +172,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:*' use-fzf-default-opts yes
 
 # CUSTOM:
-export EDITOR=nvim
+export EDITOR=hx
 setopt +o nomatch
 setopt GLOB_DOTS
 setopt correct
@@ -233,4 +233,4 @@ eval "$(zoxide init --cmd cd zsh)"
 
 ###########
 
-~/.local/share/asciiart/blocks1
+# ~/.local/share/asciiart/blocks1

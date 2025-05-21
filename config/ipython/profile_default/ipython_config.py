@@ -2,6 +2,10 @@ import subprocess
 import sys
 from pathlib import Path
 
+from pygments.styles import get_style_by_name
+from pygments.util import ClassNotFound
+from IPython.utils.PyColorize import linux_theme, theme_table
+from copy import deepcopy
 import IPython
 import IPython.terminal.prompts as prompts
 import prompt_toolkit
@@ -109,7 +113,10 @@ count_fg = lavender
 
 # See:
 # https://github.com/prompt-toolkit/python-prompt-toolkit/blob/master/src/prompt_toolkit/styles/defaults.py # noqa
-c.TerminalInteractiveShell.highlighting_style = "catppuccin-mocha"
+catppuccin_mocha = deepcopy(linux_theme)
+catppuccin_mocha.base = "catppuccin-mocha"
+theme_table["catppuccin-mocha"] = catppuccin_mocha
+c.TerminalInteractiveShell.colors = "catppuccin-mocha"
 c.TerminalInteractiveShell.highlighting_style_overrides = {
     # Completion
     'completion-menu': f'bg:{pmenu} {white}',
@@ -123,7 +130,6 @@ c.TerminalInteractiveShell.highlighting_style_overrides = {
 # Run this code upon starting the shell
 c.InteractiveShellApp.exec_lines = """
 import numpy as np
-import math
 
 def load_extension_silently(extension):
     from IPython import get_ipython

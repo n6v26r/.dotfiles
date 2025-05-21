@@ -11,7 +11,7 @@ color-modes = true
 bufferline = "multiple"
 
 [editor.inline-diagnostics]
-cursor-line = "warning"
+cursor-line = "hint"
 
 [editor.soft-wrap]
 enable = true
