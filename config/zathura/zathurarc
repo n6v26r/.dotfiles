@@ -1,2 +1,3 @@
+include zathurarc-theme
 set selection-clipboard clipboard
-include catppuccin-mocha
+map <C-t> feedkeys ":exec bash -c $HOME/.config/zathura/theme-switcher.sh<Return>:source<Return>"
