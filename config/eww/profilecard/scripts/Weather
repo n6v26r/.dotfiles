@@ -1,0 +1,132 @@
+#!/usr/bin/env bash
+#  ██╗    ██╗███████╗ █████╗ ████████╗██╗  ██╗███████╗██████╗
+#  ██║    ██║██╔════╝██╔══██╗╚══██╔══╝██║  ██║██╔════╝██╔══██╗
+#  ██║ █╗ ██║█████╗  ███████║   ██║   ███████║█████╗  ██████╔╝
+#  ██║███╗██║██╔══╝  ██╔══██║   ██║   ██╔══██║██╔══╝  ██╔══██╗
+#  ╚███╔███╔╝███████╗██║  ██║   ██║   ██║  ██║███████╗██║  ██║
+#   ╚══╝╚══╝ ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
+#	Author	-	gh0stzk
+#	Repo	-	https://github.com/gh0stzk/dotfiles
+#	Date	-	03.02.2025 01:24:06
+#
+# Weather - Weather Monitor for Polybar/Eww
+# Features:
+#   ✔ Obtaining data in real time via API
+#   ✔ Smart cache system (15 minutes)
+#   ✔ Support for Celsius and Fahrenheit formats
+#   ✔ Handling of errors and connection failures
+#
+# Dependencies:
+#   → Core: jq, curl
+#   → Optionals: Polybar, Eww
+#
+# Copyright (C) 2021-2025 gh0stzk <z0mbi3.zk@protonmail.com>
+# Licensed under GPL-3.0 license
+
+# ===== Configuration =====
+KEY="8e1d7f40135c055b560ab98deca1eac8"
+CITY="Călărasi, RO"  # Go to https://openweathermap.org/find to find your city/town
+UNITS="metric" # Available "metric" "imperial"
+CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/$USER"
+CACHE_FILE="$CACHE_DIR/weather_data"
+CACHE_TIMEOUT=900  # 15 minutes in seconds
+
+get_weather_data() {
+    local encoded_city=$(sed 's/ /%20/g' <<< "$CITY")
+    local url="https://api.openweathermap.org/data/2.5/weather?q=$encoded_city&appid=$KEY&units=$UNITS"
+
+    # Use cache if valid
+    if [[ -f "$CACHE_FILE" ]]; then
+        local now=$(date +%s)
+        local file_age=$(stat -c %Y "$CACHE_FILE")
+        (( now - file_age < CACHE_TIMEOUT )) && cat "$CACHE_FILE" && return
+    fi
+
+    # Get new data
+    if ! response=$(curl -sf --max-time 5 --show-error "$url"); then
+        [[ -f "$CACHE_FILE" ]] && cat "$CACHE_FILE" || exit 1
+    else
+        echo "$response" | tee "$CACHE_FILE"
+    fi
+}
+
+parse_weather_values() {
+    local data=$1
+    declare -gA WEATHER=(
+        ["temp"]=$(jq -r '.main.temp | round' <<< "$data")
+        ["feels"]=$(jq -r '.main.feels_like | round' <<< "$data")
+        ["desc"]=$(jq -r '.weather[0].description' <<< "$data")
+        ["icon"]=$(jq -r '.weather[0].icon' <<< "$data")
+    )
+}
+
+get_weather_icon() {
+    case "${1}" in
+        "01d") echo "" ;;    # Sol claro
+        "01n") echo "" ;;    # Luna clara
+        "02d") echo "" ;;    # Pocas nubes (día)
+        "02n") echo "" ;;    # Pocas nubes (noche)
+        "03d"|"03n") echo "" ;;  # Nubes dispersas
+        "04d"|"04n") echo "" ;;  # Nubes rotas
+        "09d"|"09n") echo "" ;;  # Llovizna
+        "10d") echo "" ;;    # Lluvia (día)
+        "10n") echo "" ;;    # Lluvia (noche)
+        "11d"|"11n") echo "" ;;  # Tormenta
+        "13d"|"13n") echo "" ;;  # Nieve
+        "50d"|"50n") echo "" ;;  # Niebla
+        *) echo "" ;;        # Desconocido
+    esac
+}
+
+get_weather_hex() {
+    case "${1%?}" in
+        "01") echo "#ffd86b" ;;
+        "02"|"03"|"04") echo "#adadff" ;;
+        "09"|"10") echo "#6b95ff" ;;
+        "11") echo "#ffeb57" ;;
+        "13") echo "#e3e6fc" ;;
+        "50") echo "#84afdb" ;;
+        *) echo "#adadff" ;;
+    esac
+}
+
+mkdir -p "$CACHE_DIR"
+
+weather_data=$(get_weather_data || exit 1)
+parse_weather_values "$weather_data"
+
+case "$1" in
+    "current_temp")
+        echo "${WEATHER[temp]}"
+        ;;
+    "current_temp_fahrenheit")
+        echo "$(( (${WEATHER[temp]} * 9 / 5) + 32 ))°F"
+        ;;
+    "feels_like")
+        echo "${WEATHER[feels]}°C"
+        ;;
+    "weather_desc")
+        echo "${WEATHER[desc]^}"
+        ;;
+    "icon")
+        get_weather_icon "${WEATHER[icon]}"
+        ;;
+    "hex")
+        get_weather_hex "${WEATHER[icon]}"
+        ;;
+    "full")
+        echo "$weather_data"
+        ;;
+    "city")
+        echo "$CITY"
+        ;;
+    "wmodule")
+        icon=$(get_weather_icon "${WEATHER[icon]}")
+        hex=$(get_weather_hex "${WEATHER[icon]}")
+        printf "%%{F%s}%s%%{F-} %s°\n" "$hex" "$icon" "${WEATHER[temp]}"
+        ;;
+    *)
+        echo "No valid option"
+        exit 1
+        ;;
+esac

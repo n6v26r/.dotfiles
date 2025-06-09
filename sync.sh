@@ -46,6 +46,7 @@ sync["eww"]="configSync eww"
 sync["helix"]="configSync helix"
 sync["btop"]="configSync btop"
 sync["scripts"]="configSync scripts config ~"
+sync["fum"]="configSync fum"
 sync["asciiart"]="configSync asciiart config ~/.local/share"
 sync["nchat"]="
   configSync app.conf config/nchat ~/.config/nchat ; 

@@ -11,22 +11,22 @@
 (defpoll uptime :interval "30s" "uptime -p | sed -E -e 's/hour(s)?/hrs/g' -e 's/minute(s)?/min/g'")
 
 ;; Pacman
-(defpoll updates :interval "20m" "Updates --get-updates")
+(defpoll updates :interval "20m" "../eww/profilecard/scripts/Updates --get-updates")
 (defpoll packages :interval "1h" "pacman -Q | wc -l")
 
 ;; Weather
-(defpoll weathericon :interval "15m" "Weather icon")
-(defpoll weathercity :interval "15m" "Weather city")
-(defpoll weathertemp :interval "15m" "Weather current_temp")
-(defpoll weatherdesc :interval "15m" "Weather weather_desc")
-(defpoll weatherhex :interval "15m" "Weather hex")
+(defpoll weathericon :interval "15m" "../eww/profilecard/scripts/Weather icon")
+(defpoll weathercity :interval "15m" "../eww/profilecard/scripts/Weather city")
+(defpoll weathertemp :interval "15m" "../eww/profilecard/scripts/Weather current_temp")
+(defpoll weatherdesc :interval "15m" "../eww/profilecard/scripts/Weather weather_desc")
+(defpoll weatherhex :interval "15m" "../eww/profilecard/scripts/Weather hex")
 
 ;; Networking
 (defpoll net_status :interval "3s" "../eww/profilecard/scripts/Network --status")
 (defpoll net_icon :interval "3s" "../eww/profilecard/scripts/Network --icon")
 
 ;; Temp
-(defpoll temp :interval "5s" "temp.sh")
+(defpoll temp :interval "5s" "../eww/profilecard/scripts/temp.sh")
 
 ;; Battery
 ;;(defpoll battery :interval "3s" "../eww/profilecard/scripts/Battery get_battery")
@@ -128,7 +128,7 @@
 						 (button :class "pacman-updates"
 								 :halign "start"
 								 :tooltip "Click to update"
-								 :onclick "kitty --class 'kitty_floating' --hold -e Updates --update-system &" "${updates} Updates"))))
+								 :onclick "kitty --class 'kitty_floating' --hold -e ~/.config/eww/profilecard/scripts/Updates --update-system &" "${updates} Updates"))))
 			   (box :orientation "h"
 					:space-evenly "false"
 					:class "fetch"

@@ -1,0 +1,72 @@
+{
+  "players": ["Youtube Music"],
+  "use_active_player": false,
+  "fps": 10,
+  "keybinds": {
+    "esc;q": "quit()",
+    "h": "prev()",
+    "l": "next()",
+    " ": "play_pause()",
+    "-": "volume(-5)",
+    "+": "volume(+5)",
+    "j": "backward(10000)",
+    "k": "forward(10000)"
+  },
+  "width": 43,
+  "height": 8,
+  "direction": "horizontal",
+  "layout": [
+    { "type": "cover-art",
+      "width": 18,
+      "height": 25,
+      "border": false
+    },
+    {
+      "type": "volume",
+      "direction": "vertical",
+      "volume": {
+        "char": "│",
+         "fg": "blue"
+      },
+      
+      "empty": {
+        "char": "│",
+         "fg": "red"
+      }
+    },
+    { "type": "empty", "size": 2 },
+    {
+      "type": "container",
+      "direction": "vertical",
+      "children": [
+        { "type": "label", "text": "󰝚 $title" },
+        { "type": "label", "text": "󰠃 $artists" },
+        // { "type": "label", "text": "󰓎 get_meta(xesam:autoRating)" },
+        { "type": "label", "text": " get_meta(xesam:album)" },
+        { "type": "empty", "size": 1 },
+        {
+          "type": "container",
+          "height": 1,
+          "children": [
+            { "type": "button", "text": "󰒮", "action": "prev()" },
+            { "type": "empty", "size": 3 },
+            { "type": "button", "text": "$status-icon", "action": "play_pause()" },
+            { "type": "empty", "size": 3 },
+            { "type": "button", "text": "󰒭", "action": "next()" }
+          ]
+        },
+        // {"type": "empty", "size": 1},
+        { "type": "progress", "progress": { "char": ">", "bg": "blue", "fg": "black" }, "empty": { "char": "<" } },
+        {
+          "type": "container",
+          "flex": "space-between",
+          "height": 1,
+          "children": [
+            { "type": "button", "text": "$position" },
+            { "type": "button", "text": "var($len-style, $length)", "action": "toggle($len-style, $length, $remaining-length)" }
+          ]
+        }
+      ]
+    }
+  ]
+}  

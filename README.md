@@ -14,10 +14,12 @@
 
   ### Photos
 
-  ![i3](Screenshots/i3-pipes.png) ![i3](Screenshots/i3-color.png)
-  ![i3](Screenshots/yetanotheri3screenshot.jpeg) ![i3](Screenshots/photo.png)
-  ![i3](Screenshots/i3_clear.png) ![i3](Screenshots/i3-new.png)
-  ![i3](Screenshots/i3-first.png) ![i3](Screenshots/i3_cozy.png)
+  ![i3](Screenshots/idksmth.png)
+  ![i3](Screenshots/blablabla.png)
+  ![i3](Screenshots/blablabla2.png)
+  <!-- ![i3](Screenshots/i3-pipes.png) -->
+  <!-- ![i3](Screenshots/yetanotheri3screenshot.jpeg) ![i3](Screenshots/i3-new.png) -->
+  #### More photos in [screenshots](Screenshots/)
 
   </details>
   <details>

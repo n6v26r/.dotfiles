@@ -1,15 +1,15 @@
 ;; Vars ;;
-(defpoll music-player     :interval "1s" "MediaControl --player")
-(defpoll music-art        :interval "3s" "MediaControl --cover")
-(defpoll music-title      :interval "1s" "MediaControl --title")
-(defpoll music-artist     :interval "1s" "MediaControl --artist")
-(defpoll music-status     :interval "1s" "MediaControl --status")
-(defpoll music-position   :interval "1s" "MediaControl --position")
-(defpoll music-positions  :interval "1s" "MediaControl --positions")
-(defpoll music-length     :interval "1s" "MediaControl --length")
-(defpoll music-lengths    :interval "1s" "MediaControl --lengths")
-(defpoll shuffle          :interval "1s" "MediaControl --shuffle")
-(defpoll loop             :interval "1s" "MediaControl --loop")
+(defpoll music-player     :interval "1s" "../eww/profilecard/scripts/MediaControl --player")
+(defpoll music-art        :interval "3s" "../eww/profilecard/scripts/MediaControl --cover")
+(defpoll music-title      :interval "1s" "../eww/profilecard/scripts/MediaControl --title")
+(defpoll music-artist     :interval "1s" "../eww/profilecard/scripts/MediaControl --artist")
+(defpoll music-status     :interval "1s" "../eww/profilecard/scripts/MediaControl --status")
+(defpoll music-position   :interval "1s" "../eww/profilecard/scripts/MediaControl --position")
+(defpoll music-positions  :interval "1s" "../eww/profilecard/scripts/MediaControl --positions")
+(defpoll music-length     :interval "1s" "../eww/profilecard/scripts/MediaControl --length")
+(defpoll music-lengths    :interval "1s" "../eww/profilecard/scripts/MediaControl --lengths")
+(defpoll shuffle          :interval "1s" "../eww/profilecard/scripts/MediaControl --shuffle")
+(defpoll loop             :interval "1s" "../eww/profilecard/scripts/MediaControl --loop")
 
 ;; Widgets ;;
 (defwidget shuffle [color action status]
@@ -139,7 +139,7 @@
 				:cursor "pointer"
 				(button
 					:class "player-previous"
-					:onclick "MediaControl --previous"
+					:onclick "../eww/profilecard/scripts/MediaControl --previous"
 					"󰒮"
 				)
 			)
@@ -147,7 +147,7 @@
 				:cursor "pointer"
 				(button
 					:class "player-toggle"
-					:onclick "MediaControl --toggle"
+					:onclick "../eww/profilecard/scripts/MediaControl --toggle"
 					{music-status == "Playing" ? "󰏤" : music-status == "Paused" ? "󰐊" : "󰓛"}
 				)
 			)
@@ -155,7 +155,7 @@
 				:cursor "pointer"
 				(button
 					:class "player-next"
-					:onclick "MediaControl --next" 
+					:onclick "../eww/profilecard/scripts/MediaControl --next" 
 					"󰒭"
 				)
 			)

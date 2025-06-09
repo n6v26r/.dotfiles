@@ -245,6 +245,9 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+
+bindsym $mod+p exec --no-startup-id fum_launcher.sh
+
 # use catppuccin palette
 set $rosewater #f5e0dc
 set $flamingo  #f2cdcd
@@ -286,7 +289,6 @@ client.background        $base
 # WINDOW RULES
 
 default_border none
-# Always floating
 
 for_window [class="^."] border pixel 5
 
@@ -299,10 +301,17 @@ for_window [class="imv"] floating enable
 for_window [class="feh"] floating enable
 for_window [class="zoom"] floating enable
 for_window [class="com.github.th_ch.youtube_music"] floating enable
+for_window [class="fum"] floating enable
+for_window [class="cava"] floating enable
 
 for_window [class="Eww"] border none
- 
+for_window [class="fum"] border none
+for_window [class="cava"] border none
+
+for_window [class="fum"] move container position 35ppt 5ppt
+
 # set change keyboard language with alt-shift (in my case us + ro standard)
 exec_always --no-startup-id "setxkbmap -model pc105 -layout us,ro -variant ,std -option 'grp:alt_shift_toggle'"
+
 exec --no-startup-id dbxfs
 # exec_always --no-startup-id "setxkbmap -option 'grp:alt_shift_toggle'"

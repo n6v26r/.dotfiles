@@ -1,0 +1,27 @@
+[[language]]
+name = "latex"
+language-servers = [ { name = "texlab" } ]
+
+[language-server.texlab]
+command = "texlab"
+
+
+[language-server.texlab.config.texlab.build]
+onSave = true
+forwardSearchAfter = true
+executable = "tectonic"
+args = [
+  "-X",
+  "compile",
+  "%f",
+  "--synctex",
+  "--keep-logs",
+  "--keep-intermediates",
+  # "--outdir=build",
+  "-Zshell-escape",
+]
+
+
+[language-server.texlab.config.texlab.chktex]
+onOpenAndSave = true
+onEdit = true
