@@ -79,9 +79,9 @@
 - A ton of wallpapers ~~stolen~~ from all over the internet.
 - **Terminal**: [kitty](https://github.com/kovidgoyal/kitty)
 - **Shell**: zsh
-- **Editor**: nvim with [neovide](https://github.com/neovide/neovide) for gui
-  (config based on [Nvchad](https://github.com/NvChad/NvChad) and
-  [Vimacs](https://github.com/UTFeight/vimacs))
+- **Editor**: ~~nvim with [neovide](https://github.com/neovide/neovide) for gui  (config based on [Nvchad](https://github.com/NvChad/NvChad) and
+  [Vimacs](https://github.com/UTFeight/vimacs))~~
+  I switched to [helix](https://github.com/helix-editor/helix) and I'm enjoying it so far.
 - **Font**: FiraCode Nerd Font Mono + JetBrains (for italic text)
 - **Music app:** Youtube Music [yt-ch](https://github.com/th-ch/youtube-music)
 - Social:

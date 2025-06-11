@@ -5,21 +5,32 @@ language-servers = [ { name = "texlab" } ]
 [language-server.texlab]
 command = "texlab"
 
-
 [language-server.texlab.config.texlab.build]
 onSave = true
 forwardSearchAfter = true
-executable = "tectonic"
+executable = "latexmk"
+pdfDirectory = "build"
+# args = [
+#   "-X",
+#   "compile",
+#   "%f",
+#   "--synctex",
+#   "--keep-logs",
+#   "--keep-intermediates",
+#   "--outdir=build",
+#   "-Zshell-escape",
+# ]
 args = [
-  "-X",
-  "compile",
-  "%f",
-  "--synctex",
-  "--keep-logs",
-  "--keep-intermediates",
-  # "--outdir=build",
-  "-Zshell-escape",
+  "-pdf",
+  "-interaction=nonstopmode",
+   "-synctex=1",
+   "-outdir=build",
+   "%f"
 ]
+
+[language-server.texlab.config.texlab.forwardSearch]
+executable = "zathura"
+args = [ "--synctex-forward", "%l:%c:%f", "%p" ]
 
 
 [language-server.texlab.config.texlab.chktex]
