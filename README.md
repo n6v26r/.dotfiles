@@ -83,7 +83,7 @@
   [Vimacs](https://github.com/UTFeight/vimacs))~~
   I switched to [helix](https://github.com/helix-editor/helix) and I'm enjoying it so far.
 - **Font**: FiraCode Nerd Font Mono + JetBrains (for italic text)
-- **Music app:** Youtube Music [yt-ch](https://github.com/th-ch/youtube-music)
+- **Music app:** Youtube Music [yt-ch](https://github.com/th-ch/youtube-music) and [fum](https://github.com/qxb3/fum) as mpris controller
 - Social:
 
   - **Discord**: [betterdiscord](https://betterdiscord.app/) (catppuccin mocha
