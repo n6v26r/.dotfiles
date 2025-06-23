@@ -36,3 +36,18 @@ args = [ "--synctex-forward", "%l:%c:%f", "%p" ]
 [language-server.texlab.config.texlab.chktex]
 onOpenAndSave = true
 onEdit = true
+
+[[language]]
+name = "typst"
+
+auto-format = true
+formatter.command = "typstyle"
+language-servers = [ { name = "tinymist" } ]
+
+[language-server.tinymist]
+command = "tinymist"
+
+[language-server.tinymist.config]
+outputPath = "$root/build/document.pdf"
+exportPdf = "onType"
+formatterMode = "typstyle"
