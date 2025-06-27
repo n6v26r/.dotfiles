@@ -24,7 +24,7 @@
 # Licensed under GPL-3.0 license
 
 # ===== Configuration =====
-KEY="8e1d7f40135c055b560ab98deca1eac8"
+KEY="meaw"
 CITY="Călărasi, RO"  # Go to https://openweathermap.org/find to find your city/town
 UNITS="metric" # Available "metric" "imperial"
 CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/$USER"

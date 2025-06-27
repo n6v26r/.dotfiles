@@ -255,7 +255,7 @@
                           blue_name == "Null" ? "bluetooth-no-btn" :
                           blue_name == "Off" ? "bluetooth-no-btn" : "bluetooth-btn"}
                   :onclick "../eww/profilecard/scripts/Bluetooth --toggle &" blue_icon))
-        (label :class "info-btn" :limit-width 12 :xalign 0.5 :text blue_name))
+        (label :class "info-btn" :limit-width 12 :height 1 :xalign 0.5 :text blue_name))
 
       (box  :class "tools-main" :orientation "v" :space-evenly "false" :spacing 2
         (eventbox :class "tools-box" :width 43 :height 43 :halign "center" :cursor "pointer" :tooltip "Airplane Mode"
