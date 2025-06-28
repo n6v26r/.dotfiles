@@ -75,5 +75,7 @@
   "theme.bar.transparent": false,
   "theme.bar.buttons.style": "default",
   "theme.bar.opacity": 100,
-  "theme.bar.buttons.monochrome": false
+  "theme.bar.buttons.monochrome": false,
+  "menus.power.shutdown": "poweroff",
+  "menus.power.reboot": "reboot"
 }
