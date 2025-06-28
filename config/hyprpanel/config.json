@@ -1,0 +1,79 @@
+{
+  "bar.customModules.storage.paths": [
+    "/"
+  ],
+  "theme.bar.floating": false,
+  "theme.bar.location": "bottom",
+  "bar.layouts": {
+    "0": {
+      "left": [
+        "dashboard",
+        "workspaces",
+        "windowtitle"
+      ],
+      "middle": [
+        "media"
+      ],
+      "right": [
+        "volume",
+        "network",
+        "bluetooth",
+        "battery",
+        "systray",
+        "clock",
+        "notifications"
+      ]
+    },
+    "1": {
+      "left": [
+        "dashboard",
+        "workspaces",
+        "windowtitle"
+      ],
+      "middle": [
+        "media"
+      ],
+      "right": [
+        "volume",
+        "clock",
+        "notifications"
+      ]
+    },
+    "2": {
+      "left": [
+        "dashboard",
+        "workspaces",
+        "windowtitle"
+      ],
+      "middle": [
+        "media"
+      ],
+      "right": [
+        "volume",
+        "clock",
+        "notifications"
+      ]
+    }
+  },
+  "theme.bar.border.location": "none",
+  "theme.bar.enableShadow": false,
+  "theme.osd.location": "right",
+  "theme.bar.buttons.enableBorders": false,
+  "theme.bar.border.width": "0.0em",
+  "scalingPriority": "both",
+  "theme.bar.margin_bottom": "0.5em",
+  "bar.launcher.icon": "",
+  "menus.clock.time.military": true,
+  "menus.clock.weather.location": "Calarasi, RO",
+  "menus.clock.weather.unit": "metric",
+  "menus.clock.weather.key": "1e284a7014f089f8c4ed8a9777b315f9",
+  "menus.transition": "crossfade",
+  "theme.bar.buttons.windowtitle.enableBorder": false,
+  "bar.windowtitle.class_name": true,
+  "theme.bar.buttons.volume.enableBorder": false,
+  "bar.autoHide": "never",
+  "theme.bar.transparent": false,
+  "theme.bar.buttons.style": "default",
+  "theme.bar.opacity": 100,
+  "theme.bar.buttons.monochrome": false
+}

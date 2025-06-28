@@ -4,23 +4,33 @@
 
 - **OS:** Manjaro Linux
 - **DE/WM:** (click to expand)
+<details>
+<summary><b>I3</b></summary>
+
+- <b>Bar:</b> [Polybar](https://github.com/polybar/polybar) (recolored and
+  tweaked config from [BIBJAW](https://github.com/BIBJAW/Final_Rice))
+- <b>Compositor:</b> [Picom](https://github.com/yshui/picom)
+- <b>Launcher:</b> [Rofi](https://github.com/davatorium/rofi)
+
+### Photos
+
+![i3](Screenshots/idksmth.png)
+![i3](Screenshots/blablabla.png)
+![i3](Screenshots/blablabla2.png)
+<!-- ![i3](Screenshots/i3-pipes.png) -->
+<!-- ![i3](Screenshots/yetanotheri3screenshot.jpeg) ![i3](Screenshots/i3-new.png) -->
+#### More photos in [screenshots](Screenshots/)
+
+  </details>
   <details>
-  <summary><b>I3</b></summary>
+  <summary><b>Hyprland</b></summary>
 
-  - <b>Bar:</b> [Polybar](https://github.com/polybar/polybar) (recolored and
-    tweaked config from [BIBJAW](https://github.com/BIBJAW/Final_Rice))
-  - <b>Compositor:</b> [Picom](https://github.com/yshui/picom)
-  - <b>Launcher:</b> [Rofi](https://github.com/davatorium/rofi)
-
-  ### Photos
-
-  ![i3](Screenshots/idksmth.png)
-  ![i3](Screenshots/blablabla.png)
-  ![i3](Screenshots/blablabla2.png)
-  <!-- ![i3](Screenshots/i3-pipes.png) -->
-  <!-- ![i3](Screenshots/yetanotheri3screenshot.jpeg) ![i3](Screenshots/i3-new.png) -->
-  #### More photos in [screenshots](Screenshots/)
-
+### Photos
+![hypr](Screenshots/hypr/2025-06-28-030226_hyprshot.png)
+![hypr](Screenshots/hypr/2025-06-28-035022_hyprshot.png)
+![hypr](Screenshots/hypr/2025-06-28-022453_hyprshot.png)
+![hypr](Screenshots/hypr/2025-06-28-040034_hyprshot.png)
+  
   </details>
   <details>
   <summary><b>Gnome</b></summary>

@@ -54,6 +54,12 @@ sync["nchat"]="
   configSync key.conf config/nchat ~/.config/nchat ;
   configSync ui.conf config/nchat ~/.config/nchat ;
   configSync usercolor.conf config/nchat ~/.config/nchat"
+sync["sway"]="configSync sway"
+sync["swaylock"]="configSync swaylock"
+sync["hypr"]="configSync hypr"
+sync["hyprpanel"]="configSync hyprpanel"
+sync["waybar"]="configSync waybar"
+
 
 function configSync() {
   path1=config
