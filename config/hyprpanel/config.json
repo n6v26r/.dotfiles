@@ -66,7 +66,7 @@
   "menus.clock.time.military": true,
   "menus.clock.weather.location": "Calarasi, RO",
   "menus.clock.weather.unit": "metric",
-  "menus.clock.weather.key": "1e284a7014f089f8c4ed8a9777b315f9",
+  "menus.clock.weather.key": "meaw",
   "menus.transition": "crossfade",
   "theme.bar.buttons.windowtitle.enableBorder": false,
   "bar.windowtitle.class_name": true,
@@ -77,5 +77,57 @@
   "theme.bar.opacity": 100,
   "theme.bar.buttons.monochrome": false,
   "menus.power.shutdown": "poweroff",
-  "menus.power.reboot": "reboot"
+  "menus.power.reboot": "reboot",
+  "menus.dashboard.powermenu.avatar.image": "/home/razv/profile",
+  "theme.bar.menus.menu.power.scaling": 100,
+  "theme.bar.scaling": 100,
+  "theme.notification.scaling": 100,
+  "notifications.position": "bottom right",
+  "theme.bar.buttons.workspaces.enableBorder": false,
+  "bar.workspaces.show_icons": false,
+  "bar.workspaces.show_numbered": false,
+  "bar.bluetooth.label": true,
+  "theme.bar.buttons.media.enableBorder": false,
+  "bar.media.show_label": true,
+  "bar.media.truncation": true,
+  "bar.media.show_active_only": false,
+  "bar.windowtitle.title_map": [
+    [
+      "kitty",
+      "󰄛",
+      "Kitty Terminal"
+    ],
+    [
+      "firefox",
+      "󰈹",
+      "Firefox"
+    ],
+    [
+      "microsoft-edge.*",
+      "󰇩",
+      "Edge"
+    ],
+    [
+      "discord",
+      "",
+      "Discord"
+    ],
+    [
+      "org.kde.dolphin",
+      "",
+      "Dolphin"
+    ],
+    [
+      "com.github.th_ch.youtube_music",
+      "",
+      "Music"
+    ]
+  ],
+  "menus.dashboard.shortcuts.left.shortcut1.icon": "󰈹",
+  "menus.dashboard.shortcuts.left.shortcut1.command": "prime-run firefox",
+  "menus.dashboard.shortcuts.left.shortcut1.tooltip": "Firefox",
+  "menus.dashboard.shortcuts.left.shortcut2.icon": "",
+  "menus.dashboard.shortcuts.left.shortcut2.command": "youtube-music --ozone-platform=wayland",
+  "menus.dashboard.shortcuts.left.shortcut2.tooltip": "YT Music",
+  "menus.dashboard.shortcuts.right.shortcut3.command": "sleep 0.2 && hyprshot -z -m region -o ~/Pictures/Screenshots"
 }
