@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Batly patched version of hyprshot scritpt
+# See: https://github.com/Gustash/Hyprshot/issues/112
 
 set -e
 
@@ -162,6 +164,10 @@ function begin_grab() {
             elif [ -z $SELECTED_MONITOR ]; then
                 selector
                 local geometry=`grab_output`
+            else
+                grim -o $SELECTED_MONITOR "$SAVE_FULLPATH"
+                send_notification "$SAVE_FULLPATH"
+                exit
             fi
             ;;
         region)

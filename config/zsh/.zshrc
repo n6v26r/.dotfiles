@@ -204,6 +204,7 @@ alias la="ls -a"
 
 alias sudovim="sudo -E -s nvim"
 alias wallpicker="yazi --chooser-file=>(xargs feh --bg-scale)"
+alias hyprwall="yazi --chooser-file=>(xargs hyprctl hyprpaper reload ,)"
 
 function pastebin() {
     local file=${1:-/dev/stdin}
