@@ -1,4 +1,4 @@
-theme = "catppuccin_mocha"
+theme = "catppuccin_frappe"
 
 [editor]
 # idle-timeout = 0
@@ -28,6 +28,9 @@ render = true
 center = ["spinner", "spacer", "diagnostics"]
 left = ["mode", "spacer", "file-name", "read-only-indicator", "file-modification-indicator"]
 right = ["version-control", "spacer", "selections", "register", "position", "file-encoding"]
+mode.normal = "NOR"
+mode.insert = "INS"
+mode.select = "SEL"
 
 [keys.insert]
 "C-backspace" = "delete_word_backward"
@@ -35,6 +38,16 @@ right = ["version-control", "spacer", "selections", "register", "position", "fil
 "C-l" = "move_char_right"
 "C-j" = "move_visual_line_down"
 "C-k" = "move_visual_line_up"
+# disable movements
+up = "no_op"
+down = "no_op"
+left = "no_op"
+right = "no_op"
+pageup = "no_op"
+pagedown = "no_op"
+home = "no_op"
+end = "no_op"
+
 
 [keys.normal]
 "tab" = "goto_next_buffer"
@@ -45,6 +58,9 @@ right = ["version-control", "spacer", "selections", "register", "position", "fil
 "C-j" = "jump_view_down"
 "C-h" = "jump_view_left"
 "C-l" = "jump_view_right"
+
+A-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
+A-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
 
 [keys.normal.space]
 "x" = ":buffer-close"

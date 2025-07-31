@@ -51,3 +51,27 @@ command = "tinymist"
 outputPath = "$root/build/document.pdf"
 exportPdf = "onType"
 formatterMode = "typstyle"
+
+[language-server.typescript-language-server.config]
+plugins = [{  name = "@vue/typescript-plugin", location = "/usr/lib/node_modules/@vue/language-server", languages = ["vue"] }]
+tsserver = { path = "/usr/bin/typescript-language-server" }
+
+[language-server.vuels]
+command = "vue-language-server"
+args = ["--stdio"]
+
+[[language]]
+name = "vue"
+auto-format = true
+language-servers = ["typescript-language-server", "vuels"]
+formatter = { command = 'prettier', args = ["--parser", "vue"] }
+
+
+[[language]]
+scope = "source.svx"
+name = "svx"
+injection-regex = "md|markdown"
+file-types = ["svx"]
+grammar = "markdown"
+language-servers = [ "svelteserver"]
+indent = { tab-width = 2, unit = "  " }
