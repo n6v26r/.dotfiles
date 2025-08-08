@@ -1,4 +1,4 @@
-theme = "catppuccin_frappe"
+theme = "catppuccin_mocha"
 
 [editor]
 # idle-timeout = 0
@@ -9,6 +9,7 @@ line-number = "relative"
 cursorline = true
 color-modes = true
 bufferline = "multiple"
+rainbow-brackets = true
 
 [editor.inline-diagnostics]
 cursor-line = "hint"
@@ -47,6 +48,8 @@ pageup = "no_op"
 pagedown = "no_op"
 home = "no_op"
 end = "no_op"
+# Go to normal mode faster
+A-l = "normal_mode"
 
 
 [keys.normal]
@@ -59,6 +62,7 @@ end = "no_op"
 "C-h" = "jump_view_left"
 "C-l" = "jump_view_right"
 
+# TODO: change this when helix implements line movements
 A-j = ["extend_to_line_bounds", "delete_selection", "paste_after"]
 A-k = ["extend_to_line_bounds", "delete_selection", "move_line_up", "paste_before"]
 

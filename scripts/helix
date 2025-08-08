@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if [[ -z "$2" ]]; then
+  kitty -e hx $1
+elif [[ -z "$3" ]]; then
+  kitty -e hx $1:$2
+else
+  kitty -e hx $1:$2:$3
+fi
+
