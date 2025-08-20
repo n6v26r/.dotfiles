@@ -29,6 +29,7 @@ focus_follows_mouse no
 
 # load wallpaper
 # exec_always --no-startup-id feh --bg-scale ~/Downloads/pictures/1360877_catppuccin-mocha.jpeg
+exec_always --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec_always --no-startup-id $HOME/.fehbg
 
 # start compositor
@@ -93,8 +94,8 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec kitty
-bindsym $mod+t exec "kitty --class kitty_floating"
+bindsym $mod+Return exec kitty -1
+bindsym $mod+t exec "kitty -1 --class kitty_floating"
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -311,7 +312,7 @@ for_window [class="cava"] border none
 for_window [class="fum"] move container position 35ppt 5ppt
 
 # set change keyboard language with alt-shift (in my case us + ro standard)
-exec_always --no-startup-id "setxkbmap -model pc105 -layout us,ro -variant ,std -option 'grp:alt_shift_toggle'"
+exec_always --no-startup-id "setxkbmap -model pc105 -layout us,ro -variant ,std -option 'grp:alt_space_toggle'"
 
 exec --no-startup-id dbxfs
 # exec_always --no-startup-id "setxkbmap -option 'grp:alt_shift_toggle'"
