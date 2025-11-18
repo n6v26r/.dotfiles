@@ -59,7 +59,7 @@ sync["swaylock"]="configSync swaylock"
 sync["hypr"]="configSync hypr"
 sync["hyprpanel"]="configSync hyprpanel"
 sync["waybar"]="configSync waybar"
-
+sync["opencode"]="configSync config.json config/opencode ~/.config/opencode/"
 
 function configSync() {
   path1=config

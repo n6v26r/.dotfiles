@@ -1,0 +1,24 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      },
+      "models": {
+        "qwen3:8b": {
+          "tools": true,
+          "num_ctx": 16384
+        },
+        "gtp-oss:20b": {
+          "tools": true,
+        },
+        "gtp-oss:120b-cloud": {
+        },
+        "qwen3-coder:480b-cloud": {
+        }
+      }
+    }
+  }
+}
