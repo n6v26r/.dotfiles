@@ -16,7 +16,7 @@ done
 config_file="/tmp/polybar_cava_config"
 echo "
 [general]
-bars = 15
+bars = 32
 
 [output]
 method = raw
