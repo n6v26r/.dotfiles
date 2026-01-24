@@ -229,6 +229,23 @@ function nchat(){
   TERM=$term
 }
 
+function iplot {
+  cat <<EOF | gnuplot
+  set terminal svg enhanced
+  set autoscale
+  set size 1,1
+  set samples 1000
+  set output '|kitten icat --stdin yes'
+  set object 1 rectangle from screen 0,0 to screen 1,1 fillcolor rgb"#eff1f5" behind
+  plot $@
+  set output '/dev/null'
+EOF
+}
+
+function cava() {
+  LC_ALL=en_US.UTF-8 /usr/bin/cava "$@"
+}
+
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 

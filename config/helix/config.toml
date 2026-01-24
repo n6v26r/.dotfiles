@@ -55,7 +55,7 @@ A-l = "normal_mode"
 [keys.normal]
 "tab" = "goto_next_buffer"
 "S-tab" = "goto_previous_buffer"
-"esc" = ["collapse_selection", "keep_primary_selection"]
+# "esc" = ["collapse_selection", "keep_primary_selection"]
 
 "C-k" = "jump_view_up"
 "C-j" = "jump_view_down"

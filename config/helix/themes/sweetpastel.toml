@@ -1,0 +1,144 @@
+"type" = "yellow"
+
+"constructor" = "blue"
+
+"constant" = "yellow"
+"constant.builtin" = "yellow"
+"constant.character" = "light-cyan"
+"constant.character.escape" = "light-red"
+
+"string" = "green"
+"string.regexp" = "yellow"
+"string.special" = "blue"
+
+"comment" = { fg = "gray", modifiers = [ "italic" ] }
+
+"variable" = "white"
+"variable.parameter" = { fg = "white" }
+"variable.builtin" = "yellow"
+"variable.other.member" = "light-red"
+
+"label" = "cyan"
+
+"operator" = "foreground"
+
+"function" = "blue"
+"function.macro" = "magenta"
+
+"tag" = "magenta"
+"attribute" = "blue"
+
+"punctuation" = "light-red"
+"punctuation.special" = "red"
+
+"keyword" = "magenta"
+"keyword.control.conditional" = { fg = "light-magenta", modifiers = [ "italic" ] }
+"keyword.control.repeat" = { fg = "yellow" }
+"keyword.control.import" = { fg = "cyan" }
+"keyword.control.except" = { fg = "red" }
+
+"namespace" = { fg = "light-red" }
+
+"special" = "blue"
+
+"markup.heading.marker" = { fg = "yellow", modifiers = [ "bold" ] }
+"markup.heading.1" = "light-magenta"
+"markup.heading.2" = "magenta"
+"markup.heading.3" = "light-green"
+"markup.heading.4" = "light-yellow"
+"markup.heading.5" = "light-red"
+"markup.heading.6" = "light-cyan"
+"markup.list" = "magenta"
+"markup.bold" = { modifiers = [ "bold" ] }
+"markup.italic" = { modifiers = [ "italic" ] }
+"markup.link.url" = { fg = "cyan", modifiers = [ "italic", "underlined" ] }
+"markup.link.text" = "blue"
+"markup.raw" = "light-magenta"
+
+"diff.plus" = "green"
+"diff.minus" = "red"
+"diff.delta" = "blue"
+
+"ui.background" = { fg = "foreground", bg = "background" }
+
+"ui.linenr" = { fg = "gray" }
+"ui.linenr.selected" = { fg = "foreground" }
+
+"ui.statusline" = { fg = "foreground", bg = "light-black" }
+"ui.statusline.inactive" = { fg = "foreground", bg = "black" }
+"ui.statusline.normal" = { fg = "black", bg = "blue", modifiers = [ "bold" ] }
+"ui.statusline.insert" = { fg = "black", bg = "green", modifiers = [ "bold" ]  }
+"ui.statusline.select" = { fg = "black", bg = "light-blue", modifiers = [ "bold" ]  }
+
+"ui.popup" = { fg = "foreground", bg = "light-black" }
+"ui.window" = { fg = "black" }
+"ui.help" = { fg = "foreground", bg = "black" }
+
+"ui.bufferline" = { fg = "gray", bg = "light-black" }
+"ui.bufferline.active" = { fg = "foreground", bg = "background", underline = { color = "light-green", style = "line" } }
+"ui.bufferline.background" = { bg = "light-black" }
+
+"ui.text" = "foreground"
+"ui.text.focus" = { fg = "foreground", bg = "black", modifiers = [ "bold" ] }
+"ui.text.inactive" = { fg = "light-gray" }
+
+"ui.virtual" = "light-black"
+"ui.virtual.ruler" = { bg = "light-black" }
+"ui.virtual.indent-guide" = "gray"
+"ui.virtual.inlay-hint" = { fg = "gray", bg = "black" }
+
+"ui.selection" = { bg = "lighter-black" }
+
+"ui.cursor" = { fg = "background", bg = "foreground" }
+"ui.cursor.primary" = { fg = "background", bg = "foreground" }
+"ui.cursor.match" = { fg = "foreground", modifiers = [ "bold" ] }
+
+"ui.cursor.primary.normal" = { fg = "background", bg = "foreground" }
+"ui.cursor.primary.insert" = { fg = "background", bg = "foreground" }
+"ui.cursor.primary.select" = { fg = "background", bg = "foreground" }
+
+"ui.cursor.normal" = { fg = "background", bg = "foreground" }
+"ui.cursor.insert" = { fg = "background", bg = "foreground" }
+"ui.cursor.select" = { fg = "background", bg = "foreground" }
+
+"ui.cursorline.primary" = { bg = "light-black" }
+
+"ui.highlight" = { bg = "light-black", modifiers = [ "bold" ] }
+
+"ui.menu" = { fg = "foreground", bg = "black" }
+"ui.menu.selected" = { fg = "light-red", bg = "light-black", modifiers = [ "bold" ] }
+
+"ui.debug.breakpoint" = { fg = "light-red" }
+
+"diagnostic.error" = { underline = { color = "red", style = "curl" } }
+"diagnostic.warning" = { underline = { color = "yellow", style = "curl" } }
+"diagnostic.info" = { underline = { color = "cyan", style = "curl" } }
+"diagnostic.hint" = { underline = { color = "light-cyan", style = "curl" } }
+
+error = "red"
+warning = "yellow"
+info = "cyan"
+hint = "light-green"
+
+
+[palette]
+  background = "#1b1f23"
+  foreground = "#ffdede"
+  black = "#161a1e"
+  red = "#e5a3a1"
+  green = "#b4e3ad"
+  yellow = "#ece3b1"
+  blue = "#a3cbe7"
+  magenta = "#ceace8"
+  cyan = "#c9d4ff"
+  gray = "#43474b"
+  light-black = "#22262A"
+  light-red = "#f9b7b5"
+  light-green = "#c8f7c1"
+  light-yellow = "#fff7c5"
+  light-blue = "#b7dffb"
+  light-magenta = "#e2c0fc"
+  light-cyan = "#dde8ff"
+  light-gray = "#eeeff0"
+  lighter-black = "#2f3337"
+  white = "#f8f9fa"

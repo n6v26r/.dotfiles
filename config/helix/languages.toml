@@ -32,7 +32,6 @@ args = [
 executable = "zathura"
 args = [ "--synctex-forward", "%l:%c:%f", "%p" ]
 
-
 [language-server.texlab.config.texlab.chktex]
 onOpenAndSave = true
 onEdit = true
@@ -48,9 +47,12 @@ language-servers = [ { name = "tinymist" } ]
 command = "tinymist"
 
 [language-server.tinymist.config]
-outputPath = "$root/build/document.pdf"
+# outputPath = "$root/build/document.pdf"
 exportPdf = "onType"
 formatterMode = "typstyle"
+# preview.background.enabled = true
+# preview.background.args = ["--data-plane-host=127.0.0.1:23635", "--invert-colors=never", "--open"]
+
 
 [language-server.typescript-language-server.config]
 plugins = [{  name = "@vue/typescript-plugin", location = "/usr/lib/node_modules/@vue/language-server", languages = ["vue"] }]
@@ -58,6 +60,10 @@ tsserver = { path = "/usr/bin/typescript-language-server" }
 
 [language-server.vuels]
 command = "vue-language-server"
+args = ["--stdio"]
+
+[language-server.harper-ls]
+command = "harper-ls"
 args = ["--stdio"]
 
 [[language]]
@@ -75,3 +81,7 @@ file-types = ["svx"]
 grammar = "markdown"
 language-servers = [ "svelteserver"]
 indent = { tab-width = 2, unit = "  " }
+
+[[language]]
+name = "markdown"
+language-servers = ["marksman", "markdown-oxide", "harper-ls"]

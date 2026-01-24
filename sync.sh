@@ -59,7 +59,7 @@ sync["swaylock"]="configSync swaylock"
 sync["hypr"]="configSync hypr"
 sync["hyprpanel"]="configSync hyprpanel"
 sync["waybar"]="configSync waybar"
-
+sync["fancy-cat"]="configSync fancy-cat"
 
 function configSync() {
   path1=config
