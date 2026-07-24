@@ -1,4 +1,31 @@
 [[language]]
+name = "ziex"
+language-id = "zx"
+scope = "source.zx"
+roots = ["build.zig", "zls.json", ".git"]
+file-types = ["zx"]
+grammar = "zx"
+language-servers = ["zls-zx"]
+formatter = { command = "zx", args = ["fmt", "--stdio"] }
+auto-format = true
+
+[language-server.zls-zx]
+command = "zls-zx-proxy"
+args = ["zls"]
+
+[[grammar]]
+name = "zx"
+source = { git = "https://github.com/nurulhudaapon/ziex", rev = "main", subpath = "pkg/tree-sitter-zx" }
+
+[[language]]
+name = "zig"
+auto-format = true
+
+[[language]]
+name = "cpp"
+auto-format = true
+
+[[language]]
 name = "latex"
 language-servers = [ { name = "texlab" } ]
 
@@ -48,8 +75,9 @@ command = "tinymist"
 
 [language-server.tinymist.config]
 # outputPath = "$root/build/document.pdf"
-exportPdf = "onType"
-formatterMode = "typstyle"
+# exportPdf = "onType"
+exportPdf = "never"
+# formatterMode = "typstyle"
 # preview.background.enabled = true
 # preview.background.args = ["--data-plane-host=127.0.0.1:23635", "--invert-colors=never", "--open"]
 
@@ -67,11 +95,20 @@ command = "harper-ls"
 args = ["--stdio"]
 
 [[language]]
+name = "superhtml"
+scope = "source.superhtml"
+roots = []
+file-types = ["shtml"]
+injection-regex = "shtml|superhtml"
+grammar = "html"
+auto-format = true
+language-servers = ["superhtml"]
+
+[[language]]
 name = "vue"
 auto-format = true
 language-servers = ["typescript-language-server", "vuels"]
 formatter = { command = 'prettier', args = ["--parser", "vue"] }
-
 
 [[language]]
 scope = "source.svx"

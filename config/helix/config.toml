@@ -1,6 +1,7 @@
 theme = "catppuccin_mocha"
 
 [editor]
+insecure = true
 # idle-timeout = 0
 end-of-line-diagnostics = "hint"
 completion-timeout = 5

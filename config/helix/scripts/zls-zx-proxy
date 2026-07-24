@@ -1,0 +1,443 @@
+#!/usr/bin/env python3
+import json
+import os
+import re
+import shutil
+import subprocess
+import sys
+import threading
+import urllib.parse
+from typing import Dict, List, Optional
+
+
+HTML_REQUEST_METHODS = {
+    "textDocument/completion",
+    "textDocument/hover",
+    "textDocument/signatureHelp",
+}
+
+
+def _read_exact(stream, size):
+    buf = b""
+    while len(buf) < size:
+        chunk = stream.read(size - len(buf))
+        if not chunk:
+            return None
+        buf += chunk
+    return buf
+
+
+def _read_message(stream):
+    headers = {}
+    while True:
+        line = stream.readline()
+        if not line:
+            return None, None
+        if line in (b"\r\n", b"\n"):
+            break
+        key, _, value = line.partition(b":")
+        headers[key.strip().lower()] = value.strip()
+    length = int(headers.get(b"content-length", b"0"))
+    if length <= 0:
+        return headers, None
+    body = _read_exact(stream, length)
+    return headers, body
+
+
+def _write_message(stream, payload):
+    body = json.dumps(payload, separators=(",", ":"), ensure_ascii=True).encode("utf-8")
+    header = f"Content-Length: {len(body)}\r\n\r\n".encode("ascii")
+    stream.write(header + body)
+    stream.flush()
+
+
+def _write_raw_message(stream, body, content_type=None):
+    header = f"Content-Length: {len(body)}\r\n".encode("ascii")
+    if content_type:
+        header += b"Content-Type: " + content_type + b"\r\n"
+    header += b"\r\n"
+    stream.write(header + body)
+    stream.flush()
+
+
+def _filter_diagnostics(msg):
+    if not isinstance(msg, dict):
+        return msg
+    if msg.get("method") != "textDocument/publishDiagnostics":
+        return msg
+    params = msg.get("params")
+    if not isinstance(params, dict):
+        return msg
+    diags = params.get("diagnostics")
+    if not isinstance(diags, list):
+        return msg
+    filtered = []
+    for d in diags:
+        if not isinstance(d, dict):
+            filtered.append(d)
+            continue
+        message = d.get("message", "")
+        if isinstance(message, str) and re.search(r"expected expression, found '<'", message):
+            continue
+        filtered.append(d)
+    if filtered is not diags:
+        params["diagnostics"] = filtered
+    return msg
+
+
+def _uri_to_path(uri: str) -> Optional[str]:
+    try:
+        parsed = urllib.parse.urlparse(uri)
+    except Exception:
+        return None
+    if parsed.scheme != "file":
+        return None
+    return urllib.parse.unquote(parsed.path)
+
+
+def _position_to_offset(text: str, line: int, character: int) -> int:
+    if line <= 0:
+        return min(character, len(text))
+    lines = text.splitlines(keepends=True)
+    if line >= len(lines):
+        return len(text)
+    return sum(len(l) for l in lines[:line]) + min(character, len(lines[line]))
+
+
+def _apply_content_changes(text: str, changes: List[Dict]) -> str:
+    for change in changes:
+        if "range" not in change:
+            text = change.get("text", "")
+            continue
+        rng = change["range"]
+        start = rng["start"]
+        end = rng["end"]
+        start_off = _position_to_offset(text, start["line"], start["character"])
+        end_off = _position_to_offset(text, end["line"], end["character"])
+        text = text[:start_off] + change.get("text", "") + text[end_off:]
+    return text
+
+
+def _is_html_context(text: str, line: int, character: int) -> bool:
+    if not text:
+        return False
+    lines = text.splitlines()
+    if line >= len(lines):
+        return False
+    line_text = lines[line]
+    if character > len(line_text):
+        character = len(line_text)
+    last_lt = line_text.rfind("<", 0, character)
+    if last_lt == -1:
+        return False
+    last_gt = line_text.rfind(">", 0, character)
+    return last_lt > last_gt
+
+
+def _build_html_view(text: str) -> str:
+    out = []
+    in_tag = False
+    quote = None
+    for c in text:
+        if in_tag:
+            out.append(c)
+            if quote:
+                if c == quote:
+                    quote = None
+            else:
+                if c in ("'", '"'):
+                    quote = c
+                elif c == ">":
+                    in_tag = False
+        else:
+            if c == "<":
+                in_tag = True
+                out.append(c)
+            elif c == "\n":
+                out.append("\n")
+            else:
+                out.append(" ")
+    return "".join(out)
+
+
+def _send_html_did_open(state, uri: str, version: int, text: str):
+    if not state["html_enabled"]:
+        return
+    html_text = _build_html_view(text)
+    state["html_documents"][uri] = html_text
+    msg = {
+        "jsonrpc": "2.0",
+        "method": "textDocument/didOpen",
+        "params": {"textDocument": {"uri": uri, "languageId": "html", "version": version, "text": html_text}},
+    }
+    _write_message(state["html_in"], msg)
+
+
+def _send_html_did_change(state, uri: str, version: int, text: str):
+    if not state["html_enabled"]:
+        return
+    html_text = _build_html_view(text)
+    state["html_documents"][uri] = html_text
+    msg = {
+        "jsonrpc": "2.0",
+        "method": "textDocument/didChange",
+        "params": {"textDocument": {"uri": uri, "version": version}, "contentChanges": [{"text": html_text}]},
+    }
+    _write_message(state["html_in"], msg)
+
+
+def _send_html_did_close(state, uri: str):
+    if not state["html_enabled"]:
+        return
+    state["html_documents"].pop(uri, None)
+    msg = {"jsonrpc": "2.0", "method": "textDocument/didClose", "params": {"textDocument": {"uri": uri}}}
+    _write_message(state["html_in"], msg)
+
+
+def _forward_client_to_server(client_in, zls_out, state):
+    while True:
+        headers, body = _read_message(client_in)
+        if headers is None:
+            break
+        if body is None:
+            continue
+        try:
+            msg = json.loads(body.decode("utf-8"))
+        except json.JSONDecodeError:
+            _write_raw_message(zls_out, body, headers.get(b"content-type"))
+            continue
+
+        if "id" in msg and "method" not in msg:
+            target = state["pending_server_requests"].pop(msg["id"], "zls")
+            out = state["html_in"] if target == "html" and state["html_enabled"] else zls_out
+            _write_message(out, msg)
+            continue
+
+        method = msg.get("method")
+        if method == "initialize":
+            params = msg.get("params") or {}
+            state["workspace_folders"] = params.get("workspaceFolders") or []
+            root_uri = params.get("rootUri")
+            if root_uri:
+                state["root_uri"] = root_uri
+            _write_message(zls_out, msg)
+            if state["html_enabled"]:
+                _write_message(state["html_in"], msg)
+            continue
+        if method in ("initialized", "workspace/didChangeConfiguration"):
+            _write_message(zls_out, msg)
+            if state["html_enabled"]:
+                _write_message(state["html_in"], msg)
+            continue
+        if method == "textDocument/didOpen":
+            params = msg.get("params") or {}
+            doc = params.get("textDocument") or {}
+            uri = doc.get("uri")
+            text = doc.get("text")
+            version = doc.get("version", 1)
+            if uri is not None and text is not None:
+                state["documents"][uri] = text
+                _send_html_did_open(state, uri, version, text)
+            _write_message(zls_out, msg)
+            continue
+        if method == "textDocument/didChange":
+            params = msg.get("params") or {}
+            doc = params.get("textDocument") or {}
+            uri = doc.get("uri")
+            version = doc.get("version", 1)
+            changes = params.get("contentChanges") or []
+            if uri in state["documents"]:
+                state["documents"][uri] = _apply_content_changes(state["documents"][uri], changes)
+                _send_html_did_change(state, uri, version, state["documents"][uri])
+            _write_message(zls_out, msg)
+            continue
+        if method == "textDocument/didClose":
+            params = msg.get("params") or {}
+            doc = params.get("textDocument") or {}
+            uri = doc.get("uri")
+            if uri in state["documents"]:
+                state["documents"].pop(uri, None)
+                _send_html_did_close(state, uri)
+            _write_message(zls_out, msg)
+            continue
+        if method == "exit":
+            _write_message(zls_out, msg)
+            if state["html_enabled"]:
+                _write_message(state["html_in"], msg)
+            continue
+
+        if "id" in msg and method in HTML_REQUEST_METHODS:
+            params = msg.get("params") or {}
+            doc = params.get("textDocument") or {}
+            uri = doc.get("uri")
+            pos = params.get("position") or {}
+            line = pos.get("line", 0)
+            character = pos.get("character", 0)
+            text = state["documents"].get(uri or "", "")
+            if state["html_enabled"] and _is_html_context(text, line, character):
+                state["pending_client_requests"][msg["id"]] = "html"
+                _write_message(state["html_in"], msg)
+                continue
+
+        if "id" in msg:
+            state["pending_client_requests"][msg["id"]] = "zls"
+
+        _write_message(zls_out, msg)
+
+
+def _forward_zls_to_client(zls_in, client_out, state):
+    while True:
+        headers, body = _read_message(zls_in)
+        if headers is None:
+            break
+        if body is None:
+            continue
+        try:
+            msg = json.loads(body.decode("utf-8"))
+        except json.JSONDecodeError:
+            _write_raw_message(client_out, body, headers.get(b"content-type"))
+            continue
+
+        if "id" in msg and "method" in msg:
+            state["pending_server_requests"][msg["id"]] = "zls"
+            _write_message(client_out, msg)
+            continue
+        if "id" in msg and "method" not in msg:
+            target = state["pending_client_requests"].pop(msg["id"], "zls")
+            if target != "zls":
+                continue
+            _write_message(client_out, msg)
+            continue
+
+        if msg.get("method") == "textDocument/publishDiagnostics":
+            msg = _filter_diagnostics(msg)
+        _write_message(client_out, msg)
+
+
+def _forward_html_to_client(html_in, client_out, state):
+    while True:
+        headers, body = _read_message(html_in)
+        if headers is None:
+            break
+        if body is None:
+            continue
+        try:
+            msg = json.loads(body.decode("utf-8"))
+        except json.JSONDecodeError:
+            _write_raw_message(client_out, body, headers.get(b"content-type"))
+            continue
+
+        if "id" in msg and "method" in msg:
+            state["pending_server_requests"][msg["id"]] = "html"
+            _write_message(client_out, msg)
+            continue
+        if "id" in msg and "method" not in msg:
+            target = state["pending_client_requests"].pop(msg["id"], "zls")
+            if target != "html":
+                continue
+            _write_message(client_out, msg)
+            continue
+
+        if msg.get("method") == "textDocument/publishDiagnostics":
+            continue
+
+
+def main():
+    if len(sys.argv) < 2:
+        print("usage: zls-zx-proxy <zls> [args...]", file=sys.stderr)
+        return 2
+
+    zls_proc = subprocess.Popen(
+        sys.argv[1:],
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+        stderr=sys.stderr,
+        bufsize=0,
+    )
+
+    html_cmd = os.environ.get("HTML_LSP") or "vscode-html-language-server"
+    html_enabled = shutil.which(html_cmd) is not None
+    html_proc = None
+    if html_enabled:
+        html_proc = subprocess.Popen(
+            [html_cmd, "--stdio"],
+            stdin=subprocess.PIPE,
+            stdout=subprocess.PIPE,
+            stderr=sys.stderr,
+            bufsize=0,
+        )
+    else:
+        print("zls-zx-proxy: HTML LSP not found; HTML blocks disabled", file=sys.stderr)
+
+    def _workspace_root_for(path: Optional[str]) -> Optional[str]:
+        if not path:
+            return None
+        best = None
+        for folder in state["workspace_folders"]:
+            uri = folder.get("uri") if isinstance(folder, dict) else None
+            root = _uri_to_path(uri) if uri else None
+            if not root:
+                continue
+            if path.startswith(root.rstrip("/") + "/"):
+                if best is None or len(root) > len(best):
+                    best = root
+        return best
+
+    state = {
+        "documents": {},
+        "html_documents": {},
+        "workspace_folders": [],
+        "root_uri": None,
+        "workspace_root_for": _workspace_root_for,
+        "pending_client_requests": {},
+        "pending_server_requests": {},
+        "client_out": sys.stdout.buffer,
+        "html_enabled": html_enabled,
+        "html_in": html_proc.stdin if html_proc else None,
+    }
+
+    threads = []
+    threads.append(
+        threading.Thread(
+            target=_forward_client_to_server,
+            args=(sys.stdin.buffer, zls_proc.stdin, state),
+            daemon=True,
+        )
+    )
+    threads.append(
+        threading.Thread(
+            target=_forward_zls_to_client,
+            args=(zls_proc.stdout, sys.stdout.buffer, state),
+            daemon=True,
+        )
+    )
+    if html_enabled and html_proc:
+        threads.append(
+            threading.Thread(
+                target=_forward_html_to_client,
+                args=(html_proc.stdout, sys.stdout.buffer, state),
+                daemon=True,
+            )
+        )
+
+    for t in threads:
+        t.start()
+
+    try:
+        for t in threads:
+            t.join()
+    finally:
+        try:
+            zls_proc.terminate()
+        except OSError:
+            pass
+        if html_proc:
+            try:
+                html_proc.terminate()
+            except OSError:
+                pass
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

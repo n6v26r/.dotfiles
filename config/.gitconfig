@@ -5,8 +5,8 @@
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
 [user]
-	email = dedu.razvan.matei@gmail.com
-	name = n6v26r
+	email = razv@razv.xyz
+	name = Răzvan
 [alias]
 	adog = log --all --decorate --oneline --graph
 [pull]

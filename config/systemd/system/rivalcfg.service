@@ -1,0 +1,12 @@
+[Unit]
+Description=Apply RivalCFG mouse colors at boot
+After=systemd-udev-settle.service
+Wants=systemd-udev-settle.service
+
+[Service]
+Type=oneshot
+ExecStartPre=/bin/bash -lc 'for _ in {1..30}; do compgen -G "/sys/bus/hid/devices/*1038:1838*" >/dev/null && exit 0; sleep 1; done; exit 1'
+ExecStart=/home/razv/.dotfiles/mouse_cfg.sh
+
+[Install]
+WantedBy=multi-user.target
