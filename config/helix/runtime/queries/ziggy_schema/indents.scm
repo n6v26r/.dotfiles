@@ -1,0 +1,8 @@
+[
+  (struct)
+  (union)
+] @indent
+
+[
+  "}"
+] @outdent

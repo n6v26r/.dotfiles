@@ -75,8 +75,8 @@ command = "tinymist"
 
 [language-server.tinymist.config]
 # outputPath = "$root/build/document.pdf"
-# exportPdf = "onType"
-exportPdf = "never"
+exportPdf = "onType"
+# exportPdf = "never"
 # formatterMode = "typstyle"
 # preview.background.enabled = true
 # preview.background.args = ["--data-plane-host=127.0.0.1:23635", "--invert-colors=never", "--open"]
@@ -122,3 +122,68 @@ indent = { tab-width = 2, unit = "  " }
 [[language]]
 name = "markdown"
 language-servers = ["marksman", "markdown-oxide", "harper-ls"]
+
+# Ziggy
+
+[language-server.ziggy-lsp]
+command = "ziggy"
+args = ["lsp"]
+
+[[language]]
+name = "ziggy"
+scope = "text.ziggy"
+roots = []
+injection-regex = "ziggy|zgy"
+file-types = ["ziggy", "zgy"]
+comment-token = "//"
+auto-format = true
+formatter = { command = "ziggy" , args = ["fmt", "--stdin"] }
+language-servers = [ "ziggy-lsp" ]
+
+[[grammar]]
+name = "ziggy"
+source = { git = "https://github.com/kristoff-it/ziggy", rev = "0e46579ed878bb28a78cf624c2e593eb39301648", subpath = "tree-sitter-ziggy" }
+
+[[language]]
+name = "ziggy_schema"
+scope = "text.ziggy_schema"
+roots = []
+injection-regex = "ziggy-schema|zgy-schema"
+file-types = ["ziggy-schema", "zgy-schema"]
+comment-token = "///"
+indent = { tab-width = 4, unit = "    " }
+formatter = { command = "ziggy" , args = ["fmt", "-", "--type", "schema"] }
+auto-format = true
+language-servers = [ "ziggy-schema-lsp" ]
+
+[[grammar]]
+name = "ziggy_schema"
+source = { git = "https://github.com/kristoff-it/ziggy", rev = "0e46579ed878bb28a78cf624c2e593eb39301648", subpath = "tree-sitter-ziggy-schema" }
+
+[language-server.ziggy-schema-lsp]
+command = "ziggy"
+args = ["lsp", "--schema"]
+
+# Supermd
+
+[[language]]
+name = "supermd"
+scope = "source.supermd"
+roots = []
+file-types = ["smd"]
+injection-regex = "supermd|smd"
+
+[[grammar]]
+name = "supermd"
+source = { git = "https://github.com/kristoff-it/supermd", rev = "main", subpath = "tree-sitter/supermd" }
+
+[[language]]
+name = "supermd_inline"
+scope = "source.supermd.inline"
+injection-regex = "supermd_inline"
+file-types = []
+grammar = "supermd_inline"
+
+[[grammar]]
+name = "supermd_inline"
+source = { git = "https://github.com/kristoff-it/supermd", rev = "main", subpath = "tree-sitter/supermd-inline" }
